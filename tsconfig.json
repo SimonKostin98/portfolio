@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "outDir": "dist/",
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "target": "es2015",
+    "jsx": "react",
+    "esModuleInterop": true,
+    "noImplicitReturns": true,
+    "declarationMap": true,
+    "declaration": true,
+    "noFallthroughCasesInSwitch": true,
+    "strictNullChecks": true,
+    "noErrorTruncation": true,
+    "sourceMap": true,
+    "typeRoots": ["node_modules/@types", "src/types"]
+  },
+  "include": ["./src/**/*"]
+}

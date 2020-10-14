@@ -1,0 +1,9 @@
+# MacOs specific files
+.DS_Store
+
+# IDE specific folders
+.idea/
+.vscode/
+
+# node-modules
+node_modules/
