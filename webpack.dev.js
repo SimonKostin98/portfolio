@@ -47,6 +47,9 @@ module.exports = {
   resolve: {
     modules: ['node_modules'],
     extensions: ['.ts', '.tsx', '.js', '.json'],
+    alias: {
+      '@assets': path.resolve(__dirname, 'src/assets/'),
+    }
   },
 
   plugins: [
