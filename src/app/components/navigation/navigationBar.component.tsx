@@ -1,5 +1,6 @@
 import logoLight from '@assets/images/logoLight.png';
 import { AppBar, makeStyles, Tab, Tabs, Theme } from '@material-ui/core';
+import clsx from 'clsx';
 import React, { ReactElement } from 'react';
 
 interface INavigationBarProps {
@@ -8,24 +9,32 @@ interface INavigationBarProps {
   setActive: (newValue: number) => void;
 }
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme: Theme) => ({
   appBar: {
-    boxShadow: 'none',
-    padding: '10px 20px 0 20px',
+    padding: '5px 20px 0',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
+  },
+  noShadow: {
+    boxShadow: 'none',
   },
   logo: {
     height: 50,
   },
   logoWrapper: {
-    height: 50,
+    padding: '5px 0',
+    height: 60,
   },
   menuItem: {
-    fontSize: 'calc(0.5vh + 1vw)',
     fontWeight: 'bold',
     color: 'white',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 'medium',
+    },
+    [theme.breakpoints.up('md')]: {
+      fontSize: 'x-large',
+    },
   },
 }));
 
@@ -40,7 +49,11 @@ export const NavigationBar = (props: INavigationBarProps): ReactElement => {
   };
 
   return (
-    <AppBar position="sticky" color="transparent" className={classes.appBar}>
+    <AppBar
+      position="sticky"
+      color="transparent"
+      className={clsx(classes.appBar, props.active != 1 && classes.noShadow)}
+    >
       <div className={classes.logoWrapper}>
         <img src={logoLight as string} className={classes.logo} />
       </div>
