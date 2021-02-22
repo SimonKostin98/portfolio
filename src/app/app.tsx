@@ -4,12 +4,14 @@ import backgroundURL from '@assets/images/background.png';
 import {
   createMuiTheme,
   CssBaseline,
+  makeStyles,
   MuiThemeProvider,
   ThemeOptions,
 } from '@material-ui/core';
 import React, { ReactElement, useState } from 'react';
 
 import { ErrorBoundaryComponent } from './components/errorBoundary.component';
+import { Footer } from './components/navigation/footer.component';
 import { NavigationBar } from './components/navigation/navigationBar.component';
 import { darkTheme, lightTheme } from './theme';
 
@@ -56,6 +58,8 @@ const useStyles = makeStyles(() => ({
 
 export const App = (): ReactElement => {
   const [theme, toggleDarkMode] = useDarkMode();
+  const [active, setActive] = useState(0);
+  const classes = useStyles();
   return (
     <MuiThemeProvider theme={createMuiTheme(theme)}>
       <CssBaseline />
