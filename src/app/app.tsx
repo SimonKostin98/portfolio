@@ -8,6 +8,7 @@ import {
 } from '@material-ui/core';
 import React, { ReactElement, useState } from 'react';
 
+import { HomeComponent } from './components/content/home.component';
 import { ErrorBoundaryComponent } from './components/errorBoundary.component';
 import { Footer } from './components/navigation/footer.component';
 import { NavigationBar } from './components/navigation/navigationBar.component';
@@ -70,6 +71,7 @@ export const App = (): ReactElement => {
               active={active}
               setActive={(newValue: number) => setActive(newValue)}
             />
+            <HomeComponent />
             <Footer />
           </div>
         </div>
