@@ -1,5 +1,3 @@
-import './app.scss';
-
 import backgroundURL from '@assets/images/background.png';
 import {
   createMuiTheme,
