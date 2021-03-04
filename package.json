@@ -1,5 +1,5 @@
 {
-  "name": "myPortfolio",
+  "name": "my_portfolio",
   "version": "1.0.0",
   "description": "My very own Portfolio Website",
   "main": "index.tsx",
@@ -15,7 +15,7 @@
     "regenerator-runtime": "^0.13.7"
   },
   "scripts": {
-    "serve": "webpack-dev-server --mode development --color --hot --progress --config ./webpack.dev.js"
+    "serve": "webpack-dev-server --mode development --color --hot --progress --config ./webpack.dev.js --host 0.0.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
