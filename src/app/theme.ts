@@ -1,23 +1,31 @@
 import { ThemeOptions } from '@material-ui/core';
-import { orange, purple } from '@material-ui/core/colors';
 
 export const lightTheme: ThemeOptions = {
   palette: {
     primary: {
-      light: '#01FFFF',
+      light: '#FF1476',
       main: '#CC137A',
       dark: '#B3116B'
     },
     secondary: {
-      light: '#FF61BE',
-      main: '#EA55B1',
-      dark: '#EF0888'
+      light: '#4D4DFF',
+      main: '#000080',
+      dark: '#003366'
     },
     background: {
       paper: '#fff',
       default: '#fff',
     },
     type: 'light',
+  },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 576,
+      md: 768,
+      lg: 992,
+      xl: 1200
+    }
   },
   typography:{
     fontFamily: [
