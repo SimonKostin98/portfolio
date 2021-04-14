@@ -3,6 +3,7 @@ import {
   CssBaseline,
   makeStyles,
   MuiThemeProvider,
+  Theme,
   ThemeOptions,
 } from '@material-ui/core';
 import React, { ReactElement, useState } from 'react';
@@ -11,7 +12,10 @@ import Particles from 'react-particles-js';
 import { HomeComponent } from './components/content/home.component';
 import { ErrorBoundaryComponent } from './components/errorBoundary.component';
 import { Footer } from './components/navigation/footer.component';
-import { NavigationBar } from './components/navigation/navigationBar.component';
+import {
+  NavigationBar,
+  NavigationBarSmall,
+} from './components/navigation/navigationBar.component';
 import { darkTheme, lightTheme } from './theme';
 
 const useDarkMode = (): [ThemeOptions, () => void] => {
@@ -45,6 +49,16 @@ const useStyles = makeStyles((theme: Theme) => ({
     left: 0,
     color: 'white',
     zIndex: 1,
+  },
+  navigationBar: {
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    },
+  },
+  navigationBarSmall: {
+    [theme.breakpoints.up('md')]: {
+      display: 'none',
+    },
   },
 }));
 
@@ -83,13 +97,19 @@ export const App = (): ReactElement => {
         <div className={classes.mainContent}>
           <div className={classes.navigationBar}>
             <NavigationBar
-              toggleDarkMode={toggleDarkMode}
               active={active}
               setActive={(newValue: number) => setActive(newValue)}
             />
-            <HomeComponent />
-            <Footer />
           </div>
+          <div className={classes.navigationBarSmall}>
+            <NavigationBarSmall
+              active={active}
+              setActive={(newValue: number) => setActive(newValue)}
+            />
+          </div>
+          {active === 0 && <HomeComponent />}
+          {active === 2 && <ResumeComponent />}
+          <Footer />
         </div>
       </ErrorBoundaryComponent>
     </MuiThemeProvider>

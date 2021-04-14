@@ -1,10 +1,13 @@
 import logoLight from '@assets/images/logoLight.png';
 import { AppBar, makeStyles, Tab, Tabs, Theme } from '@material-ui/core';
+import AssignmentIcon from '@material-ui/icons/Assignment';
+import HomeIcon from '@material-ui/icons/Home';
+import ImportantDevicesIcon from '@material-ui/icons/ImportantDevices';
+import InfoIcon from '@material-ui/icons/Info';
 import clsx from 'clsx';
 import React, { ReactElement } from 'react';
 
 interface INavigationBarProps {
-  toggleDarkMode: () => void;
   active: number;
   setActive: (newValue: number) => void;
 }
@@ -23,7 +26,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: 50,
   },
   logoWrapper: {
-    padding: '5px 0',
+    padding: '3px 0',
     height: 60,
   },
   menuItem: {
@@ -38,11 +41,19 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
+const useStylesSmall = makeStyles((theme: Theme) => ({
+  appBar: {},
+  noShadow: {
+    boxShadow: 'none',
+  },
+  menuItem: { color: 'white' },
+}));
+
 export const NavigationBar = (props: INavigationBarProps): ReactElement => {
   const classes = useStyles();
 
   const handleChange = (
-    event: React.ChangeEvent<unknown>,
+    _event: React.ChangeEvent<unknown>,
     newValue: number,
   ) => {
     props.setActive(newValue);
@@ -52,7 +63,7 @@ export const NavigationBar = (props: INavigationBarProps): ReactElement => {
     <AppBar
       position="sticky"
       color="transparent"
-      className={clsx(classes.appBar, props.active != 1 && classes.noShadow)}
+      className={clsx(classes.appBar, props.active === 0 && classes.noShadow)}
     >
       <div className={classes.logoWrapper}>
         <img src={logoLight as string} className={classes.logo} />
@@ -62,11 +73,55 @@ export const NavigationBar = (props: INavigationBarProps): ReactElement => {
         textColor="primary"
         value={props.active}
         onChange={handleChange}
+        selectionFollowsFocus
       >
         <Tab label="Home" className={classes.menuItem} />
         <Tab label="About" className={classes.menuItem} />
         <Tab label="Resume" className={classes.menuItem} />
         <Tab label="Projects" className={classes.menuItem} />
+      </Tabs>
+    </AppBar>
+  );
+};
+
+export const NavigationBarSmall = (
+  props: INavigationBarProps,
+): ReactElement => {
+  const classes = useStylesSmall();
+
+  const handleChange = (
+    _event: React.ChangeEvent<unknown>,
+    newValue: number,
+  ) => {
+    props.setActive(newValue);
+  };
+
+  return (
+    <AppBar
+      position="sticky"
+      color="transparent"
+      className={clsx(classes.appBar, props.active === 0 && classes.noShadow)}
+    >
+      <Tabs
+        indicatorColor="primary"
+        textColor="primary"
+        value={props.active}
+        onChange={handleChange}
+        selectionFollowsFocus
+        variant="fullWidth"
+      >
+        <Tab icon={<HomeIcon />} label="Home" className={classes.menuItem} />
+        <Tab icon={<InfoIcon />} label="About" className={classes.menuItem} />
+        <Tab
+          icon={<AssignmentIcon />}
+          label="Resume"
+          className={classes.menuItem}
+        />
+        <Tab
+          icon={<ImportantDevicesIcon />}
+          label="Projects"
+          className={classes.menuItem}
+        />
       </Tabs>
     </AppBar>
   );
