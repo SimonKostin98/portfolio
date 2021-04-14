@@ -1,11 +1,11 @@
 import { ThemeOptions } from '@material-ui/core';
 
-export const lightTheme : ThemeOptions = {
+export const darkTheme : ThemeOptions = {
   palette: {
     primary: {
-      light: '#6af2ff',
-      main: '#00BFFF',
-      dark: '#008fcc'
+      light: '#62efff',
+      main: '#00BCD4',
+      dark: '#008ba3'
     },
     secondary: {
       light: '#FF1476',
@@ -13,10 +13,14 @@ export const lightTheme : ThemeOptions = {
       dark: '#B3116B'
     },
     background: {
-      paper: '#fff',
-      default: '#fff',
+      paper: '#424242',
+      default: '#212121',
     },
-    type: 'light',
+    text:{
+      primary: 'rgba(255, 255, 255, 0.87)',
+      secondary: 'rgba(255, 255, 255, 0.6)'
+    },
+    type: 'dark',
   },
   breakpoints: {
     values: {
@@ -35,26 +39,6 @@ export const lightTheme : ThemeOptions = {
   },
   custom: {
     topHeight: 65.2,
-    bottomHeight: 48
+    bottomHeight: 48,
   }
-};
-
-export const darkTheme: ThemeOptions = {
-  palette: {
-    primary: {
-      light: '#01FFFF',
-      main: '#00389F',
-      dark: '#000D80'
-    },
-    secondary: {
-      light: '#FF61BE',
-      main: '#EA55B1',
-      dark: '#EF0888'
-    },
-    background: {
-      paper: '#000',
-      default: '#222',
-    },
-    type: 'dark',
-  },
 };

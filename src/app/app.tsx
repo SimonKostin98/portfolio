@@ -4,7 +4,6 @@ import {
   makeStyles,
   MuiThemeProvider,
   Theme,
-  ThemeOptions,
 } from '@material-ui/core';
 import React, { ReactElement, useState } from 'react';
 import Particles from 'react-particles-js';
@@ -17,17 +16,7 @@ import {
   NavigationBar,
   NavigationBarSmall,
 } from './components/navigation/navigationBar.component';
-import { darkTheme, lightTheme } from './theme';
-
-const useDarkMode = (): [ThemeOptions, () => void] => {
-  const [theme, setTheme] = useState(lightTheme);
-
-  const toggleTheme = (): void => {
-    setTheme(theme.palette!.type === 'light' ? darkTheme : lightTheme);
-  };
-
-  return [theme, toggleTheme];
-};
+import { darkTheme } from './theme';
 
 const useStyles = makeStyles((theme: Theme) => ({
   background: {
@@ -48,7 +37,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     position: 'absolute',
     top: 0,
     left: 0,
-    color: 'white',
     zIndex: 1,
   },
   navigationBar: {
@@ -64,11 +52,10 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 export const App = (): ReactElement => {
-  const [theme, toggleDarkMode] = useDarkMode();
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState(2);
   const classes = useStyles();
   return (
-    <MuiThemeProvider theme={createMuiTheme(theme)}>
+    <MuiThemeProvider theme={createMuiTheme(darkTheme)}>
       <CssBaseline />
       <ErrorBoundaryComponent>
         <div className={classes.background}>
@@ -80,11 +67,18 @@ export const App = (): ReactElement => {
                   value: 60,
                   density: { enable: true, value_area: 1500 },
                 },
+                color: {
+                  value: '#00BCD4',
+                },
+                line_linked: {
+                  color: '#00BCD4',
+                  width: 2.5,
+                },
                 opacity: {
                   value: 0.7,
                 },
                 size: {
-                  value: 4,
+                  value: 5,
                   random: true,
                   anim: { enable: true, speed: 3 },
                 },
