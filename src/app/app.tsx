@@ -1,4 +1,3 @@
-import backgroundURL from '@assets/images/background.png';
 import {
   createMuiTheme,
   CssBaseline,
@@ -7,6 +6,7 @@ import {
   ThemeOptions,
 } from '@material-ui/core';
 import React, { ReactElement, useState } from 'react';
+import Particles from 'react-particles-js';
 
 import { HomeComponent } from './components/content/home.component';
 import { ErrorBoundaryComponent } from './components/errorBoundary.component';
@@ -24,25 +24,18 @@ const useDarkMode = (): [ThemeOptions, () => void] => {
   return [theme, toggleTheme];
 };
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme: Theme) => ({
   background: {
     position: 'relative',
     height: '100vh',
     width: '100vw',
-    backgroundImage: `url(${backgroundURL as string})`,
+    background: 'linear-gradient(-45deg, #000428, #000424, #1e9afe 110%)',
     backgroundSize: 'cover',
-    backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
   },
-  blur: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    filter: 'blur(10px)',
-    backgroundColor: 'rgba(0, 0, 0, 0.35)',
+  particles: {
     height: '100%',
     width: '100%',
-    zIndex: 0,
   },
   mainContent: {
     height: '100%',
@@ -64,8 +57,31 @@ export const App = (): ReactElement => {
       <CssBaseline />
       <ErrorBoundaryComponent>
         <div className={classes.background}>
-          <div className={classes.blur} />
-          <div className={classes.mainContent}>
+          <Particles
+            className={classes.particles}
+            params={{
+              particles: {
+                number: {
+                  value: 60,
+                  density: { enable: true, value_area: 1500 },
+                },
+                opacity: {
+                  value: 0.7,
+                },
+                size: {
+                  value: 4,
+                  random: true,
+                  anim: { enable: true, speed: 3 },
+                },
+                move: {
+                  speed: 1.5,
+                },
+              },
+            }}
+          />
+        </div>
+        <div className={classes.mainContent}>
+          <div className={classes.navigationBar}>
             <NavigationBar
               toggleDarkMode={toggleDarkMode}
               active={active}
