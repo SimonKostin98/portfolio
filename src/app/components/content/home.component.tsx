@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     animation: '$startText 1s linear',
   },
   firstHeading: {
+    color: 'white',
     fontWeight: 'bold',
     fontSize: 'calc(5vh + 3vw)',
     [theme.breakpoints.down('sm')]: {
@@ -42,15 +43,17 @@ const useStyles = makeStyles((theme: Theme) => ({
     color: theme.palette.primary.main,
   },
   button: {
+    background: `linear-gradient(-45deg, ${theme.palette.primary.dark}, ${theme.palette.primary.light})`,
     color: 'white',
     fontWeight: 'bold',
     WebkitTextStroke: '0',
     marginTop: '10px',
+    borderRadius: '10rem',
   },
   image: {
     backgroundImage: `url(${profilePictureURL as string})`,
-    width: '30vw',
-    height: '30vw',
+    width: 'calc(28vw + 5vh)',
+    height: 'calc(28vw + 5vh)',
     backgroundSize: 'contain',
     backgroundRepeat: 'no-repeat',
     borderRadius: '50%',
@@ -84,12 +87,7 @@ export const HomeComponent = (): ReactElement => {
       <div className={classes.infoText}>
         <div className={classes.firstHeading}>Simon Kostin</div>
         <div className={classes.secondHeading}>Full Stack Developer</div>
-        <Button
-          className={classes.button}
-          variant="contained"
-          size="large"
-          color="primary"
-        >
+        <Button className={classes.button} variant="contained" size="large">
           Contact me
         </Button>
       </div>
