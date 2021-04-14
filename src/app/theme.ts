@@ -1,16 +1,16 @@
 import { ThemeOptions } from '@material-ui/core';
 
-export const lightTheme: ThemeOptions = {
+export const lightTheme : ThemeOptions = {
   palette: {
     primary: {
+      light: '#6af2ff',
+      main: '#00BFFF',
+      dark: '#008fcc'
+    },
+    secondary: {
       light: '#FF1476',
       main: '#CC137A',
       dark: '#B3116B'
-    },
-    secondary: {
-      light: '#4D4DFF',
-      main: '#000080',
-      dark: '#003366'
     },
     background: {
       paper: '#fff',
@@ -32,6 +32,10 @@ export const lightTheme: ThemeOptions = {
       'Varela Round',
       'Nunito'
     ].join(','),
+  },
+  custom: {
+    topHeight: 65.2,
+    bottomHeight: 48
   }
 };
 
