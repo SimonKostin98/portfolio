@@ -1,4 +1,4 @@
-import { IconButton, makeStyles } from '@material-ui/core';
+import { IconButton, makeStyles, Theme } from '@material-ui/core';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
@@ -8,7 +8,7 @@ import React, { ReactElement } from 'react';
 
 interface IFooterProps {}
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme: Theme) => ({
   footer: {
     position: 'fixed',
     left: 0,
@@ -19,6 +19,7 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    fontSize: '56px',
   },
 
   settingsIcon: {
@@ -30,22 +31,22 @@ const useStyles = makeStyles(() => ({
 export const Footer = (props: IFooterProps): ReactElement => {
   const classes = useStyles();
   return (
-    <footer className={classes.footer}>
+    <div className={classes.footer}>
       <IconButton color="inherit">
-        <GitHubIcon />
+        <GitHubIcon fontSize="inherit" />
       </IconButton>
       <IconButton color="inherit">
-        <FacebookIcon />
+        <FacebookIcon fontSize="inherit" />
       </IconButton>
       <IconButton color="inherit">
-        <LinkedInIcon />
+        <LinkedInIcon fontSize="inherit" />
       </IconButton>
       <IconButton color="inherit">
-        <MailIcon />
+        <MailIcon fontSize="inherit" />
       </IconButton>
       <IconButton color="inherit" className={classes.settingsIcon}>
         <SettingsIcon />
       </IconButton>
-    </footer>
+    </div>
   );
 };
