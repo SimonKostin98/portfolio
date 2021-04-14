@@ -9,7 +9,7 @@ import React, { ReactElement, useState } from 'react';
 import Particles from 'react-particles-js';
 
 import { HomeComponent } from './components/content/home.component';
-import { ResumeComponent } from './components/content/resume.component';
+import { ResumeComponent } from './components/content/resume/resume.component';
 import { ErrorBoundaryComponent } from './components/errorBoundary.component';
 import { Footer } from './components/navigation/footer.component';
 import {
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     position: 'relative',
     height: '100vh',
     width: '100vw',
-    background: 'linear-gradient(-45deg, #000428, #000424, #1e9afe 110%)',
+    background: 'linear-gradient(-45deg, #000, #414141)',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
   },
