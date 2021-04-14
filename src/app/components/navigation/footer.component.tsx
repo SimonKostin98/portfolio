@@ -21,11 +21,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     justifyContent: 'center',
     fontSize: '56px',
   },
-
-  settingsIcon: {
-    position: 'absolute',
-    right: 0,
-  },
 }));
 
 export const Footer = (props: IFooterProps): ReactElement => {
@@ -43,9 +38,6 @@ export const Footer = (props: IFooterProps): ReactElement => {
       </IconButton>
       <IconButton color="inherit">
         <MailIcon fontSize="inherit" />
-      </IconButton>
-      <IconButton color="inherit" className={classes.settingsIcon}>
-        <SettingsIcon />
       </IconButton>
     </div>
   );
