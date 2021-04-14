@@ -10,6 +10,7 @@ import React, { ReactElement, useState } from 'react';
 import Particles from 'react-particles-js';
 
 import { HomeComponent } from './components/content/home.component';
+import { ResumeComponent } from './components/content/resume.component';
 import { ErrorBoundaryComponent } from './components/errorBoundary.component';
 import { Footer } from './components/navigation/footer.component';
 import {
