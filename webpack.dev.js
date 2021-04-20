@@ -12,10 +12,10 @@ module.exports = {
   devtool: 'source-map',
   module: {
     rules: [
-      { test: /\.css$/, use: ['style-loader', 'css-loader', 'sass-loader'] },
       {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
+        include: path.resolve(__dirname, 'src'),
         use: {
           loader: 'babel-loader',
         },
@@ -49,7 +49,8 @@ module.exports = {
     extensions: ['.ts', '.tsx', '.js', '.json'],
     alias: {
       '@assets': path.resolve(__dirname, 'src/assets/'),
-      '@components': path.resolve(__dirname, 'src/app/components')
+      '@components': path.resolve(__dirname,'src/', 'app', 'components'),
+      '@customizations': path.resolve(__dirname,'src', 'app', 'customizations')
     }
   },
 
@@ -58,7 +59,7 @@ module.exports = {
       template: path.resolve(__dirname, 'src/index.html'),
       inject: 'body',
       favicon: './src/assets/images/favicon.ico',
-    }),
+    })
   ],
 
   devServer: {
@@ -68,10 +69,6 @@ module.exports = {
     historyApiFallback: true,
     watchOptions: {
       ignored: /node_modules|\.jsx?$|\.d.ts$/,
-    },
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Headers': '*',
-    },
+    }
   },
 };
