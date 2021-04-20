@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
     "outDir": "dist/",
     "noImplicitAny": true,
     "module": "commonjs",
-    "target": "es2015",
+    "target": "es2017",
     "jsx": "react",
     "esModuleInterop": true,
     "noImplicitReturns": true,
@@ -13,7 +14,12 @@
     "strictNullChecks": true,
     "noErrorTruncation": true,
     "sourceMap": true,
-    "typeRoots": ["node_modules/@types", "src/types"]
+    "typeRoots": ["node_modules/@types", "src/types"],
+    "paths": {
+      "@assets/*": ["./src/assets/*"],
+      "@components/*": ["./src/app/components/*"],
+      "@customizations/*": ["./src/app/customizations/*"]
+    }
   },
   "include": ["./src/**/*"]
 }
