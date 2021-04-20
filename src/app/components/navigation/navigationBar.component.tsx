@@ -1,4 +1,4 @@
-import logoLight from '@assets/images/logoLight.png';
+import logo from '@assets/images/Logo.png';
 import { AppBar, makeStyles, Tab, Tabs, Theme } from '@material-ui/core';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import AssignmentIcon from '@material-ui/icons/Assignment';
@@ -19,20 +19,22 @@ interface INavigationBarProps {
 
 const useStyles = makeStyles((theme: Theme) => ({
   appBar: {
-    padding: '5px 20px 0',
+    padding: '0 20px 0',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
   },
   noShadow: {
     boxShadow: 'none',
   },
-  logo: {
-    height: 50,
-  },
   logoWrapper: {
-    padding: '3px 0',
+    backgroundImage: `url(${logo as string})`,
+    backgroundSize: 'contain',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
     height: 60,
+    width: 120,
   },
   menuItem: {
     fontWeight: 'bold',
@@ -83,9 +85,7 @@ export const NavigationBar = (props: INavigationBarProps): ReactElement => {
       color="transparent"
       className={clsx(classes.appBar, props.active === 0 && classes.noShadow)}
     >
-      <div className={classes.logoWrapper}>
-        <img src={logoLight as string} className={classes.logo} />
-      </div>
+      <div className={classes.logoWrapper} />
       <Tabs
         indicatorColor="primary"
         textColor="primary"
