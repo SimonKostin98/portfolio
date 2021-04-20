@@ -9,14 +9,19 @@
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.57",
+    "@types/react-custom-scrollbars": "^4.0.7",
+    "clsx": "^1.1.1",
     "core-js": "^3.6.5",
     "react": "^17.0.2",
+    "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^17.0.2",
     "react-particles-js": "^3.4.1",
     "regenerator-runtime": "^0.13.7"
   },
   "scripts": {
-    "serve": "webpack-dev-server --mode development --color --hot --progress --config ./webpack.dev.js --host 0.0.0.0"
+    "serve": "webpack-dev-server --mode development --color --hot --progress --config ./webpack.dev.js",
+    "serve:global": "webpack-dev-server --mode development --color --hot --progress --config ./webpack.dev.js --host 0.0.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
