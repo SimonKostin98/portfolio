@@ -38,7 +38,8 @@ export const darkTheme : ThemeOptions = {
     ].join(','),
   },
   custom: {
-    topHeight: 65.2,
+    topHeight: 61,
     bottomHeight: 48,
+    paperLight: '#848484',
   }
 };
