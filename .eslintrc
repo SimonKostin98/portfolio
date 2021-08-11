@@ -6,9 +6,7 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "prettier",
-    "prettier/react",
-    "prettier/@typescript-eslint"
+    "prettier"
   ],
   "plugins": ["@typescript-eslint", "react-hooks", "simple-import-sort"],
   "parserOptions": {
@@ -33,7 +31,7 @@
           }
         ],
         "quotes": ["error", "single"],
-        "simple-import-sort/sort": "error",
+        "simple-import-sort/imports": "error",
         "camelcase": "off",
         "@typescript-eslint/camelcase": "off",
         "@typescript-eslint/no-explicit-any": "off",
