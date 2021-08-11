@@ -1,5 +1,5 @@
 import {
-  createMuiTheme,
+  createTheme,
   CssBaseline,
   makeStyles,
   MuiThemeProvider,
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     position: 'relative',
     height: '100vh',
     width: '100vw',
-    background: 'linear-gradient(-45deg, #000, #414141)',
+    backgroundColor: 'black',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
   },
@@ -38,6 +38,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     top: 0,
     left: 0,
     zIndex: 1,
+    fontDisplay: 'swap',
   },
   navigationBar: {
     [theme.breakpoints.down('sm')]: {
@@ -55,7 +56,7 @@ export const App = (): ReactElement => {
   const [active, setActive] = useState(2);
   const classes = useStyles();
   return (
-    <MuiThemeProvider theme={createMuiTheme(darkTheme)}>
+    <MuiThemeProvider theme={createTheme(darkTheme)}>
       <CssBaseline />
       <ErrorBoundaryComponent>
         <div className={classes.background}>

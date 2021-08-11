@@ -1,24 +1,24 @@
-import { ThemeOptions } from '@material-ui/core';
+import { ThemeOptions } from '@material-ui/core/';
 
-export const darkTheme : ThemeOptions = {
+export const darkTheme: ThemeOptions = {
   palette: {
     primary: {
       light: '#62efff',
       main: '#00BCD4',
-      dark: '#008ba3'
+      dark: '#008ba3',
     },
     secondary: {
       light: '#FF1476',
       main: '#CC137A',
-      dark: '#B3116B'
+      dark: '#B3116B',
     },
     background: {
-      paper: '#424242',
-      default: '#212121',
+      paper: '#212121',
+      default: '#000',
     },
-    text:{
+    text: {
       primary: 'rgba(255, 255, 255, 0.87)',
-      secondary: 'rgba(255, 255, 255, 0.6)'
+      secondary: 'rgba(255, 255, 255, 0.6)',
     },
     type: 'dark',
   },
@@ -28,18 +28,27 @@ export const darkTheme : ThemeOptions = {
       sm: 576,
       md: 768,
       lg: 992,
-      xl: 1200
-    }
+      xl: 1200,
+    },
   },
-  typography:{
+  typography: {
     fontFamily: [
-      'Varela Round',
-      'Nunito'
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      'Helvetica',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
     ].join(','),
   },
   custom: {
     topHeight: 61,
     bottomHeight: 48,
-    paperLight: '#848484',
-  }
+    paperLight: '#424242',
+    backgroundGradient: 'linear-gradient(315deg, #2d3436 0%, #000000 74%)',
+  },
 };
