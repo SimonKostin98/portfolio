@@ -25,6 +25,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
+  indicator: {
+    display: 'none',
+  },
   noShadow: {
     boxShadow: 'none',
   },
@@ -43,7 +46,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       fontSize: 'medium',
     },
     [theme.breakpoints.up('md')]: {
-      fontSize: 'x-large',
+      fontSize: '22px',
     },
   },
 }));
@@ -92,11 +95,12 @@ export const NavigationBar = (props: INavigationBarProps): ReactElement => {
         value={props.active}
         onChange={handleChange}
         selectionFollowsFocus
+        classes={{indicator: classes.indicator}}
       >
-        <Tab label="Home" className={classes.menuItem} />
-        <Tab label="About" className={classes.menuItem} />
-        <Tab label="Resume" className={classes.menuItem} />
-        <Tab label="Projects" className={classes.menuItem} />
+        <Tab label="Home" disableRipple className={classes.menuItem} />
+        <Tab label="About" disableRipple className={classes.menuItem} />
+        <Tab label="Resume" disableRipple className={classes.menuItem} />
+        <Tab label="Projects" disableRipple className={classes.menuItem} />
       </Tabs>
     </AppBar>
   );
@@ -167,11 +171,11 @@ export const NavigationBarResume = (
         variant="fullWidth"
         centered
       >
-        <Tab icon={<WorkIcon />} className={classes.menuItem} />
-        <Tab icon={<SchoolIcon />} className={classes.menuItem} />
-        <Tab icon={<CodeIcon />} className={classes.menuItem} />
-        <Tab icon={<BuildIcon />} className={classes.menuItem} />
-        <Tab icon={<AddBoxIcon />} className={classes.menuItem} />
+        <Tab icon={<WorkIcon />} disableRipple className={classes.menuItem} />
+        <Tab icon={<SchoolIcon />} disableRipple className={classes.menuItem} />
+        <Tab icon={<CodeIcon />} disableRipple className={classes.menuItem} />
+        <Tab icon={<BuildIcon />} disableRipple className={classes.menuItem} />
+        <Tab icon={<AddBoxIcon />} disableRipple className={classes.menuItem} />
       </Tabs>
     </AppBar>
   );

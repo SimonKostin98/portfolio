@@ -4,6 +4,8 @@ import React, { ReactElement, useState } from 'react';
 
 import { NavigationBarResume } from '../../navigation/navigationBar.component';
 import { EducationComponent } from './education.component';
+import { ProgrammingComponent } from './programming.component';
+import { ToolsComponent } from './tools.component';
 
 const useStyles = makeStyles((theme: Theme) => ({
   resumeComponent: {
@@ -11,7 +13,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     bottom: theme.custom.bottomHeight,
     width: '100%',
     position: 'absolute',
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: 'transparent',
     display: 'flex',
     flexDirection: 'row',
     paddingLeft: '5%',
@@ -75,7 +77,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 export const ResumeComponent = (): ReactElement => {
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState(3);
   const classes = useStyles();
   return (
     <div className={classes.resumeComponent}>
@@ -97,6 +99,8 @@ export const ResumeComponent = (): ReactElement => {
             setActive={(newValue: number) => setActive(newValue)}
           />
           {active === 1 && <EducationComponent />}
+          {active === 2 && <ProgrammingComponent />}
+          {active === 3 && <ToolsComponent />}
         </div>
       </div>
     </div>

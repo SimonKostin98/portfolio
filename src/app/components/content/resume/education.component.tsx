@@ -93,7 +93,11 @@ export const EducationComponent = (): ReactElement => {
                   Computer Science (Bachelor)
                 </CustomAccordionSummary>
                 <CustomAccordionDetails>
-                  Details and so on
+                  <div>
+                    <b>University:</b> Technical University Munich
+                    <br />
+                    <b>Final GPA:</b> 1.7
+                  </div>
                 </CustomAccordionDetails>
               </CustomAccordion>
             </CustomTimelineContent>
@@ -114,7 +118,11 @@ export const EducationComponent = (): ReactElement => {
                   High School
                 </CustomAccordionSummary>
                 <CustomAccordionDetails>
-                  Details and so on
+                  <div>
+                    <b>School:</b> Gymnasium Ernestinum Coburg
+                    <br />
+                    <b>Final GPA:</b> 1.0
+                  </div>
                 </CustomAccordionDetails>
               </CustomAccordion>
             </CustomTimelineContent>
@@ -135,7 +143,11 @@ export const EducationComponent = (): ReactElement => {
                   Primary School
                 </CustomAccordionSummary>
                 <CustomAccordionDetails>
-                  Details and so on
+                  <div>
+                    <b>School:</b> Pestalozzi-Grundschule Coburg
+                    <br />
+                    <b>Final GPA:</b> 1.6
+                  </div>
                 </CustomAccordionDetails>
               </CustomAccordion>
             </CustomTimelineContent>

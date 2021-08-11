@@ -15,13 +15,14 @@ export const CustomAccordion = withStyles((theme: Theme) => ({
 
 export const CustomAccordionDetails = withStyles((theme: Theme) => ({
   root: {
-    height: 100,
+    textAlign: 'left',
+    fontSize: 'larger',
   },
 }))(AccordionDetails);
 
 export const CustomAccordionSummary = withStyles((theme: Theme) => ({
   root: {
-    fontSize: 'larger',
+    fontSize: 'large',
     fontWeight: 'bold',
     height: 56,
     minHeight: 56,
