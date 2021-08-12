@@ -77,7 +77,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 export const ResumeComponent = (): ReactElement => {
-  const [active, setActive] = useState(3);
+  const [active, setActive] = useState(2);
   const classes = useStyles();
   return (
     <div className={classes.resumeComponent}>

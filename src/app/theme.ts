@@ -8,9 +8,9 @@ export const darkTheme: ThemeOptions = {
       dark: '#008ba3',
     },
     secondary: {
-      light: '#FF1476',
-      main: '#CC137A',
-      dark: '#B3116B',
+      light: '#ff786f',
+      main: '#e54444',
+      dark: '#ac001c',
     },
     background: {
       paper: '#212121',
