@@ -1,7 +1,7 @@
-import logo1 from '@assets/images/Ausbildung1.png';
-import logo2 from '@assets/images/Ausbildung2.png';
-import logo3 from '@assets/images/Ausbildung3.png';
-import logo4 from '@assets/images/Ausbildung4.png';
+import logo1 from '@assets/education/Ausbildung1.png';
+import logo2 from '@assets/education/Ausbildung2.png';
+import logo3 from '@assets/education/Ausbildung3.png';
+import logo4 from '@assets/education/Ausbildung4.png';
 import {
   CustomAccordion,
   CustomAccordionDetails,
