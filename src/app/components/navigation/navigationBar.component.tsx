@@ -36,8 +36,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     backgroundSize: 'contain',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
-    height: 60,
-    width: 120,
+    height: 35,
+    width: 80,
   },
   menuItem: {
     fontWeight: 'bold',
@@ -95,7 +95,7 @@ export const NavigationBar = (props: INavigationBarProps): ReactElement => {
         value={props.active}
         onChange={handleChange}
         selectionFollowsFocus
-        classes={{indicator: classes.indicator}}
+        classes={{ indicator: classes.indicator }}
       >
         <Tab label="Home" disableRipple className={classes.menuItem} />
         <Tab label="About" disableRipple className={classes.menuItem} />

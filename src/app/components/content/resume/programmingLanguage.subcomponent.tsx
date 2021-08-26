@@ -1,5 +1,5 @@
 import { CustomProgress } from '@customizations/progress.customization';
-import { makeStyles, Theme, Tooltip } from '@material-ui/core';
+import { makeStyles, Theme } from '@material-ui/core';
 import React, { ReactElement } from 'react';
 
 interface ProgrammingLanguageProps {
@@ -11,6 +11,8 @@ interface ProgrammingLanguageProps {
 const useStyles = makeStyles<Theme, ProgrammingLanguageProps>(
   (theme: Theme) => ({
     programmingLanguage: {
+      height: '100px',
+      width: '100%',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'flex-start',
