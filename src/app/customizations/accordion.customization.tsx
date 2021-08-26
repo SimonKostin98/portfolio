@@ -13,14 +13,18 @@ export const CustomAccordion = withStyles((theme: Theme) => ({
   },
 }))(Accordion);
 
-export const CustomAccordionDetails = withStyles((theme: Theme) => ({
+export const CustomAccordionDetails = withStyles(() => ({
   root: {
     textAlign: 'left',
     fontSize: 'larger',
+
+    '& td': {
+      verticalAlign: 'top',
+    },
   },
 }))(AccordionDetails);
 
-export const CustomAccordionSummary = withStyles((theme: Theme) => ({
+export const CustomAccordionSummary = withStyles(() => ({
   root: {
     fontSize: 'large',
     fontWeight: 'bold',

@@ -6,6 +6,7 @@ import { NavigationBarResume } from '../../navigation/navigationBar.component';
 import { EducationComponent } from './education.component';
 import { ProgrammingComponent } from './programming.component';
 import { ToolsComponent } from './tools.component';
+import { WorkComponent } from './work.component';
 
 const useStyles = makeStyles((theme: Theme) => ({
   resumeComponent: {
@@ -77,7 +78,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 export const ResumeComponent = (): ReactElement => {
-  const [active, setActive] = useState(2);
+  const [active, setActive] = useState(0);
   const classes = useStyles();
   return (
     <div className={classes.resumeComponent}>
@@ -98,6 +99,7 @@ export const ResumeComponent = (): ReactElement => {
             active={active}
             setActive={(newValue: number) => setActive(newValue)}
           />
+          {active === 0 && <WorkComponent />}
           {active === 1 && <EducationComponent />}
           {active === 2 && <ProgrammingComponent />}
           {active === 3 && <ToolsComponent />}
