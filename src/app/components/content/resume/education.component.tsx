@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 import logo1 from '@assets/education/Ausbildung1.png';
 import logo2 from '@assets/education/Ausbildung2.png';
 import logo3 from '@assets/education/Ausbildung3.png';
@@ -15,14 +16,14 @@ import {
   CustomTimelineOppositeContent,
   CustomTimelineSeparator,
 } from '@customizations/timeline.customization';
-import { makeStyles, Theme } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { TimelineItem } from '@material-ui/lab';
 import clsx from 'clsx';
 import React, { ReactElement } from 'react';
 import { Scrollbars } from 'react-custom-scrollbars';
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
   educationComponent: {
     width: '100%',
     height: '100%',
@@ -69,10 +70,46 @@ export const EducationComponent = (): ReactElement => {
             <CustomTimelineContent>
               <CustomAccordion square={true}>
                 <CustomAccordionSummary expandIcon={<ExpandMoreIcon />}>
-                  Software Engineering (Master)
+                  {"Master's Programme"}
                 </CustomAccordionSummary>
                 <CustomAccordionDetails>
-                  Details and so on
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <b>University:</b>
+                        </td>
+                        <td>
+                          University of Augsburg
+                          <br />
+                          Technical University of Munich
+                          <br />
+                          Ludwig Maximilian University
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <b>Subject:</b>
+                        </td>
+                        <td>Software Engineering</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <b>Final GPA:</b>
+                        </td>
+                        <td>?</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <b>Special:</b>
+                        </td>
+                        <td>
+                          Elite Graduate Programme geared towards the Top 2
+                          Percent of Students in Computer Science
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </CustomAccordionDetails>
               </CustomAccordion>
             </CustomTimelineContent>
@@ -90,14 +127,31 @@ export const EducationComponent = (): ReactElement => {
             <CustomTimelineContent>
               <CustomAccordion square={true}>
                 <CustomAccordionSummary expandIcon={<ExpandMoreIcon />}>
-                  Computer Science (Bachelor)
+                  {"Bachelor's Programme"}
                 </CustomAccordionSummary>
                 <CustomAccordionDetails>
-                  <div>
-                    <b>University:</b> Technical University Munich
-                    <br />
-                    <b>Final GPA:</b> 1.7
-                  </div>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <b>University:</b>
+                        </td>
+                        <td>Technical University of Munich</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <b>Subject:</b>
+                        </td>
+                        <td>Computer Science</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <b>Final GPA:</b>
+                        </td>
+                        <td>1.7</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </CustomAccordionDetails>
               </CustomAccordion>
             </CustomTimelineContent>
@@ -118,11 +172,28 @@ export const EducationComponent = (): ReactElement => {
                   High School
                 </CustomAccordionSummary>
                 <CustomAccordionDetails>
-                  <div>
-                    <b>School:</b> Gymnasium Ernestinum Coburg
-                    <br />
-                    <b>Final GPA:</b> 1.0
-                  </div>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <b>School:</b>
+                        </td>
+                        <td>Gymnasium Ernestinum Coburg</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <b>Final GPA:</b>
+                        </td>
+                        <td>1.0</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <b>Special:</b>
+                        </td>
+                        <td>Received Admission to the Max Weber-Programm</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </CustomAccordionDetails>
               </CustomAccordion>
             </CustomTimelineContent>
@@ -143,11 +214,22 @@ export const EducationComponent = (): ReactElement => {
                   Primary School
                 </CustomAccordionSummary>
                 <CustomAccordionDetails>
-                  <div>
-                    <b>School:</b> Pestalozzi-Grundschule Coburg
-                    <br />
-                    <b>Final GPA:</b> 1.6
-                  </div>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <b>School:</b>
+                        </td>
+                        <td>Pestalozzi-Grundschule Coburg</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <b>Final GPA:</b>
+                        </td>
+                        <td>1.6</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </CustomAccordionDetails>
               </CustomAccordion>
             </CustomTimelineContent>
