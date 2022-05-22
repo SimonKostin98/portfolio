@@ -17,8 +17,8 @@
     "typeRoots": ["node_modules/@types", "src/types"],
     "paths": {
       "@assets/*": ["./src/assets/*"],
-      "@components/*": ["./src/app/components/*"],
-      "@customizations/*": ["./src/app/customizations/*"]
+      "@components/*": ["./src/components/*"],
+      "@customizations/*": ["./src/customizations/*"]
     }
   },
   "include": ["./src/**/*"]

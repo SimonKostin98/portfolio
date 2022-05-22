@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const useStylesSmall = makeStyles((theme: Theme) => ({
+const useStylesSmall = makeStyles(() => ({
   appBar: {},
   noShadow: {
     boxShadow: 'none',

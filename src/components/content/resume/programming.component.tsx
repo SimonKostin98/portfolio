@@ -11,7 +11,7 @@ import tsLogo from '@assets/programming/TS.svg';
 import vbaLogo from '@assets/programming/VBA.svg';
 import { makeStyles } from '@material-ui/core';
 import React, { ReactElement } from 'react';
-import { Scrollbars } from 'react-custom-scrollbars';
+import { Scrollbars } from 'react-custom-scrollbars-2';
 
 import { ProgrammingLanguage } from './programmingLanguage.subcomponent';
 

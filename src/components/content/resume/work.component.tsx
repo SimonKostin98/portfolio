@@ -1,8 +1,6 @@
-/* eslint-disable quotes */
-import logo1 from '@assets/education/Ausbildung1.png';
-import logo2 from '@assets/education/Ausbildung2.png';
-import logo3 from '@assets/education/Ausbildung3.png';
-import logo4 from '@assets/education/Ausbildung4.png';
+import bmw from '@assets/work/BMW.png';
+import brose from '@assets/work/Brose.png';
+import haba from '@assets/work/Haba.png';
 import {
   CustomAccordion,
   CustomAccordionDetails,
@@ -21,7 +19,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { TimelineItem } from '@material-ui/lab';
 import clsx from 'clsx';
 import React, { ReactElement } from 'react';
-import { Scrollbars } from 'react-custom-scrollbars';
+import { Scrollbars } from 'react-custom-scrollbars-2';
 
 const useStyles = makeStyles(() => ({
   educationComponent: {
@@ -38,20 +36,17 @@ const useStyles = makeStyles(() => ({
     backgroundPosition: 'center',
   },
   image1: {
-    backgroundImage: `url(${logo1 as string})`,
+    backgroundImage: `url(${bmw as string})`,
   },
   image2: {
-    backgroundImage: `url(${logo2 as string})`,
+    backgroundImage: `url(${brose as string})`,
   },
   image3: {
-    backgroundImage: `url(${logo3 as string})`,
-  },
-  image4: {
-    backgroundImage: `url(${logo4 as string})`,
+    backgroundImage: `url(${haba as string})`,
   },
 }));
 
-export const EducationComponent = (): ReactElement => {
+export const WorkComponent = (): ReactElement => {
   const classes = useStyles();
   return (
     <Scrollbars hideTracksWhenNotNeeded={true}>
@@ -59,7 +54,7 @@ export const EducationComponent = (): ReactElement => {
         <CustomTimeline align="alternate">
           <TimelineItem>
             <CustomTimelineOppositeContent>
-              2019 - Today
+              Internship
             </CustomTimelineOppositeContent>
             <CustomTimelineSeparator>
               <CustomTimelineDot>
@@ -70,42 +65,32 @@ export const EducationComponent = (): ReactElement => {
             <CustomTimelineContent>
               <CustomAccordion square={true}>
                 <CustomAccordionSummary expandIcon={<ExpandMoreIcon />}>
-                  {"Master's Programme"}
+                  Full Stack Developer
                 </CustomAccordionSummary>
                 <CustomAccordionDetails>
                   <table>
                     <tbody>
                       <tr>
                         <td>
-                          <b>University:</b>
+                          <b>Company:</b>
                         </td>
-                        <td>
-                          University of Augsburg
-                          <br />
-                          Technical University of Munich
-                          <br />
-                          Ludwig Maximilian University
-                        </td>
+                        <td>BMW AG</td>
                       </tr>
                       <tr>
                         <td>
-                          <b>Subject:</b>
+                          <b>Duration:</b>
                         </td>
-                        <td>Software Engineering</td>
+                        <td>10.08.20 - 09.10.20</td>
                       </tr>
                       <tr>
                         <td>
-                          <b>Final GPA:</b>
-                        </td>
-                        <td>?</td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <b>Special:</b>
+                          <b>Description:</b>
                         </td>
                         <td>
-                          Elite Graduate Programme geared towards the Top 2
-                          Percent of Students in Computer Science
+                          Analysis, Design and Implementation of a Drag-and-Drop
+                          Tool, allowing to quickly build and deploy AWS
+                          infrastructures (Use Case: Streaming Data Anomaly
+                          Detection)
                         </td>
                       </tr>
                     </tbody>
@@ -116,7 +101,7 @@ export const EducationComponent = (): ReactElement => {
           </TimelineItem>
           <TimelineItem>
             <CustomTimelineOppositeContent>
-              2016 - 2019
+              Vacation Work
             </CustomTimelineOppositeContent>
             <CustomTimelineSeparator>
               <CustomTimelineDot>
@@ -127,28 +112,43 @@ export const EducationComponent = (): ReactElement => {
             <CustomTimelineContent>
               <CustomAccordion square={true}>
                 <CustomAccordionSummary expandIcon={<ExpandMoreIcon />}>
-                  {"Bachelor's Programme"}
+                  Frontend Developer
                 </CustomAccordionSummary>
                 <CustomAccordionDetails>
                   <table>
                     <tbody>
                       <tr>
                         <td>
-                          <b>University:</b>
+                          <b>Company:</b>
                         </td>
-                        <td>Technical University of Munich</td>
+                        <td>Brose GmbH & Co.</td>
                       </tr>
                       <tr>
                         <td>
-                          <b>Subject:</b>
+                          <b>Duration:</b>
                         </td>
-                        <td>Computer Science</td>
+                        <td>
+                          01.08.16 - 30.09.16
+                          <br />
+                          01.03.17 - 31.03.17
+                          <br />
+                          21.08.17 - 15.09.17
+                          <br />
+                          01.03.18 - 31.03.18
+                          <br />
+                          01.09.18 - 30.09.18
+                          <br />
+                          01.03.19 - 31.03.19
+                        </td>
                       </tr>
                       <tr>
                         <td>
-                          <b>Final GPA:</b>
+                          <b>Description:</b>
                         </td>
-                        <td>1.7</td>
+                        <td>
+                          Development of a Web Frontend summarinzing Data from a
+                          Vehicle Database
+                        </td>
                       </tr>
                     </tbody>
                   </table>
@@ -158,7 +158,7 @@ export const EducationComponent = (): ReactElement => {
           </TimelineItem>
           <TimelineItem>
             <CustomTimelineOppositeContent>
-              2008 - 2016
+              Internship
             </CustomTimelineOppositeContent>
             <CustomTimelineSeparator>
               <CustomTimelineDot>
@@ -169,64 +169,31 @@ export const EducationComponent = (): ReactElement => {
             <CustomTimelineContent>
               <CustomAccordion square={true}>
                 <CustomAccordionSummary expandIcon={<ExpandMoreIcon />}>
-                  High School
+                  IT Specialist
                 </CustomAccordionSummary>
                 <CustomAccordionDetails>
                   <table>
                     <tbody>
                       <tr>
                         <td>
-                          <b>School:</b>
+                          <b>Company:</b>
                         </td>
-                        <td>Gymnasium Ernestinum Coburg</td>
+                        <td>Habermaass GmbH</td>
                       </tr>
                       <tr>
                         <td>
-                          <b>Final GPA:</b>
+                          <b>Duration:</b>
                         </td>
-                        <td>1.0</td>
+                        <td>28.10.13 - 30.10.13</td>
                       </tr>
                       <tr>
                         <td>
-                          <b>Special:</b>
+                          <b>Description:</b>
                         </td>
-                        <td>Received Admission to the Max Weber-Programm</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </CustomAccordionDetails>
-              </CustomAccordion>
-            </CustomTimelineContent>
-          </TimelineItem>
-          <TimelineItem>
-            <CustomTimelineOppositeContent>
-              2004 - 2008
-            </CustomTimelineOppositeContent>
-            <CustomTimelineSeparator>
-              <CustomTimelineDot>
-                <div className={clsx(classes.timelineIcon, classes.image4)} />
-              </CustomTimelineDot>
-              <CustomTimelineConnector />
-            </CustomTimelineSeparator>
-            <CustomTimelineContent>
-              <CustomAccordion square={true}>
-                <CustomAccordionSummary expandIcon={<ExpandMoreIcon />}>
-                  Primary School
-                </CustomAccordionSummary>
-                <CustomAccordionDetails>
-                  <table>
-                    <tbody>
-                      <tr>
                         <td>
-                          <b>School:</b>
+                          Learning how to code and getting to know the everyday
+                          life of a software developer
                         </td>
-                        <td>Pestalozzi-Grundschule Coburg</td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <b>Final GPA:</b>
-                        </td>
-                        <td>1.6</td>
                       </tr>
                     </tbody>
                   </table>
