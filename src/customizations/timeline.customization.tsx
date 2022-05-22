@@ -1,4 +1,3 @@
-import { Theme, withStyles } from '@material-ui/core';
 import {
   Timeline,
   TimelineConnector,
@@ -6,7 +5,9 @@ import {
   TimelineDot,
   TimelineOppositeContent,
   TimelineSeparator,
-} from '@material-ui/lab';
+} from '@mui/lab';
+import { Theme } from '@mui/material';
+import withStyles from '@mui/styles/withStyles';
 
 export const CustomTimeline = withStyles((theme: Theme) => ({}))(Timeline);
 

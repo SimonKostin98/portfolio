@@ -1,22 +1,29 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const SRC_DIRECTORY = path.resolve(__dirname, '..', 'src');
+
 module.exports = {
-  mode: 'development',
   entry: './src/index.tsx',
   output: {
     filename: 'bundle.js',
-    path: __dirname + '/dist',
+    path: path.resolve(__dirname, '..', 'dist'),
   },
-  devtool: 'source-map',
+  cache: {
+    type: 'filesystem',
+  },
   module: {
     rules: [
       {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
-        include: path.resolve(__dirname, 'src'),
+        include: SRC_DIRECTORY,
         use: {
           loader: 'babel-loader',
+          options: {
+            cacheCompression: false,
+            cacheDirectory: true,
+          },
         },
       },
       { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
@@ -30,7 +37,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|svg|jpg|gif|pdf|ico)$/,
+        test: /\.(png|svg|jpg|gif|pdf|ico|woff(2)?|ttf|eot)$/,
         use: [
           {
             loader: 'file-loader',
@@ -47,27 +54,22 @@ module.exports = {
     modules: ['node_modules'],
     extensions: ['.ts', '.tsx', '.js', '.json'],
     alias: {
-      '@assets': path.resolve(__dirname, 'src/assets/'),
-      '@components': path.resolve(__dirname,'src/', 'app', 'components'),
-      '@customizations': path.resolve(__dirname,'src', 'app', 'customizations')
-    }
+      '@assets': path.resolve(__dirname, SRC_DIRECTORY, 'assets'),
+      '@components': path.resolve(__dirname, SRC_DIRECTORY, 'components'),
+      '@customizations': path.resolve(
+        __dirname,
+        SRC_DIRECTORY,
+        'customizations',
+      ),
+      '@src': path.resolve(__dirname, SRC_DIRECTORY),
+    },
   },
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'src/index.html'),
+      template: path.resolve(__dirname, '../public/index.html'),
       inject: 'body',
       favicon: './src/assets/images/favicon.ico',
-    })
+    }),
   ],
-
-  devServer: {
-    hot: true,
-    port: 8080,
-    disableHostCheck: true,
-    historyApiFallback: true,
-    watchOptions: {
-      ignored: /node_modules|\.jsx?$|\.d.ts$/,
-    }
-  },
 };

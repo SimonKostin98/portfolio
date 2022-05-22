@@ -1,5 +1,6 @@
 import profilePictureURL from '@assets/images/defaultAvatar.jpg';
-import { Button, makeStyles, Theme } from '@material-ui/core';
+import { Button, Theme } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import React, { ReactElement, useState } from 'react';
 
 import { NavigationBarResume } from '../../navigation/navigationBar.component';

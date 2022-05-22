@@ -1,10 +1,6 @@
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Theme,
-  withStyles,
-} from '@material-ui/core';
+import { Accordion, AccordionDetails, AccordionSummary, Theme } from '@mui/material';
+
+import withStyles from '@mui/styles/withStyles';
 
 export const CustomAccordion = withStyles((theme: Theme) => ({
   root: {

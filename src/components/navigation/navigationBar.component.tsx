@@ -1,14 +1,15 @@
 import logo from '@assets/images/Logo.png';
-import { AppBar, makeStyles, Tab, Tabs, Theme } from '@material-ui/core';
-import AddBoxIcon from '@material-ui/icons/AddBox';
-import AssignmentIcon from '@material-ui/icons/Assignment';
-import BuildIcon from '@material-ui/icons/Build';
-import CodeIcon from '@material-ui/icons/Code';
-import HomeIcon from '@material-ui/icons/Home';
-import ImportantDevicesIcon from '@material-ui/icons/ImportantDevices';
-import InfoIcon from '@material-ui/icons/Info';
-import SchoolIcon from '@material-ui/icons/School';
-import WorkIcon from '@material-ui/icons/Work';
+import AddBoxIcon from '@mui/icons-material/AddBox';
+import AssignmentIcon from '@mui/icons-material/Assignment';
+import BuildIcon from '@mui/icons-material/Build';
+import CodeIcon from '@mui/icons-material/Code';
+import HomeIcon from '@mui/icons-material/Home';
+import ImportantDevicesIcon from '@mui/icons-material/ImportantDevices';
+import InfoIcon from '@mui/icons-material/Info';
+import SchoolIcon from '@mui/icons-material/School';
+import WorkIcon from '@mui/icons-material/Work';
+import { AppBar, Tab, Tabs, Theme } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import clsx from 'clsx';
 import React, { ReactElement } from 'react';
 
@@ -42,7 +43,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   menuItem: {
     fontWeight: 'bold',
     color: 'white',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       fontSize: 'medium',
     },
     [theme.breakpoints.up('md')]: {
@@ -51,7 +52,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const useStylesSmall = makeStyles((theme: Theme) => ({
+const useStylesSmall = makeStyles(() => ({
   appBar: {},
   noShadow: {
     boxShadow: 'none',

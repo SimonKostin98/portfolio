@@ -1,5 +1,5 @@
 import gitLogo from '@assets/tools/git.svg';
-import { makeStyles } from '@material-ui/core';
+import makeStyles from '@mui/styles/makeStyles';
 import React, { ReactElement } from 'react';
 
 import { ToolComponent } from './tool.subcomponent';
