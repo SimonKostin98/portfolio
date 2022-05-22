@@ -9,7 +9,7 @@ import sassLogo from '@assets/programming/SASS.svg';
 import sqlLogo from '@assets/programming/SQL.png';
 import tsLogo from '@assets/programming/TS.svg';
 import vbaLogo from '@assets/programming/VBA.svg';
-import { makeStyles } from '@material-ui/core';
+import makeStyles from '@mui/styles/makeStyles';
 import React, { ReactElement } from 'react';
 import { Scrollbars } from 'react-custom-scrollbars-2';
 

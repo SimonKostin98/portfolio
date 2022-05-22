@@ -1,5 +1,6 @@
 import profilePictureURL from '@assets/images/defaultAvatar.jpg';
-import { Button, makeStyles, Theme } from '@material-ui/core';
+import { Button, Theme } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import React, { ReactElement } from 'react';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -9,7 +10,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     top: theme.custom.topHeight,
     bottom: theme.custom.bottomHeight,
     display: 'flex',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       flexDirection: 'column-reverse',
     },
     [theme.breakpoints.up('md')]: {
@@ -30,7 +31,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     color: 'white',
     fontWeight: 'bold',
     fontSize: 'calc(5vh + 3vw)',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       marginBottom: '-10px',
     },
     [theme.breakpoints.up('md')]: {

@@ -1,6 +1,6 @@
-import { ThemeOptions } from '@material-ui/core/';
+import { ThemeOptions } from '@mui/material/';
 
-export const darkTheme: ThemeOptions = {
+export const theme: ThemeOptions = {
   palette: {
     primary: {
       light: '#62efff',
@@ -20,7 +20,7 @@ export const darkTheme: ThemeOptions = {
       primary: 'rgba(255, 255, 255, 0.87)',
       secondary: 'rgba(255, 255, 255, 0.6)',
     },
-    type: 'dark',
+    mode: 'dark',
   },
   breakpoints: {
     values: {

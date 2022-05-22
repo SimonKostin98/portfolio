@@ -14,9 +14,9 @@ import {
   CustomTimelineOppositeContent,
   CustomTimelineSeparator,
 } from '@customizations/timeline.customization';
-import { makeStyles } from '@material-ui/core';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { TimelineItem } from '@material-ui/lab';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { TimelineItem } from '@mui/lab';
+import makeStyles from '@mui/styles/makeStyles';
 import clsx from 'clsx';
 import React, { ReactElement } from 'react';
 import { Scrollbars } from 'react-custom-scrollbars-2';
@@ -51,7 +51,7 @@ export const WorkComponent = (): ReactElement => {
   return (
     <Scrollbars hideTracksWhenNotNeeded={true}>
       <div className={classes.educationComponent}>
-        <CustomTimeline align="alternate">
+        <CustomTimeline position="alternate">
           <TimelineItem>
             <CustomTimelineOppositeContent>
               Internship

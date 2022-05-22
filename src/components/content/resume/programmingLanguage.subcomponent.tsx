@@ -1,5 +1,6 @@
 import { CustomProgress } from '@customizations/progress.customization';
-import { makeStyles, Theme } from '@material-ui/core';
+import { Theme } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import React, { ReactElement } from 'react';
 
 interface ProgrammingLanguageProps {

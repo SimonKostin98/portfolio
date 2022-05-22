@@ -8,17 +8,18 @@ import {
 import {
   createTheme,
   CssBaseline,
-  makeStyles,
-  MuiThemeProvider,
+  StyledEngineProvider,
   Theme,
-} from '@material-ui/core';
+  ThemeProvider,
+} from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import React, { ReactElement, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import Particles from 'react-tsparticles';
 import { loadFull } from 'tsparticles';
 import { Engine } from 'tsparticles-engine';
 
-import { darkTheme } from './theme';
+import { theme } from './theme';
 
 const useStyles = makeStyles((theme: Theme) => ({
   background: {
@@ -43,7 +44,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontDisplay: 'swap',
   },
   navigationBar: {
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       display: 'none',
     },
   },
@@ -54,7 +55,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export const App = (): ReactElement => {
+const App = (): ReactElement => {
   const [active, setActive] = useState(2);
   const classes = useStyles();
 
@@ -63,8 +64,7 @@ export const App = (): ReactElement => {
   };
 
   return (
-    <MuiThemeProvider theme={createTheme(darkTheme)}>
-      <CssBaseline />
+    <div>
       <div className={classes.background}>
         <Particles
           id="tsparticles"
@@ -151,9 +151,20 @@ export const App = (): ReactElement => {
         {active === 2 && <ResumeComponent />}
         <Footer />
       </div>
-    </MuiThemeProvider>
+    </div>
+  );
+};
+
+const Wrapper = () => {
+  return (
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={createTheme(theme)}>
+        <CssBaseline />
+        <App />
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
 };
 
 const root = ReactDOM.createRoot(document.getElementById('root')!);
-root.render(<App />);
+root.render(<Wrapper />);
