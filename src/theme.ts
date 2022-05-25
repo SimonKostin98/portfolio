@@ -13,7 +13,7 @@ export const theme: ThemeOptions = {
       dark: '#ac001c',
     },
     background: {
-      paper: '#212121',
+      paper: 'rgba(50, 50, 50, 0.5)',
       default: '#000',
     },
     text: {
@@ -48,7 +48,7 @@ export const theme: ThemeOptions = {
   custom: {
     navigationWidth: 120,
     footerHeight: 48,
-    paperLight: '#424242',
+    paperLight: 'rgba(50, 50, 50, 0.6)',
     backgroundGradient: 'linear-gradient(315deg, #2d3436 0%, #000000 74%)',
   },
 };

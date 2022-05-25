@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import ChatBubbleRoundedIcon from '@mui/icons-material/ChatBubbleRounded';
 import FolderSpecialRoundedIcon from '@mui/icons-material/FolderSpecialRounded';
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
@@ -19,7 +18,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     justifyContent: 'center',
   },
   navigationContent: {
-    backgroundColor: 'rgba(22, 22, 22, 0.85)',
+    backgroundColor: 'rgba(40, 40, 40, 0.5)',
+    backdropFilter: 'blur(10px)',
+    WebkitBoxShadow: '0 0 10px 1px rgba(150, 150, 150, .35)',
+
     width: '70%',
     padding: 30,
     gap: 40,

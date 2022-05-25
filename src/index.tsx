@@ -1,6 +1,5 @@
+import { ExperienceComponent } from '@components/content/experience/experience.component';
 import { HomeComponent } from '@components/content/home.component';
-import { ResumeComponent } from '@components/content/resume/resume.component';
-import { Footer } from '@components/navigation/footer.component';
 import { SideNavigation } from '@components/navigation/sideNavigation.component';
 import {
   createTheme,
@@ -129,7 +128,7 @@ const App = (): ReactElement => {
       </div>
       <div className={classes.main}>
         <HomeComponent />
-        <ResumeComponent />
+        <ExperienceComponent />
       </div>
     </div>
   );
