@@ -1,5 +1,3 @@
-import { ExperienceComponent } from '@components/content/experience/experience.component';
-import { HomeComponent } from '@components/content/home.component';
 import { SideNavigation } from '@components/navigation/sideNavigation.component';
 import {
   createTheme,
@@ -11,6 +9,8 @@ import {
   ThemeProvider,
 } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
+import { ExperienceView } from '@views/experience.view';
+import { HomeView } from '@views/home.view';
 import React, { ReactElement } from 'react';
 import ReactDOM from 'react-dom/client';
 import Particles from 'react-tsparticles';
@@ -127,8 +127,8 @@ const App = (): ReactElement => {
         <SideNavigation />
       </div>
       <div className={classes.main}>
-        <HomeComponent />
-        <ExperienceComponent />
+        <HomeView />
+        <ExperienceView />
       </div>
     </div>
   );

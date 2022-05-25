@@ -96,17 +96,6 @@ export const SideNavigation = (): ReactElement => {
           duration={500}
           offset={-5}
         >
-          <WorkRoundedIcon fontSize="large" />
-        </Link>
-        <Link
-          to="Skills"
-          activeClass={classes.active}
-          className={classes.navigationIcon}
-          spy
-          smooth
-          duration={500}
-          offset={-5}
-        >
           <PsychologyRoundedIcon fontSize="large" />
         </Link>
         <Link

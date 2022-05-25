@@ -62,6 +62,7 @@ module.exports = {
         'customizations',
       ),
       '@src': path.resolve(__dirname, SRC_DIRECTORY),
+      '@views': path.resolve(__dirname, SRC_DIRECTORY, 'views'),
     },
   },
 
