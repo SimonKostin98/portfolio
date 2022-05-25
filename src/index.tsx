@@ -1,19 +1,18 @@
 import { HomeComponent } from '@components/content/home.component';
 import { ResumeComponent } from '@components/content/resume/resume.component';
 import { Footer } from '@components/navigation/footer.component';
-import {
-  NavigationBar,
-  NavigationBarSmall,
-} from '@components/navigation/navigationBar.component';
+import { SideNavigation } from '@components/navigation/sideNavigation.component';
 import {
   createTheme,
   CssBaseline,
+  darkScrollbar,
+  GlobalStyles,
   StyledEngineProvider,
   Theme,
   ThemeProvider,
 } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
-import React, { ReactElement, useState } from 'react';
+import React, { ReactElement } from 'react';
 import ReactDOM from 'react-dom/client';
 import Particles from 'react-tsparticles';
 import { loadFull } from 'tsparticles';
@@ -23,40 +22,30 @@ import { theme } from './theme';
 
 const useStyles = makeStyles((theme: Theme) => ({
   background: {
-    position: 'relative',
-    height: '100vh',
-    width: '100vw',
+    position: 'fixed',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
     backgroundColor: 'black',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
   },
-  particles: {
-    height: '100%',
-    width: '100%',
-  },
-  mainContent: {
-    height: '100%',
-    width: '100%',
-    position: 'absolute',
+  navigation: {
+    position: 'fixed',
     top: 0,
-    left: 0,
-    zIndex: 1,
-    fontDisplay: 'swap',
+    bottom: 0,
+    width: theme.custom.navigationWidth,
   },
-  navigationBar: {
-    [theme.breakpoints.down('md')]: {
-      display: 'none',
-    },
-  },
-  navigationBarSmall: {
-    [theme.breakpoints.up('md')]: {
-      display: 'none',
-    },
+  main: {
+    position: 'absolute',
+    left: theme.custom.navigationWidth,
+    height: '100vh',
+    width: `calc(100vw - ${theme.custom.navigationWidth}px - 50px)`,
   },
 }));
 
 const App = (): ReactElement => {
-  const [active, setActive] = useState(2);
   const classes = useStyles();
 
   const particlesInit = async (main: Engine) => {
@@ -134,22 +123,13 @@ const App = (): ReactElement => {
           }}
         />
       </div>
-      <div className={classes.mainContent}>
-        <div className={classes.navigationBar}>
-          <NavigationBar
-            active={active}
-            setActive={(newValue: number) => setActive(newValue)}
-          />
-        </div>
-        <div className={classes.navigationBarSmall}>
-          <NavigationBarSmall
-            active={active}
-            setActive={(newValue: number) => setActive(newValue)}
-          />
-        </div>
-        {active === 0 && <HomeComponent />}
-        {active === 2 && <ResumeComponent />}
-        <Footer />
+
+      <div className={classes.navigation}>
+        <SideNavigation />
+      </div>
+      <div className={classes.main}>
+        <HomeComponent />
+        <ResumeComponent />
       </div>
     </div>
   );
@@ -159,8 +139,9 @@ const Wrapper = () => {
   return (
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={createTheme(theme)}>
+        <GlobalStyles styles={{ ...darkScrollbar() }} />
         <CssBaseline />
-        <App />
+        <App />{' '}
       </ThemeProvider>
     </StyledEngineProvider>
   );

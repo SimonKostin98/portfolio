@@ -3,8 +3,8 @@ import { Theme, ThemeOptions } from '@mui/material/styles';
 declare module '@mui/material/styles/createTheme' {
   interface Theme {
     custom: {
-      topHeight: number;
-      bottomHeight: number;
+      navigationWidth: number;
+      footerHeight: number;
       paperLight: string;
       backgroundGradient: string;
     };
@@ -12,8 +12,8 @@ declare module '@mui/material/styles/createTheme' {
   // allow configuration using `createMuiTheme`
   interface ThemeOptions {
     custom?: {
-      topHeight?: number;
-      bottomHeight?: number;
+      navigationWidth?: number;
+      footerHeight?: number;
       paperLight?: string;
       backgroundGradient?: string;
     };
