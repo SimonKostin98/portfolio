@@ -16,6 +16,7 @@
     "sourceMap": true,
     "typeRoots": ["node_modules/@types", "src/types"],
     "paths": {
+      "@src/*": ["./src/*"],
       "@assets/*": ["./src/assets/*"],
       "@components/*": ["./src/components/*"],
       "@customizations/*": ["./src/customizations/*"]

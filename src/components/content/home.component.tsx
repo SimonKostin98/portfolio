@@ -6,9 +6,7 @@ import React, { ReactElement } from 'react';
 const useStyles = makeStyles((theme: Theme) => ({
   homeComponent: {
     width: '100%',
-    position: 'absolute',
-    top: theme.custom.topHeight,
-    bottom: theme.custom.bottomHeight,
+    height: '100%',
     display: 'flex',
     [theme.breakpoints.down('md')]: {
       flexDirection: 'column-reverse',
@@ -19,13 +17,14 @@ const useStyles = makeStyles((theme: Theme) => ({
     alignItems: 'center',
     justifyContent: 'space-around',
     padding: '0 5vw 3vh 5vw',
+    boxSizing: 'border-box',
   },
   infoText: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     WebkitTextStroke: '1px rgba(0, 0, 0, 0.7)',
-    animation: '$startText 1s linear',
+    animation: '$animation 1.25s linear',
   },
   firstHeading: {
     color: 'white',
@@ -58,25 +57,14 @@ const useStyles = makeStyles((theme: Theme) => ({
     backgroundSize: 'contain',
     backgroundRepeat: 'no-repeat',
     borderRadius: '50%',
-    animation: '$startImage 1s linear',
+    animation: '$animation 1.25s linear',
   },
-  '@keyframes startImage': {
+  '@keyframes animation': {
     from: {
-      transform: 'scale(0)',
-      webkitTransform: 'scale(0)',
-    },
-
-    to: {
-      transform: 'scale(1.0)',
-      webkitTransform: 'scale(1.0)',
-    },
-  },
-  '@keyframes startText': {
-    from: {
-      transform: 'translateX(-150%)',
+      opacity: 0,
     },
     to: {
-      transform: 'translateX(0)',
+      opacity: 1,
     },
   },
 }));
@@ -84,7 +72,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 export const HomeComponent = (): ReactElement => {
   const classes = useStyles();
   return (
-    <div className={classes.homeComponent}>
+    <div className={classes.homeComponent} id="Home">
       <div className={classes.infoText}>
         <div className={classes.firstHeading}>Simon Kostin</div>
         <div className={classes.secondHeading}>Full Stack Developer</div>

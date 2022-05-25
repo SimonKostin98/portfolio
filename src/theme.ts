@@ -46,8 +46,8 @@ export const theme: ThemeOptions = {
     ].join(','),
   },
   custom: {
-    topHeight: 61,
-    bottomHeight: 48,
+    navigationWidth: 120,
+    footerHeight: 48,
     paperLight: '#424242',
     backgroundGradient: 'linear-gradient(315deg, #2d3436 0%, #000000 74%)',
   },

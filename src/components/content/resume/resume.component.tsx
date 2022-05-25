@@ -1,9 +1,9 @@
 import profilePictureURL from '@assets/images/defaultAvatar.jpg';
+import { NavigationBarResume } from '@components/navigation/navigationBar.component';
 import { Button, Theme } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import React, { ReactElement, useState } from 'react';
 
-import { NavigationBarResume } from '../../navigation/navigationBar.component';
 import { EducationComponent } from './education.component';
 import { ProgrammingComponent } from './programming.component';
 import { ToolsComponent } from './tools.component';
@@ -11,10 +11,8 @@ import { WorkComponent } from './work.component';
 
 const useStyles = makeStyles((theme: Theme) => ({
   resumeComponent: {
-    top: theme.custom.topHeight,
-    bottom: theme.custom.bottomHeight,
+    height: '100%',
     width: '100%',
-    position: 'absolute',
     backgroundColor: 'transparent',
     display: 'flex',
     flexDirection: 'row',
@@ -82,7 +80,7 @@ export const ResumeComponent = (): ReactElement => {
   const [active, setActive] = useState(0);
   const classes = useStyles();
   return (
-    <div className={classes.resumeComponent}>
+    <div className={classes.resumeComponent} id="Experience">
       <div className={classes.personalInformation}>
         <div className={classes.imageWrapper} />
         <div className={classes.textWrapper}>
