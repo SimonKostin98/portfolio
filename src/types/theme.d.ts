@@ -6,6 +6,7 @@ declare module '@mui/material/styles/createTheme' {
       navigationWidth: number;
       footerHeight: number;
       paperLight: string;
+      cardShadow: string;
       backgroundGradient: string;
     };
   }
@@ -15,6 +16,7 @@ declare module '@mui/material/styles/createTheme' {
       navigationWidth?: number;
       footerHeight?: number;
       paperLight?: string;
+      cardShadow?: string;
       backgroundGradient?: string;
     };
   }

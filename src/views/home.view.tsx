@@ -69,7 +69,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export const HomeComponent = (): ReactElement => {
+export const HomeView = (): ReactElement => {
   const classes = useStyles();
   return (
     <div className={classes.homeComponent} id="Home">

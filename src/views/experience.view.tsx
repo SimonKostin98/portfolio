@@ -1,9 +1,8 @@
+import { EducationComponent } from '@components/content/experience/education.component';
+import { WorkComponent } from '@components/content/experience/work.component';
 import { Theme } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import React, { ReactElement } from 'react';
-
-import { EducationComponent } from './education.component';
-import { WorkComponent } from './work.component';
 
 const useStyles = makeStyles((theme: Theme) => ({
   resumeComponent: {
@@ -20,10 +19,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     flexDirection: 'column',
     height: '90%',
     width: '45%',
-    boxShadow: '0 0 10px 1px rgba(200, 200, 200, .35)',
+    boxShadow: theme.custom.cardShadow,
     borderRadius: '25px',
     backdropFilter: 'blur(10px)',
-    WebkitBoxShadow: '0 0 10px 1px rgba(200, 200, 200, .35)',
+    WebkitBoxShadow: theme.custom.cardShadow,
     overflow: 'auto',
   },
   heading: {
@@ -39,7 +38,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export const ExperienceComponent = (): ReactElement => {
+export const ExperienceView = (): ReactElement => {
   const classes = useStyles();
   return (
     <div className={classes.resumeComponent} id="Experience">

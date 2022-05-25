@@ -49,6 +49,7 @@ export const theme: ThemeOptions = {
     navigationWidth: 120,
     footerHeight: 48,
     paperLight: 'rgba(50, 50, 50, 0.6)',
+    cardShadow: '0 0 10px 1px rgba(200, 200, 200, .35)',
     backgroundGradient: 'linear-gradient(315deg, #2d3436 0%, #000000 74%)',
   },
 };
