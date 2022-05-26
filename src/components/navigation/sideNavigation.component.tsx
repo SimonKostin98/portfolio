@@ -3,7 +3,6 @@ import FolderSpecialRoundedIcon from '@mui/icons-material/FolderSpecialRounded';
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 import PsychologyRoundedIcon from '@mui/icons-material/PsychologyRounded';
-import WorkRoundedIcon from '@mui/icons-material/WorkRounded';
 import { Theme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import React, { ReactElement } from 'react';

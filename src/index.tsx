@@ -9,6 +9,7 @@ import {
   ThemeProvider,
 } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
+import { ContactView } from '@views/contact.view';
 import { ExperienceView } from '@views/experience.view';
 import { HomeView } from '@views/home.view';
 import React, { ReactElement } from 'react';
@@ -129,6 +130,7 @@ const App = (): ReactElement => {
       <div className={classes.main}>
         <HomeView />
         <ExperienceView />
+        <ContactView />
       </div>
     </div>
   );
