@@ -12,6 +12,7 @@ import makeStyles from '@mui/styles/makeStyles';
 import { ContactView } from '@views/contact.view';
 import { ExperienceView } from '@views/experience.view';
 import { HomeView } from '@views/home.view';
+import { ProjectsView } from '@views/projects.view';
 import React, { ReactElement } from 'react';
 import ReactDOM from 'react-dom/client';
 import Particles from 'react-tsparticles';
@@ -130,6 +131,7 @@ const App = (): ReactElement => {
       <div className={classes.main}>
         <HomeView />
         <ExperienceView />
+        <ProjectsView />
         <ContactView />
       </div>
     </div>

@@ -3,7 +3,7 @@ import FolderSpecialRoundedIcon from '@mui/icons-material/FolderSpecialRounded';
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 import PsychologyRoundedIcon from '@mui/icons-material/PsychologyRounded';
-import { Theme } from '@mui/material';
+import { IconButton, Theme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import React, { ReactElement } from 'react';
 import { Link } from 'react-scroll';
@@ -33,8 +33,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   navigationIcon: {
     cursor: 'pointer',
-    height: 60,
-    width: 60,
+    height: 58,
+    width: 58,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -71,9 +71,10 @@ export const SideNavigation = (): ReactElement => {
           spy
           smooth
           duration={500}
-          offset={-5}
         >
-          <HomeRoundedIcon fontSize="large" />
+          <IconButton color="inherit">
+            <HomeRoundedIcon fontSize="large" />
+          </IconButton>
         </Link>
         <Link
           to="About"
@@ -82,9 +83,10 @@ export const SideNavigation = (): ReactElement => {
           spy
           smooth
           duration={500}
-          offset={-5}
         >
-          <PersonRoundedIcon fontSize="large" />
+          <IconButton color="inherit">
+            <PersonRoundedIcon fontSize="large" />
+          </IconButton>
         </Link>
         <Link
           to="Experience"
@@ -93,9 +95,10 @@ export const SideNavigation = (): ReactElement => {
           spy
           smooth
           duration={500}
-          offset={-5}
         >
-          <PsychologyRoundedIcon fontSize="large" />
+          <IconButton color="inherit">
+            <PsychologyRoundedIcon fontSize="large" />
+          </IconButton>
         </Link>
         <Link
           to="Projects"
@@ -104,9 +107,10 @@ export const SideNavigation = (): ReactElement => {
           spy
           smooth
           duration={500}
-          offset={-5}
         >
-          <FolderSpecialRoundedIcon fontSize="large" />
+          <IconButton color="inherit">
+            <FolderSpecialRoundedIcon fontSize="large" />
+          </IconButton>
         </Link>
         <Link
           to="Contact"
@@ -115,9 +119,10 @@ export const SideNavigation = (): ReactElement => {
           spy
           smooth
           duration={500}
-          offset={-5}
         >
-          <ChatBubbleRoundedIcon fontSize="large" />
+          <IconButton color="inherit">
+            <ChatBubbleRoundedIcon fontSize="large" />
+          </IconButton>
         </Link>
       </div>
     </div>
