@@ -24,6 +24,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     backdropFilter: 'blur(10px)',
     WebkitBoxShadow: theme.custom.cardShadow,
     overflow: 'auto',
+    transition: 'transform .15s linear',
+
+    '&:hover': {
+      transform: 'scale(1.02)',
+    },
   },
   heading: {
     padding: '10px 15px',

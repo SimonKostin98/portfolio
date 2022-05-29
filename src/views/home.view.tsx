@@ -1,5 +1,8 @@
-import profilePictureURL from '@assets/images/defaultAvatar.jpg';
-import { Button, Theme } from '@mui/material';
+import person from '@assets/images/person.png';
+import GitHub from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import SummarizeIcon from '@mui/icons-material/Summarize';
+import { Button, IconButton, Theme } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import React, { ReactElement } from 'react';
 
@@ -16,8 +19,31 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     alignItems: 'center',
     justifyContent: 'space-around',
-    padding: '0 5vw 3vh 5vw',
+    padding: '0 1.5vw 0 5vw',
     boxSizing: 'border-box',
+  },
+  socials: {
+    position: 'absolute',
+    top: 75,
+    right: 10,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 20,
+    paddingTop: 10,
+    color: 'rgba(250, 250, 250, 0.85)',
+
+    '&::before': {
+      content: '""',
+      backgroundColor: 'rgba(250, 250, 250, 0.85)',
+      width: 2,
+      height: 60,
+      position: 'absolute',
+      left: '50%',
+      bottom: '100%',
+      marginLeft: -2,
+    },
   },
   infoText: {
     display: 'flex',
@@ -51,12 +77,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     borderRadius: '10rem',
   },
   image: {
-    backgroundImage: `url(${profilePictureURL as string})`,
-    width: 'calc(28vw + 5vh)',
-    height: 'calc(28vw + 5vh)',
+    alignSelf: 'end',
+    backgroundImage: `url(${person as string})`,
+    width: 'calc(40vh + 17.5vw)',
+    height: '95%',
+    backgroundPosition: 'center bottom',
     backgroundSize: 'contain',
     backgroundRepeat: 'no-repeat',
-    borderRadius: '50%',
     animation: '$animation 1.25s linear',
   },
   '@keyframes animation': {
@@ -73,6 +100,17 @@ export const HomeView = (): ReactElement => {
   const classes = useStyles();
   return (
     <div className={classes.homeComponent} id="Home">
+      <div className={classes.socials}>
+        <IconButton color="inherit">
+          <GitHub fontSize="large" />
+        </IconButton>
+        <IconButton color="inherit">
+          <LinkedInIcon fontSize="large" />
+        </IconButton>
+        <IconButton color="inherit">
+          <SummarizeIcon fontSize="large" />
+        </IconButton>
+      </div>
       <div className={classes.infoText}>
         <div className={classes.firstHeading}>Simon Kostin</div>
         <div className={classes.secondHeading}>Full Stack Developer</div>
