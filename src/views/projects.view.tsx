@@ -114,13 +114,14 @@ export const ProjectsView = (): ReactElement => {
             title="Dogr"
             technologies={dogrTechnologies}
             status="In Progress"
-            description="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et"
+            description="Todo"
           />
           <ProjectCard
             imageUrl={RecipeApp as string}
             title="Recipe App"
             technologies={dogrTechnologies}
             status="In Progress"
+            description="Todo"
           />
         </div>
         <div className={classes.projectCardRowTwo}>
@@ -129,12 +130,14 @@ export const ProjectsView = (): ReactElement => {
             title="State Election"
             technologies={electionTechnologies}
             status="Done"
+            description="Todo"
           />
           <ProjectCard
             imageUrl={MasterThesis as string}
             title="CTAPF"
             technologies={ctapfTechnologies}
             status="Done"
+            description="Todo"
           />
         </div>
       </div>

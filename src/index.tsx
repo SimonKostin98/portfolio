@@ -2,19 +2,20 @@ import { SideNavigation } from '@components/navigation/sideNavigation.component'
 import {
   createTheme,
   CssBaseline,
-  darkScrollbar,
   GlobalStyles,
   StyledEngineProvider,
   Theme,
   ThemeProvider,
 } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
+import { AboutView } from '@views/about.view';
 import { ContactView } from '@views/contact.view';
 import { ExperienceView } from '@views/experience.view';
 import { HomeView } from '@views/home.view';
 import { ProjectsView } from '@views/projects.view';
 import React, { ReactElement } from 'react';
 import ReactDOM from 'react-dom/client';
+import { FullPage, Slide } from 'react-full-page';
 import Particles from 'react-tsparticles';
 import { loadFull } from 'tsparticles';
 import { Engine } from 'tsparticles-engine';
@@ -44,7 +45,44 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: '100vh',
     width: `calc(100vw - ${theme.custom.navigationWidth}px - 50px)`,
   },
+  fullpage: {
+    '&::-webkit-scrollbar': {
+      display: 'none',
+    },
+  },
 }));
+
+const AppContent = (): ReactElement => {
+  const classes = useStyles();
+
+  return (
+    <>
+      <div className={classes.main}>
+        <FullPage
+          duration={750}
+          controls={SideNavigation}
+          className={classes.fullpage}
+        >
+          <Slide>
+            <HomeView />
+          </Slide>
+          <Slide>
+            <AboutView />
+          </Slide>
+          <Slide>
+            <ExperienceView />
+          </Slide>
+          <Slide>
+            <ProjectsView />
+          </Slide>
+          <Slide>
+            <ContactView />
+          </Slide>
+        </FullPage>
+      </div>
+    </>
+  );
+};
 
 const App = (): ReactElement => {
   const classes = useStyles();
@@ -124,16 +162,7 @@ const App = (): ReactElement => {
           }}
         />
       </div>
-
-      <div className={classes.navigation}>
-        <SideNavigation />
-      </div>
-      <div className={classes.main}>
-        <HomeView />
-        <ExperienceView />
-        <ProjectsView />
-        <ContactView />
-      </div>
+      <AppContent />
     </div>
   );
 };
@@ -142,7 +171,13 @@ const Wrapper = () => {
   return (
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={createTheme(theme)}>
-        <GlobalStyles styles={{ ...darkScrollbar() }} />
+        <GlobalStyles
+          styles={{
+            '*::-webkit-scrollbar': {
+              display: 'none',
+            },
+          }}
+        />
         <CssBaseline />
         <App />{' '}
       </ThemeProvider>

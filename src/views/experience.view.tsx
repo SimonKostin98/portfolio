@@ -8,7 +8,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   resumeComponent: {
     height: '100%',
     width: '100%',
-    backgroundColor: 'transparent',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-around',
