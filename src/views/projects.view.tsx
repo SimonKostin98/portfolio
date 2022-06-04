@@ -1,8 +1,8 @@
-import CSSIcon from '@assets/programming/CSS.png';
+import CSSIcon from '@assets/programming/CSS.svg';
 import KotlinIcon from '@assets/programming/Kotlin.svg';
 import PythonIcon from '@assets/programming/Python.svg';
 import SASSIcon from '@assets/programming/SASS.svg';
-import SQLIcon from '@assets/programming/SQL.png';
+import SQLIcon from '@assets/programming/SQL.svg';
 import TSIcon from '@assets/programming/TS.svg';
 import Dogr from '@assets/projects/Dogr.png';
 import ElectionSystem from '@assets/projects/electionSystem.png';
@@ -10,10 +10,10 @@ import MasterThesis from '@assets/projects/MasterThesis.png';
 import RecipeApp from '@assets/projects/recipeApp.png';
 import BootstrapIcon from '@assets/tools/bootstrap.svg';
 import FlaskIcon from '@assets/tools/flask.png';
-import GradleIcon from '@assets/tools/gradle.png';
-import KTorIcon from '@assets/tools/ktor.png';
+import GradleIcon from '@assets/tools/gradle.svg';
+import KTorIcon from '@assets/tools/ktor.svg';
 import MUIIcon from '@assets/tools/materialUI.svg';
-import MongoDBIcon from '@assets/tools/mongodb.png';
+import MongoDBIcon from '@assets/tools/mongodb.svg';
 import NodeIcon from '@assets/tools/node.svg';
 import PostgresIcon from '@assets/tools/postgresql.svg';
 import ReactIcon from '@assets/tools/react.svg';
@@ -26,16 +26,18 @@ const useStyles = makeStyles(() => ({
   projectsView: {
     height: '100%',
     width: '100%',
-    padding: '40px 20px',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
+    padding: '2vh 2.5vw 2vh 1vw',
   },
   heading: {
     height: '7.5%',
     fontSize: 'xx-large',
     fontWeight: 'bold',
     paddingLeft: '30px',
+    display: 'flex',
+    alignItems: 'center',
   },
   projectCardWrapper: {
     height: '92.5%',
@@ -114,13 +116,14 @@ export const ProjectsView = (): ReactElement => {
             title="Dogr"
             technologies={dogrTechnologies}
             status="In Progress"
-            description="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et"
+            description="Todo"
           />
           <ProjectCard
             imageUrl={RecipeApp as string}
             title="Recipe App"
             technologies={dogrTechnologies}
             status="In Progress"
+            description="Todo"
           />
         </div>
         <div className={classes.projectCardRowTwo}>
@@ -129,12 +132,14 @@ export const ProjectsView = (): ReactElement => {
             title="State Election"
             technologies={electionTechnologies}
             status="Done"
+            description="Todo"
           />
           <ProjectCard
             imageUrl={MasterThesis as string}
             title="CTAPF"
             technologies={ctapfTechnologies}
             status="Done"
+            description="Todo"
           />
         </div>
       </div>

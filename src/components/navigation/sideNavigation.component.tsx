@@ -5,11 +5,19 @@ import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 import PsychologyRoundedIcon from '@mui/icons-material/PsychologyRounded';
 import { IconButton, Theme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import clsx from 'clsx';
 import React, { ReactElement } from 'react';
-import { Link } from 'react-scroll';
+
+interface ISideNavigationProps {
+  getCurrentSlideIndex: () => number;
+  scrollToSlide: (slideIndex: number) => void;
+}
 
 const useStyles = makeStyles((theme: Theme) => ({
   sideNavigation: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
     height: '100%',
     width: theme.custom.navigationWidth,
     display: 'flex',
@@ -58,72 +66,58 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export const SideNavigation = (): ReactElement => {
+export const SideNavigation = (props: ISideNavigationProps): ReactElement => {
+  const { getCurrentSlideIndex, scrollToSlide } = props;
   const classes = useStyles();
 
   return (
     <div className={classes.sideNavigation}>
       <div className={classes.navigationContent}>
-        <Link
-          to="Home"
-          activeClass={classes.active}
-          className={classes.navigationIcon}
-          spy
-          smooth
-          duration={500}
+        <div
+          className={clsx(classes.navigationIcon, {
+            [classes.active]: getCurrentSlideIndex() === 0,
+          })}
         >
-          <IconButton color="inherit">
+          <IconButton color="inherit" onClick={() => scrollToSlide(0)}>
             <HomeRoundedIcon fontSize="large" />
           </IconButton>
-        </Link>
-        <Link
-          to="About"
-          activeClass={classes.active}
-          className={classes.navigationIcon}
-          spy
-          smooth
-          duration={500}
+        </div>
+        <div
+          className={clsx(classes.navigationIcon, {
+            [classes.active]: getCurrentSlideIndex() === 1,
+          })}
         >
-          <IconButton color="inherit">
+          <IconButton color="inherit" onClick={() => scrollToSlide(1)}>
             <PersonRoundedIcon fontSize="large" />
           </IconButton>
-        </Link>
-        <Link
-          to="Experience"
-          activeClass={classes.active}
-          className={classes.navigationIcon}
-          spy
-          smooth
-          duration={500}
+        </div>
+        <div
+          className={clsx(classes.navigationIcon, {
+            [classes.active]: getCurrentSlideIndex() === 2,
+          })}
         >
-          <IconButton color="inherit">
+          <IconButton color="inherit" onClick={() => scrollToSlide(2)}>
             <PsychologyRoundedIcon fontSize="large" />
           </IconButton>
-        </Link>
-        <Link
-          to="Projects"
-          activeClass={classes.active}
-          className={classes.navigationIcon}
-          spy
-          smooth
-          duration={500}
+        </div>
+        <div
+          className={clsx(classes.navigationIcon, {
+            [classes.active]: getCurrentSlideIndex() === 3,
+          })}
         >
-          <IconButton color="inherit">
+          <IconButton color="inherit" onClick={() => scrollToSlide(3)}>
             <FolderSpecialRoundedIcon fontSize="large" />
           </IconButton>
-        </Link>
-        <Link
-          to="Contact"
-          activeClass={classes.active}
-          className={classes.navigationIcon}
-          spy
-          smooth
-          duration={500}
+        </div>
+        <div
+          className={clsx(classes.navigationIcon, {
+            [classes.active]: getCurrentSlideIndex() === 4,
+          })}
         >
-          <IconButton color="inherit">
+          <IconButton color="inherit" onClick={() => scrollToSlide(4)}>
             <ChatBubbleRoundedIcon fontSize="large" />
           </IconButton>
-        </Link>
+        </div>
       </div>
     </div>
   );
