@@ -1,16 +1,17 @@
-import person from '@assets/images/person.png';
 import GitHub from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import SummarizeIcon from '@mui/icons-material/Summarize';
 import { Button, IconButton, Theme } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import React, { ReactElement } from 'react';
+import Typewriter from 'typewriter-effect';
 
 const useStyles = makeStyles((theme: Theme) => ({
   homeComponent: {
     width: '100%',
     height: '100%',
     display: 'flex',
+    marginLeft: `-${theme.custom.navigationWidth / 2}px`,
     [theme.breakpoints.down('md')]: {
       flexDirection: 'column-reverse',
     },
@@ -19,13 +20,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     alignItems: 'center',
     justifyContent: 'space-around',
-    padding: '0 1.5vw 0 5vw',
     boxSizing: 'border-box',
   },
   socials: {
     position: 'absolute',
     top: 75,
-    right: 10,
+    right: 50,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -54,8 +54,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   firstHeading: {
     color: 'white',
-    fontWeight: 'bold',
-    fontSize: 'calc(5vh + 3vw)',
+    fontWeight: 'bolder',
+    fontSize: 'calc(6vh + 5vw)',
     [theme.breakpoints.down('md')]: {
       marginBottom: '-10px',
     },
@@ -76,16 +76,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginTop: '10px',
     borderRadius: '10rem',
   },
-  image: {
-    alignSelf: 'end',
-    backgroundImage: `url(${person as string})`,
-    width: 'calc(40vh + 17.5vw)',
-    height: '95%',
-    backgroundPosition: 'center bottom',
-    backgroundSize: 'contain',
-    backgroundRepeat: 'no-repeat',
-    animation: '$animation 1.25s linear',
-  },
+
   '@keyframes animation': {
     from: {
       opacity: 0,
@@ -113,12 +104,23 @@ export const HomeView = (): ReactElement => {
       </div>
       <div className={classes.infoText}>
         <div className={classes.firstHeading}>Simon Kostin</div>
-        <div className={classes.secondHeading}>Full Stack Developer</div>
+        <div className={classes.secondHeading}>
+          <Typewriter
+            options={{
+              strings: [
+                // eslint-disable-next-line quotes
+                "I'm a Full Stack Developer",
+                'I make ideas come to life',
+              ],
+              autoStart: true,
+              loop: true,
+            }}
+          />
+        </div>
         <Button className={classes.button} variant="contained" size="large">
           Contact me
         </Button>
       </div>
-      <div className={classes.image}></div>
     </div>
   );
 };
