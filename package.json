@@ -19,7 +19,8 @@
     "react-dom": "^18.1.0",
     "react-full-page": "^0.1.12",
     "react-tsparticles": "^2.0.6",
-    "regenerator-runtime": "^0.13.9"
+    "regenerator-runtime": "^0.13.9",
+    "typewriter-effect": "^2.18.2"
   },
   "scripts": {
     "serve": "webpack serve --mode development --color --hot --progress --config ./webpack/webpack.dev.js",

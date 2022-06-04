@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     position: 'absolute',
     left: theme.custom.navigationWidth,
     height: '100vh',
-    width: `calc(100vw - ${theme.custom.navigationWidth}px - 50px)`,
+    width: `calc(100vw - ${theme.custom.navigationWidth}px)`,
   },
   fullpage: {
     '&::-webkit-scrollbar': {

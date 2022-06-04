@@ -26,16 +26,18 @@ const useStyles = makeStyles(() => ({
   projectsView: {
     height: '100%',
     width: '100%',
-    padding: '40px 20px',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
+    padding: '2vh 2.5vw 2vh 1vw',
   },
   heading: {
     height: '7.5%',
     fontSize: 'xx-large',
     fontWeight: 'bold',
     paddingLeft: '30px',
+    display: 'flex',
+    alignItems: 'center',
   },
   projectCardWrapper: {
     height: '92.5%',
