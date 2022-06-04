@@ -143,8 +143,8 @@ export const AboutView = (): ReactElement => {
             As an avid learner, I like to experiment with the latest
             technologies, as well as explore{' '}
             <span className={classes.highlightedText}>new opportunities</span>.
-            If you think I can be of service to you, don't hesitate to contact
-            me <span className={classes.highlightedText}>here.</span>
+            If you think I can be of service to you, don&apos;t hesitate to
+            contact me <span className={classes.highlightedText}>here.</span>
           </p>
         </div>
         <div className={classes.aboutWordCloud}>
