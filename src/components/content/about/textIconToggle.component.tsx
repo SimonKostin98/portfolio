@@ -18,8 +18,8 @@ const useStyles = makeStyles<Theme, ITextIconToggleProps>(() => ({
   },
   icon: {
     position: 'absolute',
-    width: 50,
-    height: 50,
+    width: '2.5vw',
+    height: '2.5vw',
     backgroundSize: 'contain',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',

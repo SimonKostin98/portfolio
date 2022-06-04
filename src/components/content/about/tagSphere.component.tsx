@@ -193,7 +193,7 @@ export default function TagSphere(props: any) {
   const [mouseY, setMouseY] = useState(0);
 
   const handleMouseMove = (e: any) => {
-    const rect = containerRef!.current.getBoundingClientRect();
+    const rect = containerRef.current.getBoundingClientRect();
 
     setMouseX(() => (e.clientX - (rect.left + rect.width / 2)) / 5);
     setMouseY(() => (e.clientY - (rect.top + rect.height / 2)) / 5);
