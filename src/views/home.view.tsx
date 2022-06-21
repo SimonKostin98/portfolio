@@ -1,10 +1,15 @@
+import CV from '@assets/Lebenslauf.pdf';
 import GitHub from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import SummarizeIcon from '@mui/icons-material/Summarize';
-import { Button, IconButton, Theme } from '@mui/material';
+import { Button, IconButton, Theme, Tooltip } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import React, { ReactElement } from 'react';
 import Typewriter from 'typewriter-effect';
+
+interface IHomeViewProps {
+  goToContact: () => void;
+}
 
 const useStyles = makeStyles((theme: Theme) => ({
   homeComponent: {
@@ -87,20 +92,39 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export const HomeView = (): ReactElement => {
+export const HomeView = (props: IHomeViewProps): ReactElement => {
   const classes = useStyles();
+  const { goToContact } = props;
   return (
     <div className={classes.homeComponent} id="Home">
       <div className={classes.socials}>
-        <IconButton color="inherit">
-          <GitHub fontSize="large" />
-        </IconButton>
-        <IconButton color="inherit">
-          <LinkedInIcon fontSize="large" />
-        </IconButton>
-        <IconButton color="inherit">
-          <SummarizeIcon fontSize="large" />
-        </IconButton>
+        <Tooltip title="Github" arrow placement="left">
+          <IconButton
+            color="inherit"
+            href="https://github.com/SimonKostin98"
+            target="_blank"
+          >
+            <GitHub fontSize="large" />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="LinkedIn" arrow placement="left">
+          <IconButton
+            color="inherit"
+            href="https://www.linkedin.com/in/simonkostin/"
+            target="_blank"
+          >
+            <LinkedInIcon fontSize="large" />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="CV" arrow placement="left">
+          <IconButton
+            color="inherit"
+            href={CV as string}
+            download="simon_kostin_cv.pdf"
+          >
+            <SummarizeIcon fontSize="large" />
+          </IconButton>
+        </Tooltip>
       </div>
       <div className={classes.infoText}>
         <div className={classes.firstHeading}>Simon Kostin</div>
@@ -117,7 +141,12 @@ export const HomeView = (): ReactElement => {
             }}
           />
         </div>
-        <Button className={classes.button} variant="contained" size="large">
+        <Button
+          className={classes.button}
+          variant="contained"
+          size="large"
+          onClick={() => goToContact()}
+        >
           Contact me
         </Button>
       </div>

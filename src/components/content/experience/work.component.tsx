@@ -1,7 +1,7 @@
-import bmw from '@assets/work/BMW.png';
-import brose from '@assets/work/Brose.png';
-import ecomio from '@assets/work/Ecomio.png';
-import haba from '@assets/work/Haba.png';
+import bmw from '@assets/work/BMW.webp';
+import brose from '@assets/work/Brose.webp';
+import ecomio from '@assets/work/Ecomio.webp';
+import haba from '@assets/work/Haba.webp';
 import {
   CustomAccordion,
   CustomAccordionDetails,

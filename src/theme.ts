@@ -12,6 +12,9 @@ export const theme: ThemeOptions = {
       main: '#e54444',
       dark: '#ac001c',
     },
+    error: {
+      main: '#ff6961',
+    },
     background: {
       paper: 'rgba(50, 50, 50, 0.5)',
       default: '#000',

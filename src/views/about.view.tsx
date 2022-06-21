@@ -7,7 +7,7 @@ import TSIcon from '@assets/programming/TS.svg';
 import BootstrapIcon from '@assets/tools/bootstrap.svg';
 import DjangoIcon from '@assets/tools/django.svg';
 import DockerIcon from '@assets/tools/docker.svg';
-import FlaskIcon from '@assets/tools/flask.png';
+import FlaskIcon from '@assets/tools/flask.webp';
 import GitIcon from '@assets/tools/git.svg';
 import MUIIcon from '@assets/tools/materialUI.svg';
 import MongoIcon from '@assets/tools/mongodb.svg';
@@ -19,6 +19,10 @@ import { makeStyles } from '@mui/styles';
 import TagSphere from '@src/components/content/about/tagSphere.component';
 import { TextIconToggle } from '@src/components/content/about/textIconToggle.component';
 import React, { ReactElement } from 'react';
+
+interface IAboutViewProps {
+  goToContact: () => void;
+}
 
 const useStyles = makeStyles((theme: Theme) => ({
   aboutView: {
@@ -86,8 +90,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export const AboutView = (): ReactElement => {
+export const AboutView = (props: IAboutViewProps): ReactElement => {
   const classes = useStyles();
+  const { goToContact } = props;
 
   const texts = [
     <TextIconToggle text="HTML" iconUrl={HTMLIcon as string} key={0} />,
@@ -144,7 +149,14 @@ export const AboutView = (): ReactElement => {
             technologies, as well as explore{' '}
             <span className={classes.highlightedText}>new opportunities</span>.
             If you think I can be of service to you, don&apos;t hesitate to
-            contact me <span className={classes.highlightedText}>here.</span>
+            contact me{' '}
+            <span
+              className={classes.highlightedText}
+              style={{ textDecoration: 'underline', cursor: 'pointer' }}
+              onClick={() => goToContact()}
+            >
+              here.
+            </span>
           </p>
         </div>
         <div className={classes.aboutWordCloud}>
