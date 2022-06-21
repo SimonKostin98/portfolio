@@ -1,7 +1,10 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const SRC_DIRECTORY = path.resolve(__dirname, '..', 'src');
+
+const dotenv = require('dotenv');
 
 module.exports = {
   entry: './src/index.tsx',
@@ -26,7 +29,6 @@ module.exports = {
           },
         },
       },
-      { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
       {
         test: /\.html$/,
         use: [
@@ -37,7 +39,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|svg|jpg|gif|pdf|ico|woff(2)?|ttf|eot)$/,
+        test: /\.(png|svg|jpg|gif|pdf|ico|webp|woff(2)?|ttf|eot)$/,
         use: [
           {
             loader: 'file-loader',
@@ -71,6 +73,9 @@ module.exports = {
       template: path.resolve(__dirname, '../public/index.html'),
       inject: 'body',
       favicon: './src/assets/images/favicon.ico',
+    }),
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify(dotenv.config().parsed),
     }),
   ],
 };
