@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { SideNavigation } from '@components/navigation/sideNavigation.component';
 import {
   createTheme,
@@ -13,7 +14,7 @@ import { ContactView } from '@views/contact.view';
 import { ExperienceView } from '@views/experience.view';
 import { HomeView } from '@views/home.view';
 import { ProjectsView } from '@views/projects.view';
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useRef } from 'react';
 import ReactDOM from 'react-dom/client';
 import { FullPage, Slide } from 'react-full-page';
 import Particles from 'react-tsparticles';
@@ -54,6 +55,11 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const AppContent = (): ReactElement => {
   const classes = useStyles();
+  const ref = useRef<{ scrollToSlide: (slide: number) => void }>(null);
+
+  const goToContact = () => {
+    ref.current?.scrollToSlide(4);
+  };
 
   return (
     <>
@@ -62,12 +68,13 @@ const AppContent = (): ReactElement => {
           duration={750}
           controls={SideNavigation}
           className={classes.fullpage}
+          ref={ref}
         >
           <Slide>
-            <HomeView />
+            <HomeView goToContact={goToContact} />
           </Slide>
           <Slide>
-            <AboutView />
+            <AboutView goToContact={goToContact} />
           </Slide>
           <Slide>
             <ExperienceView />

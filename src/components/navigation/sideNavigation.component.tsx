@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     justifyContent: 'center',
   },
   navigationContent: {
-    backgroundColor: 'rgba(40, 40, 40, 0.5)',
+    backgroundColor: 'rgba(40, 40, 40, 0.4)',
     backdropFilter: 'blur(10px)',
     WebkitBoxShadow: '0 0 10px 1px rgba(150, 150, 150, .35)',
 
