@@ -1,4 +1,4 @@
-/* eslint-disable */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import { SideNavigation } from '@components/navigation/sideNavigation.component';
 import {
   createTheme,
@@ -18,8 +18,12 @@ import React, { ReactElement, useRef } from 'react';
 import ReactDOM from 'react-dom/client';
 import { FullPage, Slide } from 'react-full-page';
 import Particles from 'react-tsparticles';
-import { loadFull } from 'tsparticles';
-import { Engine } from 'tsparticles-engine';
+import { loadBaseMover } from 'tsparticles-move-base';
+import { loadCircleShape } from 'tsparticles-shape-circle';
+import { loadColorUpdater } from 'tsparticles-updater-color';
+import { loadOpacityUpdater } from 'tsparticles-updater-opacity';
+import { loadOutModesUpdater } from 'tsparticles-updater-out-modes';
+import { loadSizeUpdater } from 'tsparticles-updater-size';
 
 import { theme } from './theme';
 
@@ -69,6 +73,7 @@ const AppContent = (): ReactElement => {
           controls={SideNavigation}
           className={classes.fullpage}
           ref={ref}
+          initialSlide={2}
         >
           <Slide>
             <HomeView goToContact={goToContact} />
@@ -94,8 +99,14 @@ const AppContent = (): ReactElement => {
 const App = (): ReactElement => {
   const classes = useStyles();
 
-  const particlesInit = async (main: Engine) => {
-    await loadFull(main);
+  const particlesInit = async (engine: any) => {
+    await loadColorUpdater(engine);
+    await loadColorUpdater(engine);
+    await loadCircleShape(engine);
+    await loadBaseMover(engine);
+    await loadSizeUpdater(engine);
+    await loadOpacityUpdater(engine);
+    await loadOutModesUpdater(engine);
   };
 
   return (
@@ -105,6 +116,8 @@ const App = (): ReactElement => {
           id="tsparticles"
           init={particlesInit}
           options={{
+            fpsLimit: 30,
+            detectRetina: true,
             particles: {
               number: {
                 value: 30,
@@ -118,19 +131,16 @@ const App = (): ReactElement => {
               },
               shape: {
                 type: 'circle',
-                stroke: {
-                  width: 0,
-                  color: '#62efff',
-                },
               },
               opacity: {
-                value: 0.5,
-                random: false,
+                value: {
+                  min: 0.1,
+                  max: 0.5,
+                },
                 animation: {
-                  enable: true,
-                  speed: 1,
                   minimumValue: 0.1,
-                  sync: false,
+                  destroy: 'none',
+                  startValue: 'random',
                 },
               },
               size: {
@@ -142,13 +152,6 @@ const App = (): ReactElement => {
                   minimumValue: 0.1,
                   sync: false,
                 },
-              },
-              lineLinked: {
-                enable: false,
-                distance: 150,
-                color: '#c8c8c8',
-                opacity: 0.4,
-                width: 1,
               },
               move: {
                 enable: true,
@@ -165,7 +168,6 @@ const App = (): ReactElement => {
                 },
               },
             },
-            detectRetina: true,
           }}
         />
       </div>
