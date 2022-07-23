@@ -1,225 +1,84 @@
-/* eslint-disable quotes */
-import logo1 from '@assets/education/Ausbildung1.webp';
-import logo2 from '@assets/education/Ausbildung2.webp';
-import logo3 from '@assets/education/Ausbildung3.webp';
-import logo4 from '@assets/education/Ausbildung4.webp';
-import {
-  CustomAccordion,
-  CustomAccordionDetails,
-  CustomAccordionSummary,
-} from '@customizations/accordion.customization';
-import {
-  CustomTimeline,
-  CustomTimelineConnector,
-  CustomTimelineContent,
-  CustomTimelineDot,
-  CustomTimelineItem,
-  CustomTimelineSeparator,
-} from '@customizations/timeline.customization';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+/* eslint-disable max-len */
+import { Theme } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
-import clsx from 'clsx';
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useState } from 'react';
 
-const useStyles = makeStyles(() => ({
+import { EducationContent } from './educationContent.component';
+import { ExperienceNavigation } from './experienceNavigation.component';
+
+const useStyles = makeStyles((theme: Theme) => ({
   educationComponent: {
     width: '100%',
     height: '100%',
+    display: 'flex',
   },
-  timelineIcon: {
-    height: 100,
-    width: 100,
-    backgroundColor: 'white',
-    borderRadius: '50%',
-    backgroundSize: 'contain',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
-  },
-  image1: {
-    backgroundImage: `url(${logo1 as string})`,
-  },
-  image2: {
-    backgroundImage: `url(${logo2 as string})`,
-  },
-  image3: {
-    backgroundImage: `url(${logo3 as string})`,
-  },
-  image4: {
-    backgroundImage: `url(${logo4 as string})`,
+  educationContent: {
+    width: 'calc(100% - 200px)',
+    height: '100%',
+    position: 'relative',
+    left: '50px',
+    border: `2px solid ${theme.palette.primary.main}`,
+    borderRadius: 20,
   },
 }));
 
 export const EducationComponent = (): ReactElement => {
   const classes = useStyles();
+  const [activeElement, setActiveElement] = useState(0);
   return (
     <div className={classes.educationComponent}>
-      <CustomTimeline>
-        <CustomTimelineItem>
-          <CustomTimelineSeparator>
-            <CustomTimelineDot>
-              <div className={clsx(classes.timelineIcon, classes.image1)} />
-            </CustomTimelineDot>
-            <CustomTimelineConnector />
-          </CustomTimelineSeparator>
-          <CustomTimelineContent>
-            <CustomAccordion square={true}>
-              <CustomAccordionSummary expandIcon={<ExpandMoreIcon />}>
-                {"Master's Degree"}
-              </CustomAccordionSummary>
-              <CustomAccordionDetails>
-                <table>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <b>University:</b>
-                      </td>
-                      <td>
-                        University of Augsburg
-                        <br />
-                        Technical University of Munich
-                        <br />
-                        Ludwig Maximilian University
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <b>Subject:</b>
-                      </td>
-                      <td>Software Engineering</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <b>Final GPA:</b>
-                      </td>
-                      <td>1.1</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <b>Special:</b>
-                      </td>
-                      <td>
-                        Elite Graduate Programme geared towards the Top 2
-                        Percent of Students in Computer Science
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </CustomAccordionDetails>
-            </CustomAccordion>
-          </CustomTimelineContent>
-        </CustomTimelineItem>
-        <CustomTimelineItem>
-          <CustomTimelineSeparator>
-            <CustomTimelineDot>
-              <div className={clsx(classes.timelineIcon, classes.image2)} />
-            </CustomTimelineDot>
-            <CustomTimelineConnector />
-          </CustomTimelineSeparator>
-          <CustomTimelineContent>
-            <CustomAccordion square={true}>
-              <CustomAccordionSummary expandIcon={<ExpandMoreIcon />}>
-                {"Bachelor's Degree"}
-              </CustomAccordionSummary>
-              <CustomAccordionDetails>
-                <table>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <b>University:</b>
-                      </td>
-                      <td>Technical University of Munich</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <b>Subject:</b>
-                      </td>
-                      <td>Computer Science</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <b>Final GPA:</b>
-                      </td>
-                      <td>1.7</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </CustomAccordionDetails>
-            </CustomAccordion>
-          </CustomTimelineContent>
-        </CustomTimelineItem>
-        <CustomTimelineItem>
-          <CustomTimelineSeparator>
-            <CustomTimelineDot>
-              <div className={clsx(classes.timelineIcon, classes.image3)} />
-            </CustomTimelineDot>
-            <CustomTimelineConnector />
-          </CustomTimelineSeparator>
-          <CustomTimelineContent>
-            <CustomAccordion square={true}>
-              <CustomAccordionSummary expandIcon={<ExpandMoreIcon />}>
-                High School
-              </CustomAccordionSummary>
-              <CustomAccordionDetails>
-                <table>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <b>School:</b>
-                      </td>
-                      <td>Gymnasium Ernestinum Coburg</td>
-                    </tr>
-                    <tr>
-                      <td style={{ whiteSpace: 'nowrap' }}>
-                        <b>Final GPA:</b>
-                      </td>
-                      <td>1.0</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <b>Special:</b>
-                      </td>
-                      <td>Received scholarship by the Max Weber-Programm</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </CustomAccordionDetails>
-            </CustomAccordion>
-          </CustomTimelineContent>
-        </CustomTimelineItem>
-        <CustomTimelineItem>
-          <CustomTimelineSeparator>
-            <CustomTimelineDot>
-              <div className={clsx(classes.timelineIcon, classes.image4)} />
-            </CustomTimelineDot>
-            <CustomTimelineConnector />
-          </CustomTimelineSeparator>
-          <CustomTimelineContent>
-            <CustomAccordion square={true}>
-              <CustomAccordionSummary expandIcon={<ExpandMoreIcon />}>
-                Primary School
-              </CustomAccordionSummary>
-              <CustomAccordionDetails>
-                <table>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <b>School:</b>
-                      </td>
-                      <td>Pestalozzi-Grundschule Coburg</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <b>Final GPA:</b>
-                      </td>
-                      <td>1.6</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </CustomAccordionDetails>
-            </CustomAccordion>
-          </CustomTimelineContent>
-        </CustomTimelineItem>
-      </CustomTimeline>
+      <ExperienceNavigation
+        // eslint-disable-next-line quotes
+        elements={["Master's Degree", "Bachelor's Degree", 'High School']}
+        activeElement={activeElement}
+        setActiveElement={setActiveElement}
+      />
+      <div className={classes.educationContent}>
+        {activeElement == 0 && (
+          <EducationContent
+            institution="UNA | TUM | LMU"
+            institutionLink="https://elite-se.informatik.uni-augsburg.de/"
+            duration="Oct 2019 - Apr 2022"
+            degree="Master's Degree"
+            description={[
+              'Elite Graduate Program geared towards the top 2 percent of students in computer science',
+              'Practice oriented curriculum requiring the practical application of concepts and techniques in real industry projects',
+            ]}
+            subject="Software Engineering"
+            GPA="1.1"
+            thesis="Combined Task Allocation and Path Finding for Autonomous Guided Vehicles in a Factory Setting"
+          />
+        )}
+        {activeElement == 1 && (
+          <EducationContent
+            institution="TUM"
+            institutionLink="https://www.in.tum.de/en/in/for-prospective-students/bachelors-programs/informatics/"
+            duration="Oct 2016 - Nov 2019"
+            degree="Bachelor's Degree"
+            description={[
+              'Introduction to essential concepts of IT architecture, algorithms and datastructures, software engineering, database systems and operating systems',
+              'Further education in basic mathematics, theoretical computer science, statistics and scientific research',
+            ]}
+            subject="Computer Science"
+            GPA="1.7"
+            thesis="Migratory User Interfaces for Tourist Trip Recommender Systems"
+          />
+        )}
+        {activeElement == 2 && (
+          <EducationContent
+            institution="Gymansium Ernestinum"
+            institutionLink="https://www.ernestinum-coburg.de/"
+            duration="Sep 2008 - Jun 2016"
+            degree="High School Degree"
+            description={[
+              'Graduatated from High School with a perfect grade',
+              'Participated in several extracurricular activities, such as math competitions, school sport teams and the regional talent program',
+            ]}
+            GPA="1.0"
+            highSchool
+          />
+        )}
+      </div>
     </div>
   );
 };

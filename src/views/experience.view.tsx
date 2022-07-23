@@ -5,57 +5,68 @@ import makeStyles from '@mui/styles/makeStyles';
 import React, { ReactElement } from 'react';
 
 const useStyles = makeStyles((theme: Theme) => ({
-  resumeComponent: {
+  experienceView: {
     height: '100%',
     width: '100%',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-around',
-  },
-  card: {
-    background: theme.palette.background.paper,
-    display: 'flex',
-    flexDirection: 'column',
-    height: '90%',
-    width: '45%',
-    boxShadow: theme.custom.cardShadow,
-    borderRadius: '25px',
-    backdropFilter: 'blur(10px)',
-    WebkitBoxShadow: theme.custom.cardShadow,
-    overflow: 'auto',
-    transition: 'transform .15s linear',
-
-    '&:hover': {
-      transform: 'scale(1.02)',
-    },
+    padding: '2vh 2.5vw 2vh 1vw',
   },
   heading: {
-    padding: '10px 15px',
-    height: '5%',
-    width: '100%',
-    fontSize: 'x-large',
+    height: '7.5%',
+    fontSize: 'xx-large',
     fontWeight: 'bold',
+    paddingLeft: '30px',
+    display: 'flex',
+    alignItems: 'center',
   },
-  content: {
+  experienceContent: {
     height: '92.5%',
     width: '100%',
+    backgroundColor: theme.palette.background.paper,
+    backdropFilter: 'blur(10px)',
+    borderRadius: 25,
+    boxShadow: theme.custom.cardShadow,
+    WebkitBoxShadow: theme.custom.cardShadow,
+    display: 'flex',
+    gap: '5%',
+    padding: '2%',
+  },
+  half: {
+    height: '100%',
+    width: '50%',
+  },
+  halfHeading: {
+    height: '10%',
+    width: '100%',
+    fontSize: 'x-large',
+    fontWeight: 'bolder',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingLeft: 200,
+  },
+  halfContent: {
+    width: '100%',
+    height: '90%',
   },
 }));
 
 export const ExperienceView = (): ReactElement => {
   const classes = useStyles();
   return (
-    <div className={classes.resumeComponent} id="Experience">
-      <div className={classes.card}>
-        <div className={classes.heading}>Work Experience</div>
-        <div className={classes.content}>
-          <WorkComponent />
+    <div className={classes.experienceView} id="Experience">
+      <div className={classes.heading}>My Experience</div>
+      <div className={classes.experienceContent}>
+        <div className={classes.half}>
+          <div className={classes.halfHeading}>Work</div>
+          <div className={classes.halfContent}>
+            <WorkComponent />
+          </div>
         </div>
-      </div>
-      <div className={classes.card}>
-        <div className={classes.heading}>Education</div>
-        <div className={classes.content}>
-          <EducationComponent />
+        <div className={classes.half}>
+          <div className={classes.halfHeading}>Education</div>
+          <div className={classes.halfContent}>
+            <EducationComponent />
+          </div>
         </div>
       </div>
     </div>

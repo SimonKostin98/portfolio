@@ -1,243 +1,98 @@
-import bmw from '@assets/work/BMW.webp';
-import brose from '@assets/work/Brose.webp';
-import ecomio from '@assets/work/Ecomio.webp';
-import haba from '@assets/work/Haba.webp';
-import {
-  CustomAccordion,
-  CustomAccordionDetails,
-  CustomAccordionSummary,
-} from '@customizations/accordion.customization';
-import {
-  CustomTimeline,
-  CustomTimelineConnector,
-  CustomTimelineContent,
-  CustomTimelineDot,
-  CustomTimelineItem,
-  CustomTimelineSeparator,
-} from '@customizations/timeline.customization';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+/* eslint-disable max-len */
+import { Theme } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
-import clsx from 'clsx';
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useState } from 'react';
 
-const useStyles = makeStyles(() => ({
-  educationComponent: {
+import { ExperienceNavigation } from './experienceNavigation.component';
+import { WorkContent } from './workContent.component';
+
+const useStyles = makeStyles((theme: Theme) => ({
+  workComponent: {
     width: '100%',
     height: '100%',
+    display: 'flex',
   },
-  timelineIcon: {
-    height: 100,
-    width: 100,
-    backgroundColor: 'white',
-    borderRadius: '50%',
-    backgroundSize: 'contain',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
-  },
-  image1: {
-    backgroundImage: `url(${ecomio as string})`,
-  },
-  image2: {
-    backgroundImage: `url(${bmw as string})`,
-  },
-  image3: {
-    backgroundImage: `url(${brose as string})`,
-  },
-  image4: {
-    backgroundImage: `url(${haba as string})`,
+  workContent: {
+    width: 'calc(100% - 200px)',
+    height: '100%',
+    position: 'relative',
+    left: '50px',
+    border: `2px solid ${theme.palette.primary.main}`,
+    borderRadius: 20,
   },
 }));
 
 export const WorkComponent = (): ReactElement => {
   const classes = useStyles();
+  const [activeElement, setActiveElement] = useState(0);
   return (
-    <div className={classes.educationComponent}>
-      <CustomTimeline>
-        <CustomTimelineItem>
-          <CustomTimelineSeparator>
-            <CustomTimelineDot>
-              <div className={clsx(classes.timelineIcon, classes.image1)} />
-            </CustomTimelineDot>
-            <CustomTimelineConnector />
-          </CustomTimelineSeparator>
-          <CustomTimelineContent>
-            <CustomAccordion square={true}>
-              <CustomAccordionSummary expandIcon={<ExpandMoreIcon />}>
-                Full Stack Developer
-              </CustomAccordionSummary>
-              <CustomAccordionDetails>
-                <table>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <b>Company:</b>
-                      </td>
-                      <td>eco.mio</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <b>Duration:</b>
-                      </td>
-                      <td>10.08.20 - 09.10.20</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <b>Description:</b>
-                      </td>
-                      <td>
-                        Analysis, Design and Implementation of a Drag-and-Drop
-                        Tool, allowing to quickly build and deploy AWS
-                        infrastructures (Use Case: Streaming Data Anomaly
-                        Detection)
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </CustomAccordionDetails>
-            </CustomAccordion>
-          </CustomTimelineContent>
-        </CustomTimelineItem>
-        <CustomTimelineItem>
-          <CustomTimelineSeparator>
-            <CustomTimelineDot>
-              <div className={clsx(classes.timelineIcon, classes.image2)} />
-            </CustomTimelineDot>
-            <CustomTimelineConnector />
-          </CustomTimelineSeparator>
-          <CustomTimelineContent>
-            <CustomAccordion square={true}>
-              <CustomAccordionSummary expandIcon={<ExpandMoreIcon />}>
-                Full Stack Developer
-              </CustomAccordionSummary>
-              <CustomAccordionDetails>
-                <table>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <b>Company:</b>
-                      </td>
-                      <td>BMW AG</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <b>Duration:</b>
-                      </td>
-                      <td>10.08.20 - 09.10.20</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <b>Description:</b>
-                      </td>
-                      <td>
-                        Analysis, Design and Implementation of a Drag-and-Drop
-                        Tool, allowing to quickly build and deploy AWS
-                        infrastructures (Use Case: Streaming Data Anomaly
-                        Detection)
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </CustomAccordionDetails>
-            </CustomAccordion>
-          </CustomTimelineContent>
-        </CustomTimelineItem>
-        <CustomTimelineItem>
-          <CustomTimelineSeparator>
-            <CustomTimelineDot>
-              <div className={clsx(classes.timelineIcon, classes.image3)} />
-            </CustomTimelineDot>
-            <CustomTimelineConnector />
-          </CustomTimelineSeparator>
-          <CustomTimelineContent>
-            <CustomAccordion square={true}>
-              <CustomAccordionSummary expandIcon={<ExpandMoreIcon />}>
-                Frontend Developer
-              </CustomAccordionSummary>
-              <CustomAccordionDetails>
-                <table>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <b>Company:</b>
-                      </td>
-                      <td>Brose GmbH & Co.</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <b>Duration:</b>
-                      </td>
-                      <td>
-                        01.08.16 - 30.09.16
-                        <br />
-                        01.03.17 - 31.03.17
-                        <br />
-                        21.08.17 - 15.09.17
-                        <br />
-                        01.03.18 - 31.03.18
-                        <br />
-                        01.09.18 - 30.09.18
-                        <br />
-                        01.03.19 - 31.03.19
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <b>Description:</b>
-                      </td>
-                      <td>
-                        Development of a Web Frontend summarinzing Data from a
-                        Vehicle Database
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </CustomAccordionDetails>
-            </CustomAccordion>
-          </CustomTimelineContent>
-        </CustomTimelineItem>
-        <CustomTimelineItem>
-          <CustomTimelineSeparator>
-            <CustomTimelineDot>
-              <div className={clsx(classes.timelineIcon, classes.image4)} />
-            </CustomTimelineDot>
-            <CustomTimelineConnector />
-          </CustomTimelineSeparator>
-          <CustomTimelineContent>
-            <CustomAccordion square={true}>
-              <CustomAccordionSummary expandIcon={<ExpandMoreIcon />}>
-                IT Specialist
-              </CustomAccordionSummary>
-              <CustomAccordionDetails>
-                <table>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <b>Company:</b>
-                      </td>
-                      <td>Habermaass GmbH</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <b>Duration:</b>
-                      </td>
-                      <td>28.10.13 - 30.10.13</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <b>Description:</b>
-                      </td>
-                      <td>
-                        Learning how to code and getting to know the everyday
-                        life of a software developer
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </CustomAccordionDetails>
-            </CustomAccordion>
-          </CustomTimelineContent>
-        </CustomTimelineItem>
-      </CustomTimeline>
+    <div className={classes.workComponent}>
+      <ExperienceNavigation
+        elements={['eco.mio', 'BMW', 'Brose', 'Haba']}
+        activeElement={activeElement}
+        setActiveElement={setActiveElement}
+      />
+      <div className={classes.workContent}>
+        {activeElement == 0 && (
+          <WorkContent
+            role="Full Stack Developer"
+            company="eco.mio"
+            companyLink="https://ecomio.com/"
+            type="Working Student"
+            duration={['Sep 2021 - May 2022']}
+            description={[
+              'Implemented a broad range of web application features such as frontend views, backend APIs, database models as well as authenication and security aspects with third party services',
+              'Developed a complete Infrastructure as Code setup for all backend services using terraform',
+              'Set up a Continous Integration workflow',
+              'Regularly reviewed both frontend and backend code of other developers',
+            ]}
+          />
+        )}
+        {activeElement == 1 && (
+          <WorkContent
+            role="Full Stack Developer"
+            company="BMW"
+            companyLink="https://www.bmwgroup.com/"
+            type="Internship"
+            duration={['Aug 2020 - Oct 2020']}
+            description={[
+              'Carried out the analysis, design, implementation and launch of a generic anomaly detection pipeline for vehicle streaming data',
+              'Developed a full stack web application using Kotlin, React and the AWS SDK',
+              'Worked in an agile team of 5 working students and collaborated with engineers and developers from various departments ',
+            ]}
+          />
+        )}
+        {activeElement == 2 && (
+          <WorkContent
+            role="Front End Developer"
+            company="Brose"
+            companyLink="https://www.brose.com/"
+            type="Vacation Work"
+            duration={[
+              'Aug 2016 - Oct 2016 | Mar 2017 - Apr 2017 | Aug 2017 - Sep 2017',
+              'Mar 2018 - Apr 2018 | Sep 2018 - Oct 2018 | Mar 2019 - Apr 2019',
+            ]}
+            description={[
+              'Developed a web interface for an inhouse vehicle database',
+              'Worked with established technologies such as HTML, CSS and Javascript',
+              'Cooperated with specialists from various fields of vehicle development',
+            ]}
+          />
+        )}
+        {activeElement == 3 && (
+          <WorkContent
+            role="IT Intern"
+            company="Haba"
+            companyLink="https://www.haba-play.com/"
+            type="Internship"
+            duration={['Oct 2013']}
+            description={[
+              'Learned basic programming principles and algorithms with Java',
+              'Gained first insights into the everyday professional life of a software developer',
+            ]}
+          />
+        )}
+      </div>
     </div>
   );
 };
