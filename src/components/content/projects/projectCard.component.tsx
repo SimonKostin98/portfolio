@@ -49,7 +49,6 @@ const useStyles = makeStyles<Theme, IProjectCardProps>((theme: Theme) => ({
     color: 'white',
     fontSize: 'calc(3.5vh + 2.5vw)',
     fontWeight: 'bold',
-    WebkitTextStroke: '1px rgba(0, 0, 0, 0.7)',
     textAlign: 'center',
   },
   buttons: {
