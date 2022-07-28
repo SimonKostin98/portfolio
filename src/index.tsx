@@ -38,21 +38,24 @@ const useStyles = makeStyles((theme: Theme) => ({
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
   },
-  navigation: {
-    position: 'fixed',
-    top: 0,
-    bottom: 0,
-    width: theme.custom.navigationWidth,
-  },
   main: {
     position: 'absolute',
     left: theme.custom.navigationWidth,
     height: '100vh',
     width: `calc(100vw - ${theme.custom.navigationWidth}px)`,
+
+    [theme.breakpoints.down('md')]: {
+      width: '100vw',
+      left: 0,
+    },
   },
   fullpage: {
     '&::-webkit-scrollbar': {
       display: 'none',
+    },
+
+    [theme.breakpoints.down('md')]: {
+      height: `calc(100% - ${theme.custom.navigationHeight}px) !important`,
     },
   },
 }));
@@ -73,7 +76,7 @@ const AppContent = (): ReactElement => {
           controls={SideNavigation}
           className={classes.fullpage}
           ref={ref}
-          initialSlide={2}
+          initialSlide={0}
         >
           <Slide>
             <HomeView goToContact={goToContact} />

@@ -4,6 +4,7 @@ declare module '@mui/material/styles/createTheme' {
   interface Theme {
     custom: {
       navigationWidth: number;
+      navigationHeight: number;
       footerHeight: number;
       paperLight: string;
       cardShadow: string;
@@ -14,6 +15,7 @@ declare module '@mui/material/styles/createTheme' {
   interface ThemeOptions {
     custom?: {
       navigationWidth?: number;
+      navigationHeight?: number;
       footerHeight?: number;
       paperLight?: string;
       cardShadow?: string;
