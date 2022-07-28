@@ -16,13 +16,29 @@ interface ISideNavigationProps {
 const useStyles = makeStyles((theme: Theme) => ({
   sideNavigation: {
     position: 'fixed',
-    top: 0,
     left: 0,
     height: '100%',
     width: theme.custom.navigationWidth,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    zIndex: theme.zIndex.appBar,
+
+    [theme.breakpoints.up('md')]: {
+      top: 0,
+    },
+
+    [theme.breakpoints.down('md')]: {
+      width: '100vw',
+      height: theme.custom.navigationHeight,
+      bottom: '0',
+      backgroundColor: theme.palette.background.default,
+      padding: '10px 0',
+    },
+
+    [theme.breakpoints.down('sm')]: {
+      padding: 0,
+    },
   },
   navigationContent: {
     backgroundColor: 'rgba(40, 40, 40, 0.4)',
@@ -38,6 +54,19 @@ const useStyles = makeStyles((theme: Theme) => ({
     alignItems: 'center',
     justifyContent: 'space-around',
     animation: '$animation .75s linear',
+
+    [theme.breakpoints.down('md')]: {
+      width: '90%',
+      flexDirection: 'row',
+      height: '100%',
+      gap: 20,
+    },
+
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+      borderRadius: 0,
+      padding: '0px 10px',
+    },
   },
   navigationIcon: {
     cursor: 'pointer',
@@ -49,6 +78,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     transition: '.2s ease-out',
     borderRadius: '50%',
     color: 'rgba(250, 250, 250, 0.8)',
+
+    [theme.breakpoints.down('md')]: {
+      height: 50,
+      width: 50,
+    },
   },
   active: {
     border: `2.5px solid ${theme.palette.primary.light}`,

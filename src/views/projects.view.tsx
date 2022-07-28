@@ -7,7 +7,6 @@ import TSIcon from '@assets/programming/TS.svg';
 import Dogr from '@assets/projects/Dogr.webp';
 import ElectionSystem from '@assets/projects/electionSystem.webp';
 import MasterThesis from '@assets/projects/MasterThesis.webp';
-import RecipeApp from '@assets/projects/recipeApp.webp';
 import BootstrapIcon from '@assets/tools/bootstrap.svg';
 import FlaskIcon from '@assets/tools/flask.webp';
 import GradleIcon from '@assets/tools/gradle.svg';
@@ -18,11 +17,12 @@ import NodeIcon from '@assets/tools/node.svg';
 import PostgresIcon from '@assets/tools/postgresql.svg';
 import ReactIcon from '@assets/tools/react.svg';
 import VueIcon from '@assets/tools/vue.svg';
+import { Theme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { ProjectCard } from '@src/components/content/projects/projectCard.component';
 import React, { ReactElement } from 'react';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme: Theme) => ({
   projectsView: {
     height: '100%',
     width: '100%',
@@ -30,6 +30,11 @@ const useStyles = makeStyles(() => ({
     flexDirection: 'column',
     justifyContent: 'space-between',
     padding: '2vh 2.5vw 2vh 1vw',
+
+    [theme.breakpoints.down('md')]: {
+      marginLeft: 0,
+      height: `calc(100% - ${theme.custom.navigationHeight}px)`,
+    },
   },
   heading: {
     height: '7.5%',
@@ -38,26 +43,21 @@ const useStyles = makeStyles(() => ({
     paddingLeft: '30px',
     display: 'flex',
     alignItems: 'center',
+
+    [theme.breakpoints.down('md')]: {
+      fontSize: 'x-large',
+    },
   },
   projectCardWrapper: {
     height: '92.5%',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 20,
-  },
-  projectCardRowOne: {
-    width: '100%',
-    height: '50%',
     display: 'grid',
-    gridTemplateColumns: '6fr 5fr',
-    gap: 20,
-  },
-  projectCardRowTwo: {
-    width: '100%',
-    height: '50%',
-    display: 'grid',
-    gridTemplateColumns: '5fr 6fr',
-    gap: 20,
+    gridTemplateColumns: '1fr 1fr 1fr',
+    gap: 30,
+
+    [theme.breakpoints.down('lg')]: {
+      gridTemplateColumns: '1fr',
+      gap: 10,
+    },
   },
 }));
 
@@ -110,38 +110,27 @@ export const ProjectsView = (): ReactElement => {
     <div className={classes.projectsView} id="Projects">
       <div className={classes.heading}>My Projects</div>
       <div className={classes.projectCardWrapper}>
-        <div className={classes.projectCardRowOne}>
-          <ProjectCard
-            imageUrl={Dogr as string}
-            title="Dogr"
-            technologies={dogrTechnologies}
-            status="In Progress"
-            description="Todo"
-          />
-          <ProjectCard
-            imageUrl={RecipeApp as string}
-            title="Recipe App"
-            technologies={dogrTechnologies}
-            status="In Progress"
-            description="Todo"
-          />
-        </div>
-        <div className={classes.projectCardRowTwo}>
-          <ProjectCard
-            imageUrl={ElectionSystem as string}
-            title="State Election"
-            technologies={electionTechnologies}
-            status="Done"
-            description="Todo"
-          />
-          <ProjectCard
-            imageUrl={MasterThesis as string}
-            title="CTAPF"
-            technologies={ctapfTechnologies}
-            status="Done"
-            description="Todo"
-          />
-        </div>
+        <ProjectCard
+          imageUrl={Dogr as string}
+          title="Dogr"
+          technologies={dogrTechnologies}
+          status="In Progress"
+          description="Todo"
+        />
+        <ProjectCard
+          imageUrl={ElectionSystem as string}
+          title="State Election"
+          technologies={electionTechnologies}
+          status="Done"
+          description="Todo"
+        />
+        <ProjectCard
+          imageUrl={MasterThesis as string}
+          title="CTAPF"
+          technologies={ctapfTechnologies}
+          status="Done"
+          description="Todo"
+        />
       </div>
     </div>
   );

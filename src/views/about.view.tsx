@@ -14,10 +14,11 @@ import MongoIcon from '@assets/tools/mongodb.svg';
 import NodeIcon from '@assets/tools/node.svg';
 import PostgresIcon from '@assets/tools/postgresql.svg';
 import ReactIcon from '@assets/tools/react.svg';
-import { Theme } from '@mui/material';
+import { Theme, Tooltip } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import TagSphere from '@src/components/content/about/tagSphere.component';
 import { TextIconToggle } from '@src/components/content/about/textIconToggle.component';
+import clsx from 'clsx';
 import React, { ReactElement } from 'react';
 
 interface IAboutViewProps {
@@ -29,6 +30,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: '100%',
     width: '100%',
     padding: '2vh 2.5vw 2vh 1vw',
+
+    [theme.breakpoints.down('md')]: {
+      marginLeft: 0,
+      height: `calc(100% - ${theme.custom.navigationHeight}px)`,
+      padding: '2vh 2.5vw 2vh 2.5vw',
+    },
   },
   heading: {
     height: '7.5%',
@@ -37,6 +44,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     paddingLeft: '30px',
     display: 'flex',
     alignItems: 'center',
+
+    [theme.breakpoints.down('md')]: {
+      fontSize: 'x-large',
+    },
   },
   aboutContent: {
     height: '92.5%',
@@ -51,9 +62,14 @@ const useStyles = makeStyles((theme: Theme) => ({
     boxShadow: theme.custom.cardShadow,
     WebkitBoxShadow: theme.custom.cardShadow,
     gap: '5vw',
+
+    [theme.breakpoints.down('xl')]: {
+      flexDirection: 'column',
+      gap: 20,
+    },
   },
   aboutInfo: {
-    fontSize: 'calc(1.5vh + .75vw)',
+    fontSize: 'calc(1.25vh + .75vw)',
   },
   highlightedText: {
     color: theme.palette.primary.main,
@@ -80,13 +96,75 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginBottom: 20,
   },
   aboutWordCloud: {
-    display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     height: '100%',
-    width: 700,
     alignSelf: 'end',
     fontSize: 'calc(.7vh + .8vw)',
+    display: 'none',
+  },
+  aboutWordCloudBig: {
+    width: 650,
+    [theme.breakpoints.up('xl')]: {
+      display: 'flex',
+    },
+  },
+  aboutWordCloudMedium: {
+    width: 500,
+    [theme.breakpoints.between('md', 'xl')]: {
+      display: 'flex',
+      alignSelf: 'inherit',
+    },
+  },
+
+  technologySection: {
+    width: '100%',
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 10,
+
+    [theme.breakpoints.up('md')]: {
+      display: 'none',
+    },
+
+    [theme.breakpoints.down('sm')]: {
+      gap: 5,
+    },
+  },
+
+  technologyTitle: {
+    fontWeight: 'bold',
+    color: theme.palette.primary.main,
+    alignSelf: 'center',
+    textDecoration: 'underline',
+    fontSize: 'large',
+  },
+
+  technologyHeading: {
+    fontWeight: 500,
+  },
+
+  technologyList: {
+    width: '100%',
+    display: 'flex',
+    gap: 10,
+    padding: 10,
+  },
+
+  technologyIcon: {
+    width: 25,
+    height: 25,
+    borderRadius: 5,
+    backgroundSize: 'contain',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    cursor: 'pointer',
+
+    [theme.breakpoints.down('sm')]: {
+      width: 20,
+      height: 20,
+    },
   },
 }));
 
@@ -119,6 +197,30 @@ export const AboutView = (props: IAboutViewProps): ReactElement => {
     <TextIconToggle text="Typescript" iconUrl={TSIcon as string} key={13} />,
     <TextIconToggle text="Git" iconUrl={GitIcon as string} key={14} />,
     <TextIconToggle text="Kotlin" iconUrl={KotlinIcon as string} key={15} />,
+  ];
+
+  const frontendTechnologies = [
+    { text: 'React', icon: ReactIcon as string },
+    { text: 'HTML', icon: HTMLIcon as string },
+    { text: 'CSS', icon: CSSIcon as string },
+    { text: 'SASS', icon: SASSIcon as string },
+    { text: 'MaterialUI', icon: MUIIcon as string },
+    { text: 'Bootstrap', icon: BootstrapIcon as string },
+  ];
+
+  const backendTechnologies = [
+    { text: 'Typescript', icon: TSIcon as string },
+    { text: 'Python', icon: PythonIcon as string },
+    { text: 'Kotlin', icon: KotlinIcon as string },
+    { text: 'Node', icon: NodeIcon as string },
+    { text: 'Django', icon: DjangoIcon as string },
+    { text: 'Flask', icon: FlaskIcon as string },
+    { text: 'Docker', icon: DockerIcon as string },
+  ];
+
+  const databaseTechnologies = [
+    { text: 'PostgreSQL', icon: PostgresIcon as string },
+    { text: 'MongoDB', icon: MongoIcon as string },
   ];
 
   return (
@@ -159,8 +261,53 @@ export const AboutView = (props: IAboutViewProps): ReactElement => {
             </span>
           </p>
         </div>
-        <div className={classes.aboutWordCloud}>
-          <TagSphere texts={texts} radius={350} />
+        <div
+          className={clsx(classes.aboutWordCloud, classes.aboutWordCloudBig)}
+        >
+          <TagSphere texts={texts} radius={325} />
+        </div>
+        <div
+          className={clsx(classes.aboutWordCloud, classes.aboutWordCloudMedium)}
+        >
+          <TagSphere texts={texts} radius={200} />
+        </div>
+        <div className={classes.technologySection}>
+          <div className={classes.technologyTitle}>
+            Technologies I work with
+          </div>
+          <div className={classes.technologyHeading}>Frontend</div>
+          <div className={classes.technologyList}>
+            {frontendTechnologies.map((tech, index) => (
+              <Tooltip key={index} title={tech.text} arrow placement="bottom">
+                <div
+                  className={classes.technologyIcon}
+                  style={{ backgroundImage: `url(${tech.icon})` }}
+                />
+              </Tooltip>
+            ))}
+          </div>
+          <div className={classes.technologyHeading}>Backend</div>
+          <div className={classes.technologyList}>
+            {backendTechnologies.map((tech, index) => (
+              <Tooltip key={index} title={tech.text} arrow placement="bottom">
+                <div
+                  className={classes.technologyIcon}
+                  style={{ backgroundImage: `url(${tech.icon})` }}
+                />
+              </Tooltip>
+            ))}
+          </div>
+          <div className={classes.technologyHeading}>Databases</div>
+          <div className={classes.technologyList}>
+            {databaseTechnologies.map((tech, index) => (
+              <Tooltip key={index} title={tech.text} arrow placement="bottom">
+                <div
+                  className={classes.technologyIcon}
+                  style={{ backgroundImage: `url(${tech.icon})` }}
+                />
+              </Tooltip>
+            ))}
+          </div>
         </div>
       </div>
     </div>

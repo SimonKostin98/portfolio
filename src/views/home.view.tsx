@@ -17,15 +17,14 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: '100%',
     display: 'flex',
     marginLeft: `-${theme.custom.navigationWidth / 2}px`,
-    [theme.breakpoints.down('md')]: {
-      flexDirection: 'column-reverse',
-    },
-    [theme.breakpoints.up('md')]: {
-      flexDirection: 'row',
-    },
     alignItems: 'center',
     justifyContent: 'space-around',
     boxSizing: 'border-box',
+
+    [theme.breakpoints.down('md')]: {
+      marginLeft: 0,
+      height: `calc(100% - ${theme.custom.navigationHeight}px)`,
+    },
   },
   socials: {
     position: 'absolute',
@@ -39,6 +38,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     paddingTop: 10,
     color: 'rgba(250, 250, 250, 0.85)',
 
+    [theme.breakpoints.down('md')]: {
+      top: 10,
+      left: 60,
+      right: 'auto',
+      flexDirection: 'row',
+    },
+
     '&::before': {
       content: '""',
       backgroundColor: 'rgba(250, 250, 250, 0.85)',
@@ -48,13 +54,19 @@ const useStyles = makeStyles((theme: Theme) => ({
       left: '50%',
       bottom: '100%',
       marginLeft: -2,
+
+      [theme.breakpoints.down('md')]: {
+        height: 2,
+        width: 50,
+        bottom: 'calc(50% - 7px)',
+        left: -60,
+      },
     },
   },
   infoText: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    WebkitTextStroke: '1px rgba(0, 0, 0, 0.7)',
     animation: '$animation 1.25s linear',
   },
   firstHeading: {
@@ -62,22 +74,22 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontWeight: 'bolder',
     fontSize: 'calc(6vh + 5vw)',
     [theme.breakpoints.down('md')]: {
-      marginBottom: '-10px',
-    },
-    [theme.breakpoints.up('md')]: {
-      marginBottom: '-25px',
+      fontSize: 'calc(5vh + 3vw)',
     },
   },
   secondHeading: {
     fontWeight: 'bold',
     fontSize: 'calc(3.5vh + 1.5vw)',
     color: theme.palette.primary.main,
+
+    [theme.breakpoints.down('md')]: {
+      fontSize: 'calc(2.5vh + 1vw)',
+    },
   },
   button: {
     background: `linear-gradient(-45deg, ${theme.palette.primary.dark}, ${theme.palette.primary.light})`,
     color: 'white',
     fontWeight: 'bold',
-    WebkitTextStroke: '0',
     marginTop: '10px',
     borderRadius: '10rem',
   },

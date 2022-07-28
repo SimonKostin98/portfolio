@@ -1,4 +1,8 @@
 /* eslint-disable max-len */
+import bmwLogo from '@assets/work/BMW.webp';
+import broseLogo from '@assets/work/Brose.webp';
+import ecomioLogo from '@assets/work/Ecomio.webp';
+import habaLogo from '@assets/work/Haba.webp';
 import { Theme } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import React, { ReactElement, useState } from 'react';
@@ -11,14 +15,25 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: '100%',
     height: '100%',
     display: 'flex',
+
+    [theme.breakpoints.down('md')]: {
+      flexDirection: 'column',
+    },
   },
   workContent: {
     width: 'calc(100% - 200px)',
     height: '100%',
     position: 'relative',
-    left: '50px',
+    left: 50,
     border: `2px solid ${theme.palette.primary.main}`,
     borderRadius: 20,
+
+    [theme.breakpoints.down('md')]: {
+      width: '100%',
+      height: 'calc(100% - 75px)',
+      left: 0,
+      top: 15,
+    },
   },
 }));
 
@@ -28,7 +43,12 @@ export const WorkComponent = (): ReactElement => {
   return (
     <div className={classes.workComponent}>
       <ExperienceNavigation
-        elements={['eco.mio', 'BMW', 'Brose', 'Haba']}
+        elements={[
+          { title: 'eco.mio', iconUrl: ecomioLogo as string },
+          { title: 'BMW', iconUrl: bmwLogo as string },
+          { title: 'Brose', iconUrl: broseLogo as string },
+          { title: 'Haba', iconUrl: habaLogo as string },
+        ]}
         activeElement={activeElement}
         setActiveElement={setActiveElement}
       />

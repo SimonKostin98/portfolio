@@ -28,10 +28,10 @@ export const theme: ThemeOptions = {
   breakpoints: {
     values: {
       xs: 0,
-      sm: 576,
-      md: 768,
-      lg: 992,
-      xl: 1200,
+      sm: 600,
+      md: 900,
+      lg: 1200,
+      xl: 1536,
     },
   },
   typography: {
@@ -50,6 +50,7 @@ export const theme: ThemeOptions = {
   },
   custom: {
     navigationWidth: 120,
+    navigationHeight: 90,
     footerHeight: 48,
     paperLight: 'rgba(50, 50, 50, 0.6)',
     cardShadow: '0 0 10px 1px rgba(200, 200, 200, .35)',

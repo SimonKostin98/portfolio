@@ -14,6 +14,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+
+    [theme.breakpoints.down('md')]: {
+      marginLeft: 0,
+      height: `calc(100% - ${theme.custom.navigationHeight}px)`,
+      padding: '2vh 2.5vw 2vh 2.5vw',
+    },
   },
   card: {
     background: theme.palette.background.paper,
@@ -27,7 +33,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     backdropFilter: 'blur(10px)',
     WebkitBoxShadow: theme.custom.cardShadow,
     overflow: 'auto',
-    padding: '0 50px 30px 50px',
+    padding: '10px 50px 30px 50px',
+
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+      height: '100%',
+      padding: '10px 10px 30px 10px',
+    },
   },
   fullContentWrapper: {
     width: '100%',
@@ -48,6 +60,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     justifyContent: 'center',
     fontSize: 'xx-large',
     fontWeight: 'bold',
+
+    [theme.breakpoints.down('md')]: {
+      fontSize: 'x-large',
+      marginBottom: 10,
+    },
   },
   contactForm: {
     width: '100%',
@@ -74,7 +91,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     background: `linear-gradient(-45deg, ${theme.palette.primary.dark}, ${theme.palette.primary.light})`,
     color: 'white',
     fontWeight: 'bold',
-    WebkitTextStroke: '0',
     marginTop: '10px',
     borderRadius: '10rem',
     width: 200,
@@ -191,7 +207,9 @@ export const ContactView = (): ReactElement => {
           <div className={classes.fullContentWrapper}>
             <MarkEmailReadIcon fontSize="inherit" color="success" />
             <span>Message Sent!</span>
-            <span style={{ fontSize: 'calc(.8vh + .7vw)' }}>
+            <span
+              style={{ fontSize: 'calc(.8vh + .7vw)', textAlign: 'center' }}
+            >
               Your Message has been successfully sent. I will respond to you as
               soon as possible.{' '}
             </span>
