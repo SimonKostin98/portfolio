@@ -16,6 +16,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: '100%',
     height: '100%',
     padding: 10,
+
+    [theme.breakpoints.down('md')]: {
+      padding: '5px 10px',
+    },
   },
   workContentHeading: {
     width: '100%',
@@ -24,6 +28,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+
+    [theme.breakpoints.down('md')]: {
+      fontSize: 'calc(1.2vh + 1vw)',
+    },
   },
   highlightedText: {
     marginLeft: 5,
@@ -34,14 +42,23 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    fontSize: 'large',
+    fontSize: 'max(calc(1vh + 1vw), large)',
     color: 'rgba(190, 190, 190, 0.7)',
     marginBottom: 40,
+
+    [theme.breakpoints.down('md')]: {
+      fontSize: 'calc(.75vh + .75vw)',
+      marginBottom: 20,
+    },
   },
   infoList: {
     color: 'rgba(240, 240, 240, 0.8)',
-    fontSize: 'large',
+    fontSize: 'max(calc(1vh + 1vw), large)',
     listStyle: 'none',
+
+    [theme.breakpoints.down('md')]: {
+      fontSize: 'calc(.9vh + .9vw)',
+    },
   },
   infoItem: {
     paddingLeft: 30,
@@ -56,6 +73,10 @@ const useStyles = makeStyles((theme: Theme) => ({
       position: 'absolute',
       left: 0,
       top: -2,
+    },
+
+    [theme.breakpoints.down('sm')]: {
+      marginBottom: 10,
     },
   },
   companyLink: {
