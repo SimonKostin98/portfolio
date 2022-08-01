@@ -137,7 +137,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontWeight: 'bold',
     color: theme.palette.primary.main,
     alignSelf: 'center',
-    textDecoration: 'underline',
     fontSize: 'large',
   },
 
