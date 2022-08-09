@@ -4,12 +4,7 @@ import LayersRoundedIcon from '@mui/icons-material/LayersRounded';
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import { IconButton, Theme, Tooltip, useTheme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import React, {
-  ReactElement,
-  useEffect,
-  useLayoutEffect,
-  useState,
-} from 'react';
+import React, { ReactElement, useLayoutEffect, useState } from 'react';
 import ReactCardFlip from 'react-card-flip';
 
 import { ProjectCardDialog } from './projectCardDialog.component';
