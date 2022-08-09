@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     overflow: 'auto',
     padding: '10px 50px 30px 50px',
 
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       width: '100%',
       height: '100%',
       padding: '10px 10px 30px 10px',

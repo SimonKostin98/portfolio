@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
+
 import { SideNavigation } from '@components/navigation/sideNavigation.component';
 import {
   createTheme,
@@ -14,7 +15,7 @@ import { ContactView } from '@views/contact.view';
 import { ExperienceView } from '@views/experience.view';
 import { HomeView } from '@views/home.view';
 import { ProjectsView } from '@views/projects.view';
-import React, { ReactElement, useRef } from 'react';
+import React, { ReactElement, useEffect, useRef, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import { FullPage, Slide } from 'react-full-page';
 import Particles from 'react-tsparticles';
@@ -26,6 +27,7 @@ import { loadOutModesUpdater } from 'tsparticles-updater-out-modes';
 import { loadSizeUpdater } from 'tsparticles-updater-size';
 
 import { theme } from './theme';
+import { StartAnimationView } from './views/startAnimation.view';
 
 const useStyles = makeStyles((theme: Theme) => ({
   background: {
@@ -62,39 +64,48 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const AppContent = (): ReactElement => {
   const classes = useStyles();
+  const [showStartAnimation, setShowStartAnimation] = useState(true);
   const ref = useRef<{ scrollToSlide: (slide: number) => void }>(null);
 
   const goToContact = () => {
     ref.current?.scrollToSlide(4);
   };
 
+  useEffect(() => {
+    setTimeout(() => setShowStartAnimation(false), 4500);
+  });
+
   return (
     <>
-      <div className={classes.main}>
-        <FullPage
-          duration={750}
-          controls={SideNavigation}
-          className={classes.fullpage}
-          ref={ref}
-          initialSlide={0}
-        >
-          <Slide>
-            <HomeView goToContact={goToContact} />
-          </Slide>
-          <Slide>
-            <AboutView goToContact={goToContact} />
-          </Slide>
-          <Slide>
-            <ExperienceView />
-          </Slide>
-          <Slide>
-            <ProjectsView />
-          </Slide>
-          <Slide>
-            <ContactView />
-          </Slide>
-        </FullPage>
-      </div>
+      {showStartAnimation ? (
+        <StartAnimationView />
+      ) : (
+        <div className={classes.main}>
+          <FullPage
+            duration={750}
+            controls={SideNavigation}
+            className={classes.fullpage}
+            ref={ref}
+            initialSlide={0}
+          >
+            <Slide>
+              <HomeView goToContact={goToContact} />
+            </Slide>
+            <Slide>
+              <AboutView goToContact={goToContact} />
+            </Slide>
+            <Slide>
+              <ExperienceView />
+            </Slide>
+            <Slide>
+              <ProjectsView />
+            </Slide>
+            <Slide>
+              <ContactView />
+            </Slide>
+          </FullPage>
+        </div>
+      )}
     </>
   );
 };

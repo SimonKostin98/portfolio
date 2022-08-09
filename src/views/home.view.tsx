@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 import CV from '@assets/Lebenslauf.pdf';
 import GitHub from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
@@ -49,25 +50,33 @@ const useStyles = makeStyles((theme: Theme) => ({
       content: '""',
       backgroundColor: 'rgba(250, 250, 250, 0.85)',
       width: 2,
-      height: 60,
+      height: 0,
       position: 'absolute',
       left: '50%',
-      bottom: '100%',
+      top: -60,
       marginLeft: -2,
+      animation: '$socialsLineAnimation .3s ease-out 2.5s forwards',
 
       [theme.breakpoints.down('md')]: {
         height: 2,
-        width: 50,
+        width: 0,
+        top: 'auto',
         bottom: 'calc(50% - 7px)',
         left: -60,
+        animation: '$socialsLineAnimationSmall .3s ease-out 2.5s forwards',
       },
     },
   },
+
+  socialsButton: {
+    opacity: 0,
+    animation: '$appearAnimation .3s ease-out forwards',
+  },
+
   infoText: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    animation: '$animation 1.25s linear',
   },
   firstHeading: {
     color: 'white',
@@ -76,11 +85,14 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down('md')]: {
       fontSize: 'calc(5vh + 3vw)',
     },
+    animation: '$appearAnimation 1s',
   },
   secondHeading: {
     fontWeight: 'bold',
     fontSize: 'calc(3.5vh + 1.5vw)',
     color: theme.palette.primary.main,
+    opacity: 0,
+    animation: '$appearAnimation 1s .8s forwards',
 
     [theme.breakpoints.down('md')]: {
       fontSize: 'calc(2.5vh + 1vw)',
@@ -92,14 +104,35 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontWeight: 'bold',
     marginTop: '10px',
     borderRadius: '10rem',
+    opacity: 0,
+    animation: '$appearAnimation 1s 1.8s forwards',
   },
 
-  '@keyframes animation': {
+  '@keyframes appearAnimation': {
     from: {
       opacity: 0,
     },
     to: {
       opacity: 1,
+    },
+  },
+
+  '@keyframes socialsLineAnimation': {
+    from: {
+      height: 0,
+    },
+
+    to: {
+      height: 60,
+    },
+  },
+
+  '@keyframes socialsLineAnimationSmall': {
+    from: {
+      width: 0,
+    },
+    to: {
+      width: 50,
     },
   },
 }));
@@ -110,7 +143,13 @@ export const HomeView = (props: IHomeViewProps): ReactElement => {
   return (
     <div className={classes.homeComponent} id="Home">
       <div className={classes.socials}>
-        <Tooltip title="Github" arrow placement="left">
+        <Tooltip
+          title="Github"
+          arrow
+          placement="left"
+          className={classes.socialsButton}
+          style={{ animationDelay: '2.8s' }}
+        >
           <IconButton
             color="inherit"
             href="https://github.com/SimonKostin98"
@@ -119,7 +158,13 @@ export const HomeView = (props: IHomeViewProps): ReactElement => {
             <GitHub fontSize="large" />
           </IconButton>
         </Tooltip>
-        <Tooltip title="LinkedIn" arrow placement="left">
+        <Tooltip
+          title="LinkedIn"
+          arrow
+          placement="left"
+          className={classes.socialsButton}
+          style={{ animationDelay: '3.1s' }}
+        >
           <IconButton
             color="inherit"
             href="https://www.linkedin.com/in/simonkostin/"
@@ -128,7 +173,13 @@ export const HomeView = (props: IHomeViewProps): ReactElement => {
             <LinkedInIcon fontSize="large" />
           </IconButton>
         </Tooltip>
-        <Tooltip title="CV" arrow placement="left">
+        <Tooltip
+          title="CV"
+          arrow
+          placement="left"
+          className={classes.socialsButton}
+          style={{ animationDelay: '3.4s' }}
+        >
           <IconButton
             color="inherit"
             href={CV as string}
@@ -150,6 +201,7 @@ export const HomeView = (props: IHomeViewProps): ReactElement => {
               ],
               autoStart: true,
               loop: true,
+              delay: 60,
             }}
           />
         </div>

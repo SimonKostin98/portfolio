@@ -53,13 +53,16 @@ const useStyles = makeStyles((theme: Theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'space-around',
-    animation: '$animation .75s linear',
+    transform: 'translateX(-150%)',
+    animation: '$animation 1s ease-out 2.5s forwards',
 
     [theme.breakpoints.down('md')]: {
       width: '90%',
       flexDirection: 'row',
       height: '100%',
       gap: 20,
+      transform: 'translateY(150%)',
+      animation: '$animationSmall 1s ease-out 2.5s forwards',
     },
 
     [theme.breakpoints.down('sm')]: {
@@ -96,6 +99,15 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     to: {
       transform: 'translateX(0)',
+    },
+  },
+
+  '@keyframes animationSmall': {
+    from: {
+      transform: 'translateY(150%)',
+    },
+    to: {
+      transform: 'translateY(0)',
     },
   },
 }));

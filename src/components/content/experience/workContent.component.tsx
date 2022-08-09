@@ -42,13 +42,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    fontSize: 'max(calc(1vh + 1vw), large)',
+    fontSize: 'calc(.6vh + .6vw)',
     color: 'rgba(190, 190, 190, 0.7)',
     marginBottom: 40,
 
     [theme.breakpoints.down('md')]: {
-      fontSize: 'calc(.75vh + .75vw)',
       marginBottom: 20,
+      fontSize: 'calc(.8vh + .8vw)',
     },
   },
   infoList: {

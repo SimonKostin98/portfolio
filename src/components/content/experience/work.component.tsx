@@ -89,8 +89,9 @@ export const WorkComponent = (): ReactElement => {
             companyLink="https://www.brose.com/"
             type="Vacation Work"
             duration={[
-              'Aug 2016 - Oct 2016 | Mar 2017 - Apr 2017 | Aug 2017 - Sep 2017',
-              'Mar 2018 - Apr 2018 | Sep 2018 - Oct 2018 | Mar 2019 - Apr 2019',
+              'Aug 2016 - Oct 2016 | Mar 2017 - Apr 2017 ',
+              'Aug 2017 - Sep 2017 | Mar 2018 - Apr 2018',
+              'Sep 2018 - Oct 2018 | Mar 2019 - Apr 2019',
             ]}
             description={[
               'Developed a web interface for an inhouse vehicle database',
