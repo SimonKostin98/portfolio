@@ -118,8 +118,8 @@ export const ProjectsView = (): ReactElement => {
           purpose="Learning Project"
           technologies={dogrTechnologies}
           status="In Progress"
-          description="Dogr is a social network for all people who love dogs and started as a learning project for
-          me and my friends. The main idea behind Dogr is to combine all dog related topics on one single platform.
+          description="Dogr is a social network for all people who love dogs. It started as a learning project for
+          me and my friends and the main idea behind Dogr is to combine all dog related topics on one single platform.
           The project allows us to face a variety of different challenges of web development and offers the possibility
           to try out new and interesting technologies. Since the application is still in development, only
           a very brief demo of the project is available at this point in time."
