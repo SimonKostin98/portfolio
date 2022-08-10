@@ -13,6 +13,3 @@ dist/
 
 # env files
 .env
-
-# currently until finish keep resume out
-src/assets/Lebenslauf.pdf
