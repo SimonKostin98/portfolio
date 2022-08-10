@@ -58,11 +58,6 @@ module.exports = {
     alias: {
       '@assets': path.resolve(__dirname, SRC_DIRECTORY, 'assets'),
       '@components': path.resolve(__dirname, SRC_DIRECTORY, 'components'),
-      '@customizations': path.resolve(
-        __dirname,
-        SRC_DIRECTORY,
-        'customizations',
-      ),
       '@src': path.resolve(__dirname, SRC_DIRECTORY),
       '@views': path.resolve(__dirname, SRC_DIRECTORY, 'views'),
     },

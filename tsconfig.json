@@ -19,7 +19,6 @@
       "@src/*": ["./src/*"],
       "@assets/*": ["./src/assets/*"],
       "@components/*": ["./src/components/*"],
-      "@customizations/*": ["./src/customizations/*"],
       "@views/*": ["./src/views/*"]
     }
   },
