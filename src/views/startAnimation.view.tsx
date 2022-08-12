@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     animation: '$borderAnimation 1.25s ease-out 2.25s forwards',
 
     [theme.breakpoints.down('md')]: {
-      padding: '20px 30px 30px 80px',
+      padding: '20px 7.5vw 30px 15vw',
     },
   },
   stack: {
@@ -52,6 +52,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     bottom: 190,
     borderRadius: 15,
     marginTop: '-66%',
+
+    [theme.breakpoints.down('sm')]: {
+      height: 'calc(4.5vh + 4.5vw)',
+      width: 'calc(4.5vh + 4.5vw)',
+    },
   },
   title: {
     fontSize: '20vh',
