@@ -1,10 +1,8 @@
 const path = require('path');
-const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 const SRC_DIRECTORY = path.resolve(__dirname, '..', 'src');
-
-const dotenv = require('dotenv');
 
 module.exports = {
   entry: './src/index.tsx',
@@ -69,8 +67,8 @@ module.exports = {
       inject: 'body',
       favicon: './src/assets/images/favicon.ico',
     }),
-    new webpack.DefinePlugin({
-      'process.env': JSON.stringify(dotenv.config().parsed),
+    new Dotenv({
+      systemvars: true,
     }),
   ],
 };
