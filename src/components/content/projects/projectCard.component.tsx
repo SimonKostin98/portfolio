@@ -153,6 +153,7 @@ export const ProjectCard = (props: IProjectCardProps): ReactElement => {
   const [flipped, setFlipped] = useState(false);
   const { purpose, technologies, title, status, description } = props;
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [toDoDialogOpen, setToDoDialogOpen] = useState(false);
   const theme = useTheme();
 
   useLayoutEffect(() => {
@@ -225,6 +226,10 @@ export const ProjectCard = (props: IProjectCardProps): ReactElement => {
     </table>
   );
 
+  const toDoDialogText = (
+    <div>A demo of the project and the source code will be available soon</div>
+  );
+
   return (
     <ReactCardFlip isFlipped={flipped} containerClassName={classes.projectCard}>
       <div className={classes.front}>
@@ -232,12 +237,12 @@ export const ProjectCard = (props: IProjectCardProps): ReactElement => {
           <div className={classes.title}>{title}</div>
           <div className={classes.buttons}>
             <Tooltip title="Source Code" placement="top" arrow>
-              <IconButton>
+              <IconButton onClick={() => setToDoDialogOpen(true)}>
                 <GitHubIcon className={classes.iconButton} />
               </IconButton>
             </Tooltip>
             <Tooltip title="Live Demo" placement="top" arrow>
-              <IconButton>
+              <IconButton onClick={() => setToDoDialogOpen(true)}>
                 <PlayCircleIcon className={classes.iconButton} />
               </IconButton>
             </Tooltip>
@@ -256,6 +261,13 @@ export const ProjectCard = (props: IProjectCardProps): ReactElement => {
           closeDialog={() => setDialogOpen(false)}
           table={table}
         />
+        {/*ToDo: Remove this dialog after adding the corresponding demo links */}
+        <ProjectCardDialog
+          title={title}
+          open={toDoDialogOpen}
+          closeDialog={() => setToDoDialogOpen(false)}
+          table={toDoDialogText}
+        />
         <div className={classes.backHeading}>{props.title}</div>
         <div className={classes.backContent}>
           <div className={classes.backDescription}>{description}</div>
@@ -266,12 +278,12 @@ export const ProjectCard = (props: IProjectCardProps): ReactElement => {
           style={{ borderTop: '1px solid white' }}
         >
           <Tooltip title="Source Code" placement="top" arrow>
-            <IconButton>
+            <IconButton onClick={() => setToDoDialogOpen(true)}>
               <GitHubIcon className={classes.iconButton} />
             </IconButton>
           </Tooltip>
           <Tooltip title="Live Demo" placement="top" arrow>
-            <IconButton>
+            <IconButton onClick={() => setToDoDialogOpen(true)}>
               <PlayCircleIcon className={classes.iconButton} />
             </IconButton>
           </Tooltip>
