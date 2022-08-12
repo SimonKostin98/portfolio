@@ -21,9 +21,6 @@ interface IProjectCardDialogProps {
 const useStyles = makeStyles((theme: Theme) => ({
   dialog: {
     backgroundColor: 'rgba(0, 0, 0, 0.65)',
-    [theme.breakpoints.up('lg')]: {
-      display: 'none',
-    },
   },
   dialogTitle: {
     display: 'flex',
