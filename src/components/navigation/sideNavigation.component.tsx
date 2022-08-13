@@ -124,7 +124,11 @@ export const SideNavigation = (props: ISideNavigationProps): ReactElement => {
             [classes.active]: getCurrentSlideIndex() === 0,
           })}
         >
-          <IconButton color="inherit" onClick={() => scrollToSlide(0)}>
+          <IconButton
+            color="inherit"
+            onClick={() => scrollToSlide(0)}
+            aria-label="home section"
+          >
             <HomeRoundedIcon fontSize="large" />
           </IconButton>
         </div>
@@ -133,7 +137,11 @@ export const SideNavigation = (props: ISideNavigationProps): ReactElement => {
             [classes.active]: getCurrentSlideIndex() === 1,
           })}
         >
-          <IconButton color="inherit" onClick={() => scrollToSlide(1)}>
+          <IconButton
+            color="inherit"
+            onClick={() => scrollToSlide(1)}
+            aria-label="about me section"
+          >
             <PersonRoundedIcon fontSize="large" />
           </IconButton>
         </div>
@@ -142,7 +150,11 @@ export const SideNavigation = (props: ISideNavigationProps): ReactElement => {
             [classes.active]: getCurrentSlideIndex() === 2,
           })}
         >
-          <IconButton color="inherit" onClick={() => scrollToSlide(2)}>
+          <IconButton
+            color="inherit"
+            onClick={() => scrollToSlide(2)}
+            aria-label="experience section"
+          >
             <PsychologyRoundedIcon fontSize="large" />
           </IconButton>
         </div>
@@ -151,7 +163,11 @@ export const SideNavigation = (props: ISideNavigationProps): ReactElement => {
             [classes.active]: getCurrentSlideIndex() === 3,
           })}
         >
-          <IconButton color="inherit" onClick={() => scrollToSlide(3)}>
+          <IconButton
+            color="inherit"
+            onClick={() => scrollToSlide(3)}
+            aria-label="projects section"
+          >
             <FolderSpecialRoundedIcon fontSize="large" />
           </IconButton>
         </div>
@@ -160,7 +176,11 @@ export const SideNavigation = (props: ISideNavigationProps): ReactElement => {
             [classes.active]: getCurrentSlideIndex() === 4,
           })}
         >
-          <IconButton color="inherit" onClick={() => scrollToSlide(4)}>
+          <IconButton
+            color="inherit"
+            onClick={() => scrollToSlide(4)}
+            aria-label="contact section"
+          >
             <ChatBubbleRoundedIcon fontSize="large" />
           </IconButton>
         </div>
