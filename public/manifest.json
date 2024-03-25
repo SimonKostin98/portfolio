@@ -1,7 +1,7 @@
 {
   "id": "./index.html",
-  "short_name": "eco.mio Webtool",
-  "name": "eco.mio Webtool",
+  "short_name": "Portfolio",
+  "name": "Simon Kostin Portfolio",
   "start_url": "./index.html",
   "display": "standalone",
   "theme_color": "#000000",
