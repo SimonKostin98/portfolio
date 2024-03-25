@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-
 import { SideNavigation } from '@components/navigation/sideNavigation.component';
 import {
   createTheme,
@@ -10,21 +8,34 @@ import {
   ThemeProvider,
 } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
+import type {
+  DestroyType,
+  Engine,
+  MoveDirection,
+  StartValueType,
+} from '@tsparticles/engine';
+import { loadBaseMover } from '@tsparticles/move-base';
+import Particles, { initParticlesEngine } from '@tsparticles/react';
+import { loadCircleShape } from '@tsparticles/shape-circle';
+import { loadColorUpdater } from '@tsparticles/updater-color';
+import { loadOpacityUpdater } from '@tsparticles/updater-opacity';
+import { loadOutModesUpdater } from '@tsparticles/updater-out-modes';
+import { loadSizeUpdater } from '@tsparticles/updater-size';
 import { AboutView } from '@views/about.view';
 import { ContactView } from '@views/contact.view';
 import { ExperienceView } from '@views/experience.view';
 import { HomeView } from '@views/home.view';
 import { ProjectsView } from '@views/projects.view';
-import React, { ReactElement, useEffect, useRef, useState } from 'react';
+import React, {
+  ReactElement,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import ReactDOM from 'react-dom/client';
 import { FullPage, Slide } from 'react-full-page';
-import Particles from 'react-tsparticles';
-import { loadBaseMover } from 'tsparticles-move-base';
-import { loadCircleShape } from 'tsparticles-shape-circle';
-import { loadColorUpdater } from 'tsparticles-updater-color';
-import { loadOpacityUpdater } from 'tsparticles-updater-opacity';
-import { loadOutModesUpdater } from 'tsparticles-updater-out-modes';
-import { loadSizeUpdater } from 'tsparticles-updater-size';
 
 import { theme } from './theme';
 import { StartAnimationView } from './views/startAnimation.view';
@@ -64,7 +75,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const AppContent = (): ReactElement => {
   const classes = useStyles();
-  const [showStartAnimation, setShowStartAnimation] = useState(true);
+  const [showStartAnimation, setShowStartAnimation] = useState(false);
   const ref = useRef<{ scrollToSlide: (slide: number) => void }>(null);
 
   const goToContact = () => {
@@ -112,82 +123,98 @@ const AppContent = (): ReactElement => {
 
 const App = (): ReactElement => {
   const classes = useStyles();
+  const [init, setInit] = useState(false);
 
-  const particlesInit = async (engine: any) => {
-    await loadColorUpdater(engine);
-    await loadColorUpdater(engine);
-    await loadCircleShape(engine);
-    await loadBaseMover(engine);
-    await loadSizeUpdater(engine);
-    await loadOpacityUpdater(engine);
-    await loadOutModesUpdater(engine);
-  };
+  const particlesInit = useCallback(async () => {
+    await initParticlesEngine(async (engine: Engine) => {
+      await loadColorUpdater(engine);
+      await loadColorUpdater(engine);
+      await loadCircleShape(engine);
+      await loadBaseMover(engine);
+      await loadSizeUpdater(engine);
+      await loadOpacityUpdater(engine);
+      await loadOutModesUpdater(engine);
+    });
+  }, []);
 
-  return (
-    <div>
-      <div className={classes.background}>
-        <Particles
-          id="tsparticles"
-          init={particlesInit}
-          options={{
-            fpsLimit: 30,
-            detectRetina: true,
-            particles: {
-              number: {
-                value: 30,
-                density: {
-                  enable: true,
-                  area: 800,
-                },
-              },
-              color: {
-                value: ['#62efff', '#00bcd4', '#008ba3'],
-              },
-              shape: {
-                type: 'circle',
-              },
-              opacity: {
-                value: {
-                  min: 0.1,
-                  max: 0.5,
-                },
-                animation: {
-                  minimumValue: 0.1,
-                  destroy: 'none',
-                  startValue: 'random',
-                },
-              },
-              size: {
-                value: 20,
-                random: true,
-                animation: {
-                  enable: true,
-                  speed: 10,
-                  minimumValue: 0.1,
-                  sync: false,
-                },
-              },
-              move: {
-                enable: true,
-                speed: 1,
-                direction: 'none',
-                random: false,
-                straight: false,
-                outMode: 'bounce',
-                bounce: false,
-                attract: {
-                  enable: false,
-                  rotateX: 600,
-                  rotateY: 1200,
-                },
-              },
-            },
-          }}
-        />
-      </div>
-      <AppContent />
-    </div>
+  useEffect(() => {
+    void particlesInit().then(() => {
+      setInit(true);
+    });
+  }, [particlesInit]);
+
+  const tsParticlesOptions = useMemo(
+    () => ({
+      fpsLimit: 30,
+      detectRetina: true,
+      particles: {
+        number: {
+          value: 40,
+          density: {
+            enable: true,
+            area: 800,
+          },
+        },
+        color: {
+          value: ['#62efff', '#00bcd4', '#008ba3'],
+        },
+        shape: {
+          type: 'circle',
+        },
+        opacity: {
+          value: {
+            min: 0.1,
+            max: 0.5,
+          },
+          animation: {
+            enable: true,
+            speed: 0.5,
+            destroy: 'none' as DestroyType,
+            startValue: 'random' as StartValueType,
+          },
+        },
+        size: {
+          value: {
+            min: 10,
+            max: 25,
+          },
+          random: true,
+          animation: {
+            enable: true,
+            speed: 10,
+            sync: false,
+          },
+        },
+        move: {
+          enable: true,
+          speed: 1,
+          direction: 'none' as MoveDirection,
+          random: false,
+          straight: false,
+          outMode: 'bounce',
+          bounce: false,
+          attract: {
+            enable: false,
+            rotateX: 600,
+            rotateY: 1200,
+          },
+        },
+      },
+    }),
+    [],
   );
+
+  if (init) {
+    return (
+      <div>
+        <div className={classes.background}>
+          <Particles id="tsparticles" options={tsParticlesOptions} />
+        </div>
+        <AppContent />
+      </div>
+    );
+  }
+  return <></>;
 };
 
 const Wrapper = () => {
