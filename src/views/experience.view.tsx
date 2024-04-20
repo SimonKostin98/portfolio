@@ -1,8 +1,8 @@
-import { EducationComponent } from '@components/content/experience/education.component';
-import { WorkComponent } from '@components/content/experience/work.component';
 import { Theme } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
+import { EducationComponent } from '@src/components/content/experience/education.component';
 import { ExperienceNavBar } from '@src/components/content/experience/experienceNavBar.component';
+import { WorkComponent } from '@src/components/content/experience/work.component';
 import React, { ReactElement, useState } from 'react';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -10,12 +10,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: '100%',
     width: '100%',
     padding: '2vh 2.5vw 2vh 1vw',
-
-    [theme.breakpoints.down('md')]: {
-      marginLeft: 0,
-      height: `calc(100% - ${theme.custom.navigationHeight}px)`,
-      padding: '2vh 2.5vw 2vh 2.5vw',
-    },
   },
   heading: {
     height: '7.5%',
@@ -32,12 +26,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   experienceContent: {
     height: '92.5%',
     width: '100%',
-    backgroundColor: theme.palette.background.paper,
-    backdropFilter: 'blur(10px)',
-    borderRadius: 25,
-    boxShadow: theme.custom.cardShadow,
-    WebkitBoxShadow: theme.custom.cardShadow,
-    padding: '2%',
   },
 
   experienceContentBigWrapper: {
@@ -62,7 +50,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingLeft: 200,
   },
   halfContent: {
     width: '100%',
@@ -83,7 +70,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   experienceContentSmall: {
     width: '100%',
     flex: 1,
-    padding: '3.5% 2.5%',
+    padding: '50px 2.5% 50px 2.5%',
   },
 }));
 

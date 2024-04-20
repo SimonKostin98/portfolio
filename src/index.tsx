@@ -26,6 +26,7 @@ import { ContactView } from '@views/contact.view';
 import { ExperienceView } from '@views/experience.view';
 import { HomeView } from '@views/home.view';
 import { ProjectsView } from '@views/projects.view';
+import { StartAnimationView } from '@views/startAnimation.view';
 import React, {
   ReactElement,
   useCallback,
@@ -38,7 +39,6 @@ import ReactDOM from 'react-dom/client';
 import { FullPage, Slide } from 'react-full-page';
 
 import { theme } from './theme';
-import { StartAnimationView } from './views/startAnimation.view';
 
 const useStyles = makeStyles((theme: Theme) => ({
   background: {
@@ -75,7 +75,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const AppContent = (): ReactElement => {
   const classes = useStyles();
-  const [showStartAnimation, setShowStartAnimation] = useState(false);
+  const [showStartAnimation, setShowStartAnimation] = useState(true);
   const ref = useRef<{ scrollToSlide: (slide: number) => void }>(null);
 
   const goToContact = () => {
