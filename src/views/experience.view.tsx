@@ -1,15 +1,22 @@
+import { EducationComponent } from '@components/content/experience/education.component';
+import { EducationSmallComponent } from '@components/content/experience/educationSmall.components';
+import { ExperienceNavBar } from '@components/content/experience/experienceNavBar.component';
+import { WorkComponent } from '@components/content/experience/work.component';
+import { WorkSmallComponent } from '@components/content/experience/workSmall.component';
 import { Theme } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
-import { EducationComponent } from '@src/components/content/experience/education.component';
-import { ExperienceNavBar } from '@src/components/content/experience/experienceNavBar.component';
-import { WorkComponent } from '@src/components/content/experience/work.component';
 import React, { ReactElement, useState } from 'react';
 
 const useStyles = makeStyles((theme: Theme) => ({
   experienceView: {
     height: '100%',
     width: '100%',
-    padding: '2vh 2.5vw 2vh 1vw',
+    padding: '2vh 2vw 2vh 2vw',
+
+    [theme.breakpoints.down('md')]: {
+      height: `calc(100% - ${theme.custom.navigationHeight}px)`,
+      padding: '2vh 2.5vw 2vh 2.5vw',
+    },
   },
   heading: {
     height: '7.5%',
@@ -56,7 +63,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: '90%',
   },
 
-  experienceContentSmallWrapper: {
+  experienceContentSmallAndMediumWrapper: {
     height: '100%',
     width: '100%',
     display: 'flex',
@@ -67,10 +74,22 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
 
+  experienceContentMedium: {
+    padding: '3%',
+
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    },
+  },
+
   experienceContentSmall: {
     width: '100%',
     flex: 1,
-    padding: '50px 2.5% 50px 2.5%',
+    paddingTop: '3%',
+
+    [theme.breakpoints.up('sm')]: {
+      display: 'none',
+    },
   },
 }));
 
@@ -95,14 +114,19 @@ export const ExperienceView = (): ReactElement => {
             </div>
           </div>
         </div>
-        <div className={classes.experienceContentSmallWrapper}>
+
+        <div className={classes.experienceContentSmallAndMediumWrapper}>
           <ExperienceNavBar
             navigationValue={navigationValue}
             setNavigationValue={setNavigationValue}
           />
-          <div className={classes.experienceContentSmall}>
+          <div className={classes.experienceContentMedium}>
             {navigationValue == 0 && <WorkComponent />}
             {navigationValue == 1 && <EducationComponent />}
+          </div>
+          <div className={classes.experienceContentSmall}>
+            {navigationValue == 0 && <WorkSmallComponent />}
+            {navigationValue == 1 && <EducationSmallComponent />}
           </div>
         </div>
       </div>
