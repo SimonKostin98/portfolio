@@ -25,12 +25,15 @@ interface IExperienceAccordionProps {
 const useStyles = makeStyles((theme: Theme) => ({
   experienceAccordion: {
     width: '100%',
-    padding: 10,
     backgroundColor: theme.palette.background.paper,
     backdropFilter: 'blur(10px)',
     borderRadius: '25px !important',
     boxShadow: theme.custom.cardShadow,
     WebkitBoxShadow: theme.custom.cardShadow,
+
+    [theme.breakpoints.up('xl')]: {
+      padding: 10,
+    },
 
     '&:before': {
       display: 'none',
@@ -39,18 +42,20 @@ const useStyles = makeStyles((theme: Theme) => ({
   experienceAccordionSummary: {
     display: 'flex',
     alignItems: 'center',
-    gap: 40,
   },
   experienceAccordionSummaryImage: {
-    height: 100,
-    width: 100,
+    backgroundColor: 'white',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-    backgroundSize: 'contain',
+    backgroundSize: '45px 45px',
     borderRadius: '50%',
+    width: 50,
+    height: 50,
+
     [theme.breakpoints.up('xl')]: {
-      height: 110,
-      width: 110,
+      height: 80,
+      width: 80,
+      backgroundSize: '75px 75px',
     },
   },
   experienceAccordionSummaryText: {
@@ -62,7 +67,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   experienceAccordionSummaryHeading: {
     fontWeight: 'bold',
     fontSize: 'x-large',
-    [theme.breakpoints.down('lg')]: {
+    [theme.breakpoints.down('xl')]: {
       fontSize: 'large',
     },
   },
@@ -77,11 +82,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     alignItems: 'center',
     fontSize: 'calc(.6vh + .5vw)',
     color: 'rgba(190, 190, 190, 0.7)',
-
-    [theme.breakpoints.down('md')]: {
-      marginBottom: 20,
-      fontSize: 'calc(.8vh + .8vw)',
-    },
   },
   companyLink: {
     position: 'relative',

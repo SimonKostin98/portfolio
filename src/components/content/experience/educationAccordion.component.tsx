@@ -26,11 +26,17 @@ interface IEducationAccordionProps {
 const useStyles = makeStyles((theme: Theme) => ({
   infoList: {
     color: 'rgba(240, 240, 240, 0.8)',
-    fontSize: 'max(calc(1vh + 1vw), large)',
+    fontSize: 'large',
     listStyle: 'none',
+    margin: 0,
+
+    [theme.breakpoints.down('xl')]: {
+      fontSize: 'small',
+      paddingLeft: 20,
+    },
 
     [theme.breakpoints.down('md')]: {
-      fontSize: 'calc(.9vh + .9vw)',
+      paddingLeft: 10,
     },
   },
   infoItem: {
@@ -46,6 +52,16 @@ const useStyles = makeStyles((theme: Theme) => ({
       position: 'absolute',
       left: 0,
       top: -2,
+    },
+
+    [theme.breakpoints.down('lg')]: {
+      paddingLeft: 20,
+      marginBottom: 12,
+    },
+
+    [theme.breakpoints.down('md')]: {
+      paddingLeft: 15,
+      marginBottom: 10,
     },
   },
   highlightedText: {
