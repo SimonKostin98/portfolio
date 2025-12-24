@@ -1,6 +1,5 @@
 /* copied from https://github.com/jjsanmartino03/react-tag-sphere */
 /* eslint-disable */
-import React from 'react';
 import {
   createRef,
   CSSProperties,
@@ -33,7 +32,7 @@ const defaultStyles = {
       minHeight: `${2 * radius}px`,
       height: fullHeight ? '100%' : `${2 * radius}px`,
       touchAction: 'none',
-    } as CSSProperties),
+    }) as CSSProperties,
 };
 
 const computeInitialPosition = (
@@ -60,7 +59,7 @@ const updateItemPosition = (item: any, sc: number[], depth: number) => {
   const ry2 = ry1;
   const rz2 = rz1 * sc[3] - rx1 * sc[2];
 
-  const per = (2 * depth) / (2 * depth + rz2); // todo
+  const per = (2 * depth) / (2 * depth + rz2);
   newItem.x = rx2;
   newItem.y = ry2;
   newItem.z = rz2;
@@ -74,6 +73,10 @@ const updateItemPosition = (item: any, sc: number[], depth: number) => {
   alpha = parseFloat((alpha > 1 ? 1 : alpha).toFixed(3));
 
   const itemEl = newItem.ref.current;
+
+  // Guard: element not yet mounted
+  if (!itemEl) return item;
+
   const left = (newItem.x - itemEl.offsetWidth / 2).toFixed(2);
   const top = (newItem.y - itemEl.offsetHeight / 2).toFixed(2);
   const transform = `translate3d(${left}px, ${top}px, 0) scale(${newItem.scale})`;
@@ -185,7 +188,7 @@ export default function TagSphere(props: any) {
     );
   }, [texts]);
 
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [firstRender, setFirstRender] = useState(true);
   const [lessSpeed, setLessSpeed] = useState(maxSpeed);
   const [active, setActive] = useState(false);
@@ -193,6 +196,7 @@ export default function TagSphere(props: any) {
   const [mouseY, setMouseY] = useState(0);
 
   const handleMouseMove = (e: any) => {
+    if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
 
     setMouseX(() => (e.clientX - (rect.left + rect.width / 2)) / 5);
@@ -200,6 +204,7 @@ export default function TagSphere(props: any) {
   };
 
   const checkTouchCoordinates = (e: any) => {
+    if (!containerRef.current) return false;
     const rect = containerRef.current.getBoundingClientRect();
     const touchX = e.targetTouches[0].clientX;
     const touchY = e.targetTouches[0].clientY;
