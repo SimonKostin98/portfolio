@@ -1,26 +1,37 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
-    "outDir": "dist/",
-    "noImplicitAny": true,
-    "module": "commonjs",
-    "target": "es2017",
-    "jsx": "react",
-    "esModuleInterop": true,
-    "noImplicitReturns": true,
-    "declarationMap": true,
-    "declaration": true,
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "strictNullChecks": true,
-    "noErrorTruncation": true,
-    "sourceMap": true,
-    "typeRoots": ["node_modules/@types", "src/types"],
+    "noUncheckedSideEffectImports": true,
+
+    /* Paths */
+    "baseUrl": ".",
     "paths": {
-      "@assets/*": ["./src/assets/*"],
-      "@components/*": ["./src/components/*"],
-      "@views/*": ["./src/views/*"],
-      "@src/*": ["./src/*"]
-    }
+      "@assets/*": ["src/assets/*"],
+      "@components/*": ["src/components/*"],
+      "@contexts/*": ["src/contexts/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@views/*": ["src/views/*"],
+      "@src/*": ["src/*"]
+    },
+    "typeRoots": ["node_modules/@types", "src/types"]
   },
-  "include": ["./src/**/*"]
+  "include": ["src"]
 }

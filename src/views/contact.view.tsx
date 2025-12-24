@@ -1,122 +1,86 @@
+import { SectionHeading } from '@components/general/sectionHeading.component';
+import { ViewWrapper } from '@components/general/viewWrapper.component';
 import emailjs from '@emailjs/browser';
+import { useBreakpoint } from '@hooks/useBreakpoint';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import MarkEmailReadIcon from '@mui/icons-material/MarkEmailRead';
 import SendIcon from '@mui/icons-material/Send';
-import { Button, CircularProgress, TextField, Theme } from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
+import { Button, CircularProgress, styled, TextField } from '@mui/material';
 import React, { ReactElement, useState } from 'react';
 
-const useStyles = makeStyles((theme: Theme) => ({
-  contactView: {
-    height: '100%',
-    width: '100%',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-
-    [theme.breakpoints.down('md')]: {
-      marginLeft: 0,
-      height: `calc(100% - ${theme.custom.navigationHeight}px)`,
-      padding: '2vh 2.5vw 2vh 2.5vw',
-    },
-  },
-  card: {
-    background: theme.palette.background.paper,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    height: '90%',
-    width: '85%',
-    boxShadow: theme.custom.cardShadow,
-    borderRadius: '25px',
-    backdropFilter: 'blur(10px)',
-    WebkitBoxShadow: theme.custom.cardShadow,
-    overflow: 'auto',
-    padding: '10px 50px 30px 50px',
-
-    [theme.breakpoints.down('md')]: {
-      width: '100%',
-      height: '100%',
-      padding: '10px 10px 30px 10px',
-    },
-  },
-  fullContentWrapper: {
-    width: '100%',
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 30,
-    gap: 20,
-    fontSize: 'calc(1.5vh + 1.5vw)',
-  },
-  heading: {
-    width: '100%',
-    height: '10%',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: 'xx-large',
-    fontWeight: 'bold',
-
-    [theme.breakpoints.down('md')]: {
-      fontSize: 'x-large',
-      marginBottom: 10,
-    },
-  },
-  contactForm: {
-    width: '100%',
-    paddingBottom: 20,
-    display: 'flex',
-    flexDirection: 'column',
-    flex: '1 1 auto',
-  },
-  details: {
-    width: '100%',
-    display: 'grid',
-    gap: 30,
-    gridTemplateColumns: '.5fr .5fr',
-    marginBottom: 30,
-  },
-  message: {
-    width: '100%',
-    flex: '1 1 auto',
-  },
-  messageInput: {
-    height: '100% !important',
-  },
-  button: {
-    background: `linear-gradient(-45deg, ${theme.palette.primary.dark}, ${theme.palette.primary.light})`,
-    color: 'white',
-    fontWeight: 'bold',
-    marginTop: '10px',
-    borderRadius: '10rem',
-    width: 200,
-  },
+const Card = styled('div')(({ theme }) => ({
+  background: theme.palette.background.paper,
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  height: '92.5%',
+  width: '100%',
+  boxShadow: theme.custom.cardShadow,
+  borderRadius: 25,
+  backdropFilter: 'blur(10px)',
+  WebkitBoxShadow: theme.custom.cardShadow,
+  overflow: 'auto',
+  padding: '30px 2.5vw',
 }));
 
-const createFormData = () => {
-  return {
-    subject: '',
-    email: '',
-    from_name: '',
-    message: '',
-  };
-};
+const FullContentWrapper = styled('div')({
+  width: '100%',
+  height: '100%',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  gap: 20,
+  fontSize: 'calc(1.5vh + 1.5vw)',
+});
 
-const createErrorList = () => {
-  return {
-    nameError: false,
-    emailError: false,
-    subjectError: false,
-    messageError: false,
-  };
-};
+const ContactForm = styled('div')({
+  width: '100%',
+  paddingBottom: 20,
+  display: 'flex',
+  flexDirection: 'column',
+  flex: '1 1 auto',
+});
+
+const Details = styled('div')({
+  width: '100%',
+  display: 'grid',
+  gap: 30,
+  gridTemplateColumns: '1fr 1fr',
+  marginBottom: 30,
+});
+
+const Message = styled('div')({
+  width: '100%',
+  flex: '1 1 auto',
+});
+
+const SendButton = styled(Button)(({ theme }) => ({
+  background: `linear-gradient(-45deg, ${theme.palette.primary.dark}, ${theme.palette.primary.light})`,
+  color: 'white',
+  fontWeight: 'bold',
+  marginTop: 10,
+  borderRadius: '10rem',
+  width: 200,
+}));
+
+const createFormData = () => ({
+  subject: '',
+  email: '',
+  from_name: '',
+  message: '',
+});
+
+const createErrorList = () => ({
+  nameError: false,
+  emailError: false,
+  subjectError: false,
+  messageError: false,
+});
 
 export const ContactView = (): ReactElement => {
-  const classes = useStyles();
+  const responsiveProps = useBreakpoint();
   const [formData, setFormData] = useState(createFormData());
   const [errorList, setErrorList] = useState(createErrorList());
   const [overallError, setOverallError] = useState(false);
@@ -124,10 +88,10 @@ export const ContactView = (): ReactElement => {
   const [emailSent, setEmailSent] = useState(false);
 
   const validateInput = () => {
-    const nameError = formData.from_name == '';
-    const emailError = formData.email == '';
-    const subjectError = formData.subject == '';
-    const messageError = formData.message == '';
+    const nameError = formData.from_name === '';
+    const emailError = formData.email === '';
+    const subjectError = formData.subject === '';
+    const messageError = formData.message === '';
 
     setErrorList({ nameError, emailError, subjectError, messageError });
     return nameError || emailError || subjectError || messageError;
@@ -139,17 +103,17 @@ export const ContactView = (): ReactElement => {
       setLoading(true);
       emailjs
         .send(
-          process.env.EMAIL_SERVICE_ID!,
-          process.env.EMAIL_TEMPLATE_ID!,
+          import.meta.env.VITE_EMAIL_SERVICE_ID,
+          import.meta.env.VITE_EMAIL_TEMPLATE_ID,
           formData,
-          process.env.EMAIL_PUBLIC_KEY,
+          import.meta.env.VITE_EMAIL_PUBLIC_KEY,
         )
         .then(() => {
           setEmailSent(true);
           setLoading(false);
         })
         .catch((error: Error) => {
-          setOverallError(false);
+          setOverallError(true);
           console.log(error.message);
         });
     }
@@ -172,10 +136,11 @@ export const ContactView = (): ReactElement => {
   };
 
   return (
-    <div className={classes.contactView} id="Contact">
-      <div className={classes.card}>
+    <ViewWrapper id="Contact">
+      <SectionHeading {...responsiveProps}>Contact Me</SectionHeading>
+      <Card>
         {overallError ? (
-          <div className={classes.fullContentWrapper}>
+          <FullContentWrapper>
             <ErrorOutlineIcon fontSize="inherit" color="error" />
             Oops! Something went wrong.
             <span
@@ -188,7 +153,7 @@ export const ContactView = (): ReactElement => {
             >
               Please contact me on{' '}
               <LinkedInIcon
-                style={{ cursor: 'pointer' }}
+                sx={{ cursor: 'pointer' }}
                 onClick={() =>
                   window.open(
                     'https://www.linkedin.com/in/simonkostin/',
@@ -198,27 +163,26 @@ export const ContactView = (): ReactElement => {
               />
               instead
             </span>
-          </div>
+          </FullContentWrapper>
         ) : loading ? (
-          <div className={classes.fullContentWrapper}>
+          <FullContentWrapper>
             <CircularProgress size={100} />
-          </div>
+          </FullContentWrapper>
         ) : emailSent ? (
-          <div className={classes.fullContentWrapper}>
+          <FullContentWrapper>
             <MarkEmailReadIcon fontSize="inherit" color="success" />
             <span>Message Sent!</span>
             <span
               style={{ fontSize: 'calc(.8vh + .7vw)', textAlign: 'center' }}
             >
               Your Message has been successfully sent. I will respond to you as
-              soon as possible.{' '}
+              soon as possible.
             </span>
-          </div>
+          </FullContentWrapper>
         ) : (
           <>
-            <div className={classes.heading}>Contact Me</div>
-            <div className={classes.contactForm}>
-              <div className={classes.details}>
+            <ContactForm>
+              <Details>
                 <TextField
                   required
                   label="Name"
@@ -242,7 +206,7 @@ export const ContactView = (): ReactElement => {
                 <TextField
                   required
                   label="Subject"
-                  style={{ gridColumnEnd: 'span 2' }}
+                  sx={{ gridColumnEnd: 'span 2' }}
                   value={formData.subject}
                   onChange={handleSubjectChange}
                   error={errorList.subjectError}
@@ -250,8 +214,8 @@ export const ContactView = (): ReactElement => {
                     errorList.subjectError ? 'This field is required' : ''
                   }
                 />
-              </div>
-              <div className={classes.message}>
+              </Details>
+              <Message>
                 <TextField
                   required
                   label="Message"
@@ -260,32 +224,29 @@ export const ContactView = (): ReactElement => {
                   value={formData.message}
                   rows={10}
                   onChange={handleMessageChange}
-                  classes={{ root: classes.messageInput }}
                   error={errorList.messageError}
                   helperText={
                     errorList.messageError ? 'This field is required' : ''
                   }
-                  InputProps={{
-                    classes: {
-                      root: classes.messageInput,
-                      input: classes.messageInput,
-                    },
+                  sx={{
+                    height: '100%',
+                    '& .MuiInputBase-root': { height: '100%' },
+                    '& .MuiInputBase-input': { height: '100% !important' },
                   }}
                 />
-              </div>
-            </div>
-            <Button
-              className={classes.button}
+              </Message>
+            </ContactForm>
+            <SendButton
               variant="contained"
               size="large"
               endIcon={<SendIcon />}
-              onClick={() => sendMail()}
+              onClick={sendMail}
             >
               Send Message
-            </Button>
+            </SendButton>
           </>
         )}
-      </div>
-    </div>
+      </Card>
+    </ViewWrapper>
   );
 };
