@@ -1,63 +1,47 @@
-import type {
-  DestroyType,
-  MoveDirection,
-  StartValueType,
-} from '@tsparticles/engine';
+import type { StartValueType } from '@tsparticles/engine';
 
 export const particlesOptions = {
   fpsLimit: 30,
   detectRetina: true,
   particles: {
     number: {
-      value: 40,
+      value: 150,
       density: {
         enable: true,
-        area: 800,
+        area: 1000,
       },
     },
     color: {
-      value: ['#62efff', '#00bcd4', '#008ba3'],
+      value: ['#fff8e7', '#ffeaa7', '#d4a04a'],
     },
     shape: {
       type: 'circle',
     },
     opacity: {
       value: {
-        min: 0.1,
-        max: 0.5,
+        min: 0.3,
+        max: 0.9,
       },
       animation: {
         enable: true,
-        speed: 0.5,
-        destroy: 'none' as DestroyType,
+        speed: 0.8,
+        sync: false,
         startValue: 'random' as StartValueType,
       },
     },
     size: {
       value: {
-        min: 10,
-        max: 25,
-      },
-      random: true,
-      animation: {
-        enable: true,
-        speed: 10,
-        sync: false,
+        min: 0.5,
+        max: 2.5,
       },
     },
-    move: {
+    shadow: {
       enable: true,
-      speed: 1,
-      direction: 'none' as MoveDirection,
-      random: false,
-      straight: false,
-      outMode: 'bounce',
-      bounce: false,
-      attract: {
-        enable: false,
-        rotateX: 600,
-        rotateY: 1200,
-      },
+      color: '#ffeaa7',
+      blur: 8,
+    },
+    move: {
+      enable: false,
     },
   },
 };

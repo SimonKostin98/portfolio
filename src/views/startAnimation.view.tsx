@@ -1,13 +1,6 @@
 import { keyframes, styled, useTheme } from '@mui/material';
+import { motion } from 'framer-motion';
 import { ReactElement } from 'react';
-
-const disappearViewAnimation = keyframes({
-  to: {
-    width: 0,
-    height: 0,
-    visibility: 'hidden',
-  },
-});
 
 const stackAnimation = keyframes({
   from: { transform: 'translate(100%, 120%)' },
@@ -27,12 +20,7 @@ const appearAnimation = keyframes({
   to: { opacity: 1 },
 });
 
-const disappearAnimation = keyframes({
-  from: { opacity: 1 },
-  to: { opacity: 0 },
-});
-
-const StartAnimationViewContainer = styled('div')({
+const StartAnimationViewContainer = styled(motion.div)({
   position: 'fixed',
   top: 0,
   left: 0,
@@ -42,7 +30,6 @@ const StartAnimationViewContainer = styled('div')({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  animation: `${disappearViewAnimation} 0s ease-in 4.5s forwards, ${disappearAnimation} 1s ease-in 3.5s forwards`,
 });
 
 const ContentWrapper = styled('div')(({ theme }) => ({
@@ -111,25 +98,28 @@ export const StartAnimationView = (): ReactElement => {
   const theme = useTheme();
 
   return (
-    <StartAnimationViewContainer>
+    <StartAnimationViewContainer
+      key="start-animation"
+      exit={{ opacity: 0, transition: { duration: 1, ease: 'easeInOut' } }}
+    >
       <ContentWrapper>
         <Stack>
           <StackElement
             sx={{
               backgroundColor: theme.palette.primary.dark,
-              boxShadow: createShadow('#005362', 20),
+              boxShadow: createShadow('#8c6b32', 20),
             }}
           />
           <StackElement
             sx={{
               backgroundColor: theme.palette.primary.main,
-              boxShadow: createShadow('#00717f', 20),
+              boxShadow: createShadow('#b3a475', 20),
             }}
           />
           <StackElement
             sx={{
               backgroundColor: theme.palette.primary.light,
-              boxShadow: createShadow('#3b8f99', 20),
+              boxShadow: createShadow('#f0eadd', 20),
             }}
           />
         </Stack>

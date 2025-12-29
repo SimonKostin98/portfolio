@@ -29,7 +29,7 @@ export type ExperienceItem = IWorkExperience | IEducationExperience;
 export const experienceDetails: ExperienceItem[] = [
   {
     type: 'work',
-    role: 'Sr. Software Developer',
+    role: 'Senior Software Developer',
     institution: 'CHECK24',
     institutionLink: 'https://www.check24.de/unternehmen/ueber-uns/',
     duration: ['Aug 2024 - Today'],
@@ -38,7 +38,7 @@ export const experienceDetails: ExperienceItem[] = [
       'Built a webhook-based system for real-time bank statement processing',
       'Led development of an employee expense management application',
       'Established project foundations including CI/CD pipelines, Infrastructure as Code, and authentication systems',
-      'Drive technical conceptualization in collaboration with Product Management and cross-functional stakeholders',
+      'Drove technical conceptualization in collaboration with Product Management and cross-functional stakeholders',
     ],
     image: check24Logo as string,
   },
