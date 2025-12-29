@@ -1,30 +1,37 @@
+import CSharpIcon from '@assets/programming/csharp.svg?url';
 import CSSIcon from '@assets/programming/CSS.svg?url';
 import HTMLIcon from '@assets/programming/HTML.svg?url';
 import KotlinIcon from '@assets/programming/Kotlin.svg?url';
 import PythonIcon from '@assets/programming/Python.svg?url';
 import SASSIcon from '@assets/programming/SASS.svg?url';
 import TSIcon from '@assets/programming/TS.svg?url';
+import AWSIcon from '@assets/tools/aws.svg?url';
+import AzureIcon from '@assets/tools/azure.svg?url';
+import AzureDevOpsIcon from '@assets/tools/azuredevops.svg?url';
 import BootstrapIcon from '@assets/tools/bootstrap.svg?url';
 import DjangoIcon from '@assets/tools/django.svg?url';
 import DockerIcon from '@assets/tools/docker.svg?url';
 import FlaskIcon from '@assets/tools/flask.webp';
 import GitIcon from '@assets/tools/git.svg?url';
+import GithubIcon from '@assets/tools/github.svg?url';
 import MUIIcon from '@assets/tools/materialUI.svg?url';
 import MongoIcon from '@assets/tools/mongodb.svg?url';
 import NodeIcon from '@assets/tools/node.svg?url';
 import PostgresIcon from '@assets/tools/postgresql.svg?url';
 import ReactIcon from '@assets/tools/react.svg?url';
-import { SectionHeading } from '@components/general/sectionHeading.component';
-import { ViewWrapper } from '@components/general/viewWrapper.component';
-import { keyframes, styled, Tooltip } from '@mui/material';
-import TagSphere from '@src/components/content/about/tagSphere.component';
-import { TextIconToggle } from '@src/components/content/about/textIconToggle.component';
+import { Carousel } from '@components/content/about/carousel.component';
+import { TechCard } from '@components/content/about/techCard.component';
+import { useBreakpoint } from '@hooks/useBreakpoint';
+import { keyframes, styled, Typography } from '@mui/material';
+import { ResponsiveProps } from '@src/types/styled';
+import { motion, Variants } from 'framer-motion';
 import { ReactElement } from 'react';
 
 interface IAboutViewProps {
   goToContact: () => void;
 }
 
+// Animations & Styles
 const wave = keyframes({
   '0%': { transform: 'rotate(0deg)' },
   '10%': { transform: 'rotate(14deg)' },
@@ -36,253 +43,263 @@ const wave = keyframes({
   '100%': { transform: 'rotate(0deg)' },
 });
 
-const AboutContent = styled('div')(({ theme }) => ({
-  flex: 1,
-  minHeight: 0,
-  width: '100%',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  padding: '30px 2.5vw',
-  backgroundColor: theme.palette.background.paper,
-  backdropFilter: 'blur(10px)',
-  borderRadius: 25,
-  boxShadow: theme.custom.cardShadow,
-  WebkitBoxShadow: theme.custom.cardShadow,
-  gap: '5vw',
-
-  [theme.breakpoints.down('xl')]: {
+const AboutSection = styled('section')<ResponsiveProps>(
+  ({ $isMobile, theme }) => ({
+    width: '100%',
+    display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center',
-    gap: 20,
-  },
-}));
+    paddingBlock: $isMobile ? theme.spacing(4) : theme.spacing(10),
+  }),
+);
 
-const AboutInfo = styled('div')(({ theme }) => ({
-  fontSize: 'calc(1.25vh + .75vw)',
-  flexShrink: 0,
+// Convert IntroContainer to a motion component
+const IntroContainer = styled(motion.div)({
+  width: '100%',
+  maxWidth: '1200px',
+  marginInline: 'auto',
+  textAlign: 'center',
+});
 
-  [theme.breakpoints.down('xl')]: {
-    flexShrink: 1,
-  },
-}));
+// Create a Motion version of Typography
+const MotionTypography = motion.create(Typography);
 
 const HighlightedText = styled('span')(({ theme }) => ({
   color: theme.palette.primary.main,
   fontWeight: 'bold',
 }));
 
+const ClickableText = styled(HighlightedText)({
+  textDecoration: 'underline',
+  cursor: 'pointer',
+  '&:hover': {
+    color: '#fff',
+  },
+});
+
 const WavingHand = styled('span')({
   animation: `${wave} 2.5s infinite`,
   transformOrigin: '70% 70%',
   display: 'inline-block',
+  marginLeft: 10,
+  color: '#fff',
 });
 
-const NameHeading = styled('div')({
-  fontSize: 'calc(1.5vh + 1.5vw)',
-  marginBottom: 20,
-});
-
-const AboutWordCloudBig = styled('div')(({ theme }) => ({
-  alignItems: 'center',
-  justifyContent: 'center',
-  fontSize: 'calc(.7vh + .8vw)',
-  display: 'none',
-  width: 650,
-  flexShrink: 0,
-
-  [theme.breakpoints.up('xl')]: {
-    display: 'flex',
-  },
-}));
-
-const AboutWordCloudMedium = styled('div')(({ theme }) => ({
-  alignItems: 'center',
-  justifyContent: 'center',
-  fontSize: 'calc(.7vh + .8vw)',
-  display: 'none',
-  width: 500,
-  flex: 1,
-  minHeight: 300,
-
-  [theme.breakpoints.between('md', 'xl')]: {
-    display: 'flex',
-  },
-}));
-
-const TechnologySection = styled('div')(({ theme }) => ({
+const TechStackContainer = styled('div')(({ theme }) => ({
   width: '100%',
-  flex: 1,
-  minHeight: 0, // Allow shrinking
+  marginInline: 'auto',
+  maxWidth: '1200px',
   display: 'flex',
   flexDirection: 'column',
-  gap: 10,
-
-  [theme.breakpoints.up('md')]: {
-    display: 'none',
-  },
-
-  [theme.breakpoints.down('sm')]: {
-    gap: 5,
-  },
+  gap: theme.spacing(4),
 }));
 
-const TechnologyTitle = styled('div')(({ theme }) => ({
-  fontWeight: 'bold',
-  color: theme.palette.primary.main,
-  alignSelf: 'center',
-  fontSize: 'large',
-}));
-
-const TechnologyHeading = styled('div')({
-  fontWeight: 500,
-});
-
-const TechnologyList = styled('div')({
+const MotionCarouselSection = styled(motion.div)({
   width: '100%',
-  display: 'flex',
-  gap: 10,
-  padding: 10,
 });
 
-const TechnologyIcon = styled('div')<{ iconUrl: string }>(
-  ({ theme, iconUrl }) => ({
-    width: 25,
-    height: 25,
-    borderRadius: 5,
-    backgroundSize: 'contain',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    cursor: 'pointer',
-    backgroundImage: `url(${iconUrl})`,
+const TechCategoryLabel = styled('div')(({ theme }) => ({
+  textAlign: 'center',
+  fontSize: '0.9rem',
+  textTransform: 'uppercase',
+  letterSpacing: 2,
+  color: theme.palette.text.secondary,
+  opacity: 0.7,
+  marginBottom: 10,
+  marginTop: 10,
+}));
 
-    [theme.breakpoints.down('sm')]: {
-      width: 20,
-      height: 20,
+// Animation Variants
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3, // Delay between each child animation
     },
-  }),
-);
+  },
+};
 
-const ClickableText = styled(HighlightedText)({
-  textDecoration: 'underline',
-  cursor: 'pointer',
-});
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: 'easeOut' },
+  },
+};
 
 export const AboutView = (props: IAboutViewProps): ReactElement => {
   const { goToContact } = props;
+  const responsiveProps = useBreakpoint();
 
-  const texts = [
-    <TextIconToggle text="HTML" iconUrl={HTMLIcon} key={0} />,
-    <TextIconToggle text="CSS" iconUrl={CSSIcon} key={1} />,
-    <TextIconToggle text="React" iconUrl={ReactIcon} key={2} />,
-    <TextIconToggle text="MaterialUI" iconUrl={MUIIcon} key={3} />,
-    <TextIconToggle text="Bootstrap" iconUrl={BootstrapIcon} key={4} />,
-    <TextIconToggle text="Django" iconUrl={DjangoIcon} key={5} />,
-    <TextIconToggle text="Flask" iconUrl={FlaskIcon} key={6} />,
-    <TextIconToggle text="Node" iconUrl={NodeIcon} key={7} />,
-    <TextIconToggle text="Sass" iconUrl={SASSIcon} key={8} />,
-    <TextIconToggle text="PostgreSQL" iconUrl={PostgresIcon} key={9} />,
-    <TextIconToggle text="mongoDB" iconUrl={MongoIcon} key={10} />,
-    <TextIconToggle text="Docker" iconUrl={DockerIcon} key={11} />,
-    <TextIconToggle text="Python" iconUrl={PythonIcon} key={12} />,
-    <TextIconToggle text="Typescript" iconUrl={TSIcon} key={13} />,
-    <TextIconToggle text="Git" iconUrl={GitIcon} key={14} />,
-    <TextIconToggle text="Kotlin" iconUrl={KotlinIcon} key={15} />,
+  const frontendTech = [
+    { name: 'React', icon: ReactIcon, link: 'https://react.dev/' },
+    {
+      name: 'HTML5',
+      icon: HTMLIcon,
+      link: 'https://developer.mozilla.org/en-US/docs/Web/HTML',
+    },
+    {
+      name: 'CSS3',
+      icon: CSSIcon,
+      link: 'https://developer.mozilla.org/en-US/docs/Web/CSS',
+    },
+    { name: 'SASS', icon: SASSIcon, link: 'https://sass-lang.com/' },
+    { name: 'Material UI', icon: MUIIcon, link: 'https://mui.com/' },
+    {
+      name: 'Bootstrap',
+      icon: BootstrapIcon,
+      link: 'https://getbootstrap.com/',
+    },
   ];
 
-  const frontendTechnologies = [
-    { text: 'React', icon: ReactIcon },
-    { text: 'HTML', icon: HTMLIcon },
-    { text: 'CSS', icon: CSSIcon },
-    { text: 'SASS', icon: SASSIcon },
-    { text: 'MaterialUI', icon: MUIIcon },
-    { text: 'Bootstrap', icon: BootstrapIcon },
+  const backendTech = [
+    {
+      name: 'TypeScript',
+      icon: TSIcon,
+      link: 'https://www.typescriptlang.org/',
+    },
+    { name: 'Node.js', icon: NodeIcon, link: 'https://nodejs.org/' },
+    { name: 'Python', icon: PythonIcon, link: 'https://www.python.org/' },
+    {
+      name: 'Django',
+      icon: DjangoIcon,
+      link: 'https://www.djangoproject.com/',
+    },
+    {
+      name: 'Flask',
+      icon: FlaskIcon,
+      link: 'https://flask.palletsprojects.com/',
+    },
+    { name: 'Kotlin', icon: KotlinIcon, link: 'https://kotlinlang.org/' },
+    {
+      name: 'PostgreSQL',
+      icon: PostgresIcon,
+      link: 'https://www.postgresql.org/',
+    },
+    { name: 'MongoDB', icon: MongoIcon, link: 'https://www.mongodb.com/' },
+    {
+      name: 'C#',
+      icon: CSharpIcon,
+      link: 'https://learn.microsoft.com/en-us/dotnet/csharp/',
+    },
   ];
 
-  const backendTechnologies = [
-    { text: 'Typescript', icon: TSIcon },
-    { text: 'Python', icon: PythonIcon },
-    { text: 'Kotlin', icon: KotlinIcon },
-    { text: 'Node', icon: NodeIcon },
-    { text: 'Django', icon: DjangoIcon },
-    { text: 'Flask', icon: FlaskIcon },
-    { text: 'Docker', icon: DockerIcon },
-  ];
-
-  const databaseTechnologies = [
-    { text: 'PostgreSQL', icon: PostgresIcon },
-    { text: 'MongoDB', icon: MongoIcon },
+  const devopsTech = [
+    { name: 'Docker', icon: DockerIcon, link: 'https://www.docker.com/' },
+    { name: 'Git', icon: GitIcon, link: 'https://git-scm.com/' },
+    { name: 'Azure', icon: AzureIcon, link: 'https://azure.microsoft.com/' },
+    { name: 'GitHub', icon: GithubIcon, link: 'https://github.com/' },
+    { name: 'AWS', icon: AWSIcon, link: 'https://aws.amazon.com/' },
+    {
+      name: 'Azure DevOps',
+      icon: AzureDevOpsIcon,
+      link: 'https://azure.microsoft.com/en-us/services/devops/',
+    },
   ];
 
   return (
-    <ViewWrapper id="About">
-      <SectionHeading>About Me</SectionHeading>
-      <AboutContent>
-        <AboutInfo>
-          <NameHeading>
-            Hi, I&apos;m <HighlightedText>Simon</HighlightedText>{' '}
-            <WavingHand>👋🏼</WavingHand>
-          </NameHeading>
-          <p style={{ marginBottom: 20 }}>
-            I&apos;m a <HighlightedText>Full Stack Developer</HighlightedText>{' '}
-            who specializes in building scalable and flexible web applications.
-            I started coding 8 years ago and studied{' '}
-            <HighlightedText>Computer Science</HighlightedText> and{' '}
-            <HighlightedText>Software Engineering</HighlightedText> at
-            university.
-          </p>
-          <p>
-            As an avid learner, I like to experiment with the latest
-            technologies, as well as explore{' '}
-            <HighlightedText>new opportunities</HighlightedText>. If you think I
-            can be of service to you, don&apos;t hesitate to contact me{' '}
-            <ClickableText onClick={() => goToContact()}>here.</ClickableText>
-          </p>
-        </AboutInfo>
-        <AboutWordCloudBig>
-          <TagSphere
-            texts={texts}
-            radius={325}
-            maxSpeed={4}
-            initialSpeed={16}
-          />
-        </AboutWordCloudBig>
-        <AboutWordCloudMedium>
-          <TagSphere
-            texts={texts}
-            radius={200}
-            maxSpeed={4}
-            initialSpeed={16}
-          />
-        </AboutWordCloudMedium>
-        <TechnologySection>
-          <TechnologyTitle>Technologies I work with</TechnologyTitle>
-          <TechnologyHeading>Frontend</TechnologyHeading>
-          <TechnologyList>
-            {frontendTechnologies.map((tech, index) => (
-              <Tooltip key={index} title={tech.text} arrow placement="bottom">
-                <TechnologyIcon iconUrl={tech.icon} />
-              </Tooltip>
+    <AboutSection id="About" {...responsiveProps}>
+      <IntroContainer
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={containerVariants}
+      >
+        <MotionTypography
+          variants={itemVariants}
+          variant={responsiveProps.$isMobile ? 'h6' : 'h5'}
+          color="text.secondary"
+          sx={{ mb: 4, lineHeight: 1.6 }}
+        >
+          Hi, I&apos;m <HighlightedText>Simon</HighlightedText>
+          <WavingHand>👋🏼</WavingHand>
+        </MotionTypography>
+        <MotionTypography
+          variants={itemVariants}
+          variant={responsiveProps.$isMobile ? 'h6' : 'h5'}
+          color="text.secondary"
+          sx={{ mb: 4, lineHeight: 1.6 }}
+        >
+          I&apos;m a <HighlightedText>Full Stack Developer</HighlightedText> who
+          specializes in building scalable and flexible web applications. I
+          started coding 11 years ago and studied{' '}
+          <HighlightedText>Computer Science</HighlightedText> and{' '}
+          <HighlightedText>Software Engineering</HighlightedText> at university.
+        </MotionTypography>
+        <MotionTypography
+          variants={itemVariants}
+          variant={responsiveProps.$isMobile ? 'h6' : 'h5'}
+          color="text.secondary"
+          sx={{ mb: 4, lineHeight: 1.6 }}
+        >
+          As an avid learner, I like to experiment with the latest technologies,
+          as well as explore{' '}
+          <HighlightedText>new opportunities</HighlightedText>. If you think I
+          can be of service to you, don&apos;t hesitate to{' '}
+          <ClickableText onClick={() => goToContact()}>contact</ClickableText>{' '}
+          me.
+        </MotionTypography>
+      </IntroContainer>
+
+      <TechStackContainer>
+        <MotionCarouselSection
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={itemVariants}
+        >
+          <TechCategoryLabel>Frontend</TechCategoryLabel>
+          <Carousel direction="left" speed={30}>
+            {frontendTech.map((tech, index) => (
+              <TechCard
+                key={`fe-${index}`}
+                name={tech.name}
+                icon={tech.icon}
+                link={tech.link}
+              />
             ))}
-          </TechnologyList>
-          <TechnologyHeading>Backend</TechnologyHeading>
-          <TechnologyList>
-            {backendTechnologies.map((tech, index) => (
-              <Tooltip key={index} title={tech.text} arrow placement="bottom">
-                <TechnologyIcon iconUrl={tech.icon} />
-              </Tooltip>
+          </Carousel>
+        </MotionCarouselSection>
+
+        <MotionCarouselSection
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={itemVariants}
+        >
+          <TechCategoryLabel>Backend</TechCategoryLabel>
+          <Carousel direction="right" speed={35}>
+            {backendTech.map((tech, index) => (
+              <TechCard
+                key={`be-${index}`}
+                name={tech.name}
+                icon={tech.icon}
+                link={tech.link}
+              />
             ))}
-          </TechnologyList>
-          <TechnologyHeading>Databases</TechnologyHeading>
-          <TechnologyList>
-            {databaseTechnologies.map((tech, index) => (
-              <Tooltip key={index} title={tech.text} arrow placement="bottom">
-                <TechnologyIcon iconUrl={tech.icon} />
-              </Tooltip>
+          </Carousel>
+        </MotionCarouselSection>
+
+        <MotionCarouselSection
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={itemVariants}
+        >
+          <TechCategoryLabel>DevOps & Tools</TechCategoryLabel>
+          <Carousel direction="left" speed={40}>
+            {devopsTech.map((tech, index) => (
+              <TechCard
+                key={`do-${index}`}
+                name={tech.name}
+                icon={tech.icon}
+                link={tech.link}
+              />
             ))}
-          </TechnologyList>
-        </TechnologySection>
-      </AboutContent>
-    </ViewWrapper>
+          </Carousel>
+        </MotionCarouselSection>
+      </TechStackContainer>
+    </AboutSection>
   );
 };

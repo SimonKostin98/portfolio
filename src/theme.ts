@@ -3,9 +3,9 @@ import { ThemeOptions } from '@mui/material/';
 export const theme: ThemeOptions = {
   palette: {
     primary: {
-      light: '#62efff',
-      main: '#00BCD4',
-      dark: '#008ba3',
+      light: '#fff8e7',
+      main: '#ffeaa7',
+      dark: '#d4a04a',
     },
     secondary: {
       light: '#ff786f',
@@ -48,12 +48,13 @@ export const theme: ThemeOptions = {
       '"Segoe UI Symbol"',
     ].join(','),
   },
+  shape: {
+    borderRadius: 20,
+  },
   custom: {
-    navigationWidth: 120,
-    navigationHeight: 90,
+    navigationHeight: 60,
     footerHeight: 48,
     paperLight: 'rgba(50, 50, 50, 0.6)',
-    cardShadow: '0 0 10px 1px rgba(200, 200, 200, .35)',
-    backgroundGradient: 'linear-gradient(315deg, #2d3436 0%, #000000 74%)',
+    cardShadow: '0 0 5px 1px rgba(200, 200, 200, .35)',
   },
 };
