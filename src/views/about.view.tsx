@@ -1,4 +1,4 @@
-import CSharpIcon from '@assets/programming/csharp.svg?url';
+import CSharpIcon from '@assets/programming/CSharp.svg?url';
 import CSSIcon from '@assets/programming/CSS.svg?url';
 import HTMLIcon from '@assets/programming/HTML.svg?url';
 import KotlinIcon from '@assets/programming/Kotlin.svg?url';
